@@ -1,0 +1,40 @@
+name: govdeals-tracker
+
+on:
+  schedule:
+    - cron: '0 */2 * * *'      # every 2 hours, on the hour (UTC)
+  workflow_dispatch:            # manual run button
+
+permissions:
+  contents: write               # allow committing snapshot/history back
+
+concurrency:
+  group: tracker
+  cancel-in-progress: false
+
+jobs:
+  track:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install -r requirements.txt
+
+      - name: Run tracker
+        env:
+          SOURCE: ${{ vars.SOURCE || 'apify' }}
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          APIFY_ACTOR: ${{ vars.APIFY_ACTOR }}
+        run: python tracker.py
+
+      - name: Commit data
+        run: |
+          git config user.name  "govdeals-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add history.json snapshot.json
+          git diff --cached --quiet || git commit -m "tracker: $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push
