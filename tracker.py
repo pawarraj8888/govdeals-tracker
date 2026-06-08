@@ -150,20 +150,25 @@ def diff(prev, curr):
     p_ids, c_ids = set(p_items), set(c_items)
 
     cats = {i["category"] for i in c_items.values()} | {i["category"] for i in p_items.values()}
-    by_cat = {c: {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 0}
-              for c in cats}
+    keys = ["sold", "no_sale", "pulled", "new", "active_end", "sold_value", "active_value"]
+    by_cat = {c: {k: 0 for k in keys} for c in cats}
 
     for cid, it in c_items.items():
-        by_cat[it["category"]]["active_end"] += 1
+        b = by_cat[it["category"]]
+        b["active_end"] += 1
+        b["active_value"] += int(it.get("current_bid") or 0)
         if cid not in p_ids:
-            by_cat[it["category"]]["new"] += 1
+            b["new"] += 1
 
     for pid in (p_ids - c_ids):
         it = p_items[pid]
-        by_cat[it["category"]][classify(it, when)] += 1
+        b = by_cat[it["category"]]
+        st = classify(it, when)
+        b[st] += 1
+        if st == "sold":
+            b["sold_value"] += int(it.get("current_bid") or 0)
 
-    totals = {k: sum(by_cat[c][k] for c in by_cat)
-              for k in ["sold", "no_sale", "pulled", "new", "active_end"]}
+    totals = {k: sum(by_cat[c][k] for c in by_cat) for k in keys}
     return by_cat, totals, sorted(cats)
 
 
@@ -181,6 +186,8 @@ def build_closures(prev, curr, when):
             "current_bid": it.get("current_bid", 0),
             "bid_count": it.get("bid_count", 0),
             "end_date": it.get("end_date"),
+            "has_reserve": it.get("has_reserve", False),
+            "reserve_not_met": it.get("reserve_not_met", False),
             "status": classify(it, when),
             "closed_at": when.isoformat(),
         })
