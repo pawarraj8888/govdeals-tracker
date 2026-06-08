@@ -64,8 +64,8 @@ def _search_page(session, page):
     body = {
         "categoryIds": "", "businessId": "GD", "searchText": "*", "isQAL": False,
         "locationId": None, "model": "", "makebrand": "", "auctionTypeId": None,
-        "page": page, "displayRows": ROWS, "sortField": "bestfit",
-        "sortOrder": "desc", "sessionId": str(uuid.uuid4()), "requestType": "search",
+        "page": page, "displayRows": ROWS, "sortField": "timeremaining",
+        "sortOrder": "asc", "sessionId": str(uuid.uuid4()), "requestType": "search",
         "responseStyle": "fullResponse", "facets": [], "facetsFilter": [],
         "timeType": "", "sellerTypeId": None, "accountIds": [],
     }
