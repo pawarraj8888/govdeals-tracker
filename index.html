@@ -289,13 +289,13 @@
         <option value="date">Newest</option>
         <option value="bidhigh">Highest bid</option>
         <option value="bidlow">Lowest bid</option>
-        <option value="bids">Most bids</option>
+        <option value="bidup">With bidding</option>
       </select>
     </div>
     <div class="summary glass" id="itemSummary"></div>
     <div class="card glass">
       <div class="tablewrap"><table>
-        <thead><tr><th>Item</th><th>Category</th><th>Current bid</th><th>Bids</th><th>End / Closed</th><th>Status</th></tr></thead>
+        <thead><tr><th>Item</th><th>Category</th><th>Current bid</th><th>Bidding</th><th>End / Closed</th><th>Status</th></tr></thead>
         <tbody id="itemTable"></tbody>
       </table></div>
       <div class="pager">
@@ -321,10 +321,10 @@ const SAMPLE_HISTORY=(function(){const cats=["Excavators","Cars & Trucks","Offic
       totals:{sold:s,no_sale:n,pulled:p,new:nw,active_end:act,sold_value:sv,active_value:av}});}
   return{categories:cats,window_hours:2,windows:w,last_updated:new Date(now).toISOString(),_note:"SAMPLE DATA"};})();
 const SAMPLE_SNAPSHOT=(function(){const cats=SAMPLE_HISTORY.categories;const items={};const titles=["John Deere Excavator","Ford F-150","Herman Miller Chair","Dell OptiPlex Lot","Microscope Set","2-Acre Parcel","Utility Trailer","HP Laptop Cart","Steel Shelving","Toyota Forklift"];
-  for(let i=0;i<28;i++){const id=(1000+i)+"-"+(200+i);items[id]={id,title:titles[i%titles.length]+" #"+i,category:cats[i%cats.length],current_bid:Math.floor(Math.random()*9000),bid_count:Math.floor(Math.random()*15),end_date:new Date(Date.UTC(2026,5,8+i%5,14)).toISOString(),has_reserve:i%3===0,reserve_not_met:i%4===0};}
+  for(let i=0;i<28;i++){const id=(1000+i)+"-"+(200+i);const cb=Math.floor(Math.random()*9000);items[id]={id,title:titles[i%titles.length]+" #"+i,category:cats[i%cats.length],current_bid:cb,bid_count:0,start_bid:Math.floor(cb*0.6),peak_bid:cb,high_bidder:i%4===0,end_date:new Date(Date.UTC(2026,5,8+i%5,14)).toISOString(),has_reserve:i%3===0,reserve_not_met:i%4===0};}
   return{captured_at:SAMPLE_HISTORY.last_updated,items};})();
 const SAMPLE_CLOSURES=(function(){const cats=SAMPLE_HISTORY.categories;const sts=["sold","no_sale","pulled"];const titles=["Surplus Generator","Police Sedan","Conference Table","Server Rack","Centrifuge","Storage Unit"];const cl=[];
-  for(let i=0;i<60;i++){const st=sts[i%3];const sold=st==="sold";cl.push({id:(3000+i)+"-"+(400+i),title:titles[i%titles.length]+" #"+i,category:cats[i%cats.length],current_bid:sold?Math.floor(Math.random()*14000)+50:0,bid_count:sold?Math.floor(Math.random()*20)+1:0,end_date:new Date(Date.UTC(2026,5,7,(i%12)*2)).toISOString(),has_reserve:i%3===0,reserve_not_met:i%5===0,status:st,closed_at:new Date(Date.UTC(2026,5,7+(i%2),(i%12)*2)).toISOString()});}
+  for(let i=0;i<60;i++){const st=sts[i%3];const sold=st==="sold";cl.push({id:(3000+i)+"-"+(400+i),title:titles[i%titles.length]+" #"+i,category:cats[i%cats.length],current_bid:sold?Math.floor(Math.random()*14000)+50:0,bid_count:0,had_bids:sold,end_date:new Date(Date.UTC(2026,5,7,(i%12)*2)).toISOString(),has_reserve:i%3===0,reserve_not_met:i%5===0,status:st,closed_at:new Date(Date.UTC(2026,5,7+(i%2),(i%12)*2)).toISOString()});}
   return{last_updated:SAMPLE_HISTORY.last_updated,closures:cl};})();
 
 /* ---------- state + helpers ---------- */
@@ -379,8 +379,7 @@ function computeMetrics(cl){
   const resSold=withRes.filter(c=>c.status==="sold").length;
   return {
     gmvTrailing:soldPrices.reduce((a,b)=>a+b,0),
-    avgBidsSold:sold.length?sold.reduce((a,c)=>a+(Number(c.bid_count)||0),0)/sold.length:0,
-    noBidRate:closed?cl.filter(c=>(Number(c.bid_count)||0)===0).length/closed:0,
+    bidUpRate:closed?cl.filter(c=>c.had_bids).length/closed:0,
     reserveClear:withRes.length?resSold/withRes.length:null,
     median:median(soldPrices),
     avgPrice:sold.length?soldPrices.reduce((a,b)=>a+b,0)/sold.length:0,
@@ -392,6 +391,7 @@ function computeMetrics(cl){
     ]
   };
 }
+function bidFlag(i){return (i.had_bids||((i.peak_bid||i.current_bid||0)>(i.start_bid||i.current_bid||0))||i.high_bidder)?1:0;}
 function endingSoon(hours){
   const ref=new Date(S.hist.last_updated||Date.now()).getTime();
   return Object.values(S.snap.items||{}).filter(it=>{const e=new Date(it.end_date).getTime();return e>=ref&&e<=ref+hours*3600e3;}).length;
@@ -432,8 +432,8 @@ function renderMonitor(){
     ["c-gmv","GMV sold (window)",moneyShort(k.sold_value),"this window"],
     ["c-cash","Avg sale price",moneyShort(avgWin),"this window"],
     ["c-cash","Active inv. value",moneyShort(k.active_value||0),"on platform now"],
-    ["c-new","Avg bids / sold",m.avgBidsSold.toFixed(1),"trailing"],
-    ["c-nosale","No-bid rate",Math.round(m.noBidRate*100)+"%","trailing closed"],
+    ["c-new","Bid-up rate",Math.round(m.bidUpRate*100)+"%","trailing closed"],
+    ["c-rate","Reserve clears",(m.reserveClear==null?"\u2014":Math.round(m.reserveClear*100)+"%"),"reserved lots"],
     ["c-active","Ending \u226424h",fmt(endingSoon(24)),"active auctions"]
   ];
   document.getElementById("kpis").innerHTML=cards.map(a=>
@@ -524,7 +524,7 @@ function filteredItems(){
   if(f.sort==="date")r=r.slice().sort((a,b)=>new Date(b.when||0)-new Date(a.when||0));
   else if(f.sort==="bidhigh")r=r.slice().sort((a,b)=>(b.current_bid||0)-(a.current_bid||0));
   else if(f.sort==="bidlow")r=r.slice().sort((a,b)=>(a.current_bid||0)-(b.current_bid||0));
-  else if(f.sort==="bids")r=r.slice().sort((a,b)=>(b.bid_count||0)-(a.bid_count||0));
+  else if(f.sort==="bidup")r=r.slice().sort((a,b)=>(bidFlag(b)-bidFlag(a))||((b.current_bid||0)-(a.current_bid||0)));
   return r;
 }
 function renderItems(){
@@ -542,8 +542,9 @@ function renderItems(){
   document.getElementById("itemTable").innerHTML=slice.length?slice.map(i=>{
     const cls=i.status==="No-sale"?"Nosale":i.status;
     const link=i.status==="Listed"?'<a href="'+assetUrl(i.id)+'" target="_blank" rel="noopener">'+(i.title||"(untitled)")+'</a>':(i.title||"(untitled)");
+    const bid=bidFlag(i)?'<span style="color:var(--sold)">\u25cf</span>':'<span style="color:var(--faint)">\u2014</span>';
     return '<tr><td>'+link+'</td><td>'+i.category+'</td><td class="num">'+money(i.current_bid)+'</td>'+
-      '<td class="num">'+(i.bid_count||0)+'</td><td class="num">'+dshort(i.when)+'</td>'+
+      '<td class="num">'+bid+'</td><td class="num">'+dshort(i.when)+'</td>'+
       '<td><span class="st '+cls+'">'+i.status+'</span></td></tr>';}).join("")
     :'<tr><td colspan="6" class="empty">No items match your filters.</td></tr>';
   document.getElementById("pageInfo").textContent=(r.length?f.page*PAGE+1:0)+"\u2013"+Math.min((f.page+1)*PAGE,r.length)+" of "+fmt(r.length);

@@ -92,6 +92,7 @@ def normalize(it):
         "category": it.get("categoryDescription") or it.get("assetCategory") or "Uncategorized",
         "current_bid": float(it.get("currentBid") or 0),
         "bid_count": int(it.get("bidCount") or 0),
+        "high_bidder": bool(it.get("highBidder")),
         "end_date": end,
         "has_reserve": bool(it.get("hasReservePrice")),
         "reserve_not_met": bool(it.get("isReserveNotMet")),
@@ -100,12 +101,13 @@ def normalize(it):
 
 def fetch_all_active():
     session = requests.Session()
-    items, page = {}, 1
+    items, page, complete = {}, 1, True
     while page <= MAX_PAGES:
         results = _search_page(session, page)
-        if results is None:        # hard failure; keep what we have
+        if results is None:        # hard failure mid-pagination -> set incomplete
+            complete = False
             break
-        if not results:            # empty page = end of results
+        if not results:            # empty page = clean end of results
             break
         for it in results:
             n = normalize(it)
@@ -115,8 +117,9 @@ def fetch_all_active():
         page += 1
         time.sleep(SLEEP)
     print(f"  pulled {len(items)} active listings across "
-          f"{len({i['category'] for i in items.values()})} categories")
-    return {"captured_at": now_utc().isoformat(), "items": items}
+          f"{len({i['category'] for i in items.values()})} categories"
+          f"{'' if complete else '  [INCOMPLETE]'}")
+    return {"captured_at": now_utc().isoformat(), "items": items}, complete
 
 
 def parse_end(s):
@@ -128,6 +131,15 @@ def parse_end(s):
         return None
 
 
+def has_bids(item):
+    """True if real bidding occurred: current bid rose above its first-seen level,
+    or a high bidder is present. bidCount is unreliable from the list API (always null)."""
+    cur = item.get("current_bid", 0) or 0
+    start = item.get("start_bid", cur)
+    peak = item.get("peak_bid", cur)
+    return peak > start or bool(item.get("high_bidder"))
+
+
 def classify(item, when):
     """Why did this listing leave the active set? Uses its last-seen state."""
     end = parse_end(item.get("end_date"))
@@ -136,9 +148,8 @@ def classify(item, when):
     # vanished well before its scheduled end -> seller pulled / withdrawn
     if end and end > when + dt.timedelta(hours=WINDOW_HOURS):
         return "pulled"
-    bids = item.get("bid_count", 0)
     reserve_failed = item.get("has_reserve") and item.get("reserve_not_met")
-    if bids > 0 and not reserve_failed:
+    if has_bids(item) and not reserve_failed:
         return "sold"
     return "no_sale"
 
@@ -185,6 +196,7 @@ def build_closures(prev, curr, when):
             "category": it.get("category", "Uncategorized"),
             "current_bid": it.get("current_bid", 0),
             "bid_count": it.get("bid_count", 0),
+            "had_bids": has_bids(it),
             "end_date": it.get("end_date"),
             "has_reserve": it.get("has_reserve", False),
             "reserve_not_met": it.get("reserve_not_met", False),
@@ -206,10 +218,26 @@ def load(path, default):
 def main():
     print(f"GovDeals tracker · {now_utc().isoformat()}")
     prev = load(SNAPSHOT_FILE, None)
-    curr = fetch_all_active()
+    curr, complete = fetch_all_active()
     if not curr["items"]:
         print("No items pulled — aborting without overwriting good data.")
         return
+    if not complete:
+        print("Fetch was INCOMPLETE (a page failed mid-pagination). Skipping this "
+              "window so missing items aren't mis-counted as pulled. State untouched.")
+        return
+    if prev and prev.get("items") and len(curr["items"]) < 0.6 * len(prev["items"]):
+        print(f"Only fetched {len(curr['items'])} vs previous {len(prev['items'])} "
+              f"(<60%) — likely a partial pull. Skipping window. State untouched.")
+        return
+
+    # Carry each item's first-seen bid forward so we can detect real bidding
+    # (current bid rising above its starting level). bidCount is always null here.
+    prev_items = prev.get("items", {}) if prev else {}
+    for iid, it in curr["items"].items():
+        pit = prev_items.get(iid)
+        it["start_bid"] = pit.get("start_bid", pit.get("current_bid", it["current_bid"])) if pit else it["current_bid"]
+        it["peak_bid"] = max(it["current_bid"], pit.get("peak_bid", pit.get("current_bid", 0))) if pit else it["current_bid"]
 
     hist = load(HISTORY_FILE, {"categories": [], "window_hours": WINDOW_HOURS, "windows": []})
     hist.pop("_note", None)                      # drop the sample marker
