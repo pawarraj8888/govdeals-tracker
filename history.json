@@ -1,4 +1,5 @@
 {
+  "last_updated": "2026-06-07T23:04:42.892807+00:00",
   "categories": [
     "3D Printers, Consumer",
     "AV Broadcast Equipment",
@@ -527,6 +528,5148 @@
     "iPads, Tablets, and eReaders"
   ],
   "window_hours": 2,
-  "windows": [],
-  "last_updated": "2026-06-08T03:05:10.181867+00:00"
+  "windows": [
+    {
+      "window_start": "2026-06-02T22:00:00Z",
+      "window_end": "2026-06-03T00:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 6,
+          "no_sale": 2,
+          "pulled": 3,
+          "new": 12,
+          "active_end": 1447
+        },
+        "Heavy Equipment": {
+          "sold": 3,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 736
+        },
+        "Computers & Electronics": {
+          "sold": 4,
+          "no_sale": 3,
+          "pulled": 2,
+          "new": 7,
+          "active_end": 1735
+        },
+        "Office Furniture": {
+          "sold": 15,
+          "no_sale": 4,
+          "pulled": 5,
+          "new": 24,
+          "active_end": 2786
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 318
+        },
+        "Tools & Shop Equipment": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 415
+        },
+        "Facility Support Equipment": {
+          "sold": 14,
+          "no_sale": 6,
+          "pulled": 3,
+          "new": 25,
+          "active_end": 2316
+        },
+        "Lab & Medical": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 505
+        },
+        "Apparel & Lots": {
+          "sold": 7,
+          "no_sale": 4,
+          "pulled": 3,
+          "new": 13,
+          "active_end": 1616
+        },
+        "Real Estate": {
+          "sold": 10,
+          "no_sale": 6,
+          "pulled": 3,
+          "new": 18,
+          "active_end": 2506
+        },
+        "Agricultural": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 358
+        },
+        "Public Safety & Fire": {
+          "sold": 7,
+          "no_sale": 5,
+          "pulled": 1,
+          "new": 13,
+          "active_end": 2198
+        }
+      },
+      "totals": {
+        "sold": 69,
+        "no_sale": 31,
+        "pulled": 25,
+        "new": 124,
+        "active_end": 16936
+      }
+    },
+    {
+      "window_start": "2026-06-03T00:00:00Z",
+      "window_end": "2026-06-03T02:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 1,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 6,
+          "active_end": 1449
+        },
+        "Heavy Equipment": {
+          "sold": 3,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 2,
+          "active_end": 732
+        },
+        "Computers & Electronics": {
+          "sold": 2,
+          "no_sale": 2,
+          "pulled": 2,
+          "new": 6,
+          "active_end": 1735
+        },
+        "Office Furniture": {
+          "sold": 8,
+          "no_sale": 8,
+          "pulled": 3,
+          "new": 22,
+          "active_end": 2789
+        },
+        "Industrial Machinery": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 320
+        },
+        "Tools & Shop Equipment": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 413
+        },
+        "Facility Support Equipment": {
+          "sold": 7,
+          "no_sale": 3,
+          "pulled": 3,
+          "new": 15,
+          "active_end": 2318
+        },
+        "Lab & Medical": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 6,
+          "active_end": 508
+        },
+        "Apparel & Lots": {
+          "sold": 5,
+          "no_sale": 3,
+          "pulled": 2,
+          "new": 10,
+          "active_end": 1616
+        },
+        "Real Estate": {
+          "sold": 13,
+          "no_sale": 7,
+          "pulled": 2,
+          "new": 24,
+          "active_end": 2508
+        },
+        "Agricultural": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 357
+        },
+        "Public Safety & Fire": {
+          "sold": 12,
+          "no_sale": 3,
+          "pulled": 3,
+          "new": 18,
+          "active_end": 2198
+        }
+      },
+      "totals": {
+        "sold": 55,
+        "no_sale": 31,
+        "pulled": 22,
+        "new": 115,
+        "active_end": 16943
+      }
+    },
+    {
+      "window_start": "2026-06-03T02:00:00Z",
+      "window_end": "2026-06-03T04:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 2,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 1447
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 732
+        },
+        "Computers & Electronics": {
+          "sold": 5,
+          "no_sale": 3,
+          "pulled": 1,
+          "new": 5,
+          "active_end": 1731
+        },
+        "Office Furniture": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 2790
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 320
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 413
+        },
+        "Facility Support Equipment": {
+          "sold": 4,
+          "no_sale": 4,
+          "pulled": 2,
+          "new": 11,
+          "active_end": 2319
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 508
+        },
+        "Apparel & Lots": {
+          "sold": 2,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 5,
+          "active_end": 1617
+        },
+        "Real Estate": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 2507
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 356
+        },
+        "Public Safety & Fire": {
+          "sold": 3,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 2194
+        }
+      },
+      "totals": {
+        "sold": 16,
+        "no_sale": 10,
+        "pulled": 8,
+        "new": 25,
+        "active_end": 16934
+      }
+    },
+    {
+      "window_start": "2026-06-03T04:00:00Z",
+      "window_end": "2026-06-03T06:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 1446
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 732
+        },
+        "Computers & Electronics": {
+          "sold": 2,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 1730
+        },
+        "Office Furniture": {
+          "sold": 5,
+          "no_sale": 3,
+          "pulled": 2,
+          "new": 9,
+          "active_end": 2789
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 320
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 413
+        },
+        "Facility Support Equipment": {
+          "sold": 3,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 2317
+        },
+        "Lab & Medical": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 507
+        },
+        "Apparel & Lots": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 1616
+        },
+        "Real Estate": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 4,
+          "active_end": 2511
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 356
+        },
+        "Public Safety & Fire": {
+          "sold": 3,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 2194
+        }
+      },
+      "totals": {
+        "sold": 14,
+        "no_sale": 5,
+        "pulled": 8,
+        "new": 24,
+        "active_end": 16931
+      }
+    },
+    {
+      "window_start": "2026-06-03T06:00:00Z",
+      "window_end": "2026-06-03T08:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1446
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 731
+        },
+        "Computers & Electronics": {
+          "sold": 2,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 1729
+        },
+        "Office Furniture": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2789
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 320
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 413
+        },
+        "Facility Support Equipment": {
+          "sold": 4,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 6,
+          "active_end": 2316
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 506
+        },
+        "Apparel & Lots": {
+          "sold": 4,
+          "no_sale": 4,
+          "pulled": 1,
+          "new": 13,
+          "active_end": 1620
+        },
+        "Real Estate": {
+          "sold": 5,
+          "no_sale": 3,
+          "pulled": 1,
+          "new": 9,
+          "active_end": 2511
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 358
+        },
+        "Public Safety & Fire": {
+          "sold": 2,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 2190
+        }
+      },
+      "totals": {
+        "sold": 17,
+        "no_sale": 9,
+        "pulled": 8,
+        "new": 32,
+        "active_end": 16929
+      }
+    },
+    {
+      "window_start": "2026-06-03T08:00:00Z",
+      "window_end": "2026-06-03T10:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1446
+        },
+        "Heavy Equipment": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 732
+        },
+        "Computers & Electronics": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1729
+        },
+        "Office Furniture": {
+          "sold": 1,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 2788
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 320
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 413
+        },
+        "Facility Support Equipment": {
+          "sold": 2,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 2316
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 4,
+          "active_end": 510
+        },
+        "Apparel & Lots": {
+          "sold": 2,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 5,
+          "active_end": 1622
+        },
+        "Real Estate": {
+          "sold": 3,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 7,
+          "active_end": 2513
+        },
+        "Agricultural": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 356
+        },
+        "Public Safety & Fire": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 2191
+        }
+      },
+      "totals": {
+        "sold": 10,
+        "no_sale": 4,
+        "pulled": 8,
+        "new": 29,
+        "active_end": 16936
+      }
+    },
+    {
+      "window_start": "2026-06-03T10:00:00Z",
+      "window_end": "2026-06-03T12:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 1446
+        },
+        "Heavy Equipment": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 730
+        },
+        "Computers & Electronics": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 1730
+        },
+        "Office Furniture": {
+          "sold": 8,
+          "no_sale": 6,
+          "pulled": 2,
+          "new": 18,
+          "active_end": 2790
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 3,
+          "active_end": 323
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 413
+        },
+        "Facility Support Equipment": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 2317
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 510
+        },
+        "Apparel & Lots": {
+          "sold": 3,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 1621
+        },
+        "Real Estate": {
+          "sold": 2,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 8,
+          "active_end": 2517
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 355
+        },
+        "Public Safety & Fire": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 2192
+        }
+      },
+      "totals": {
+        "sold": 16,
+        "no_sale": 9,
+        "pulled": 9,
+        "new": 42,
+        "active_end": 16944
+      }
+    },
+    {
+      "window_start": "2026-06-03T12:00:00Z",
+      "window_end": "2026-06-03T14:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 1447
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 729
+        },
+        "Computers & Electronics": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 5,
+          "active_end": 1732
+        },
+        "Office Furniture": {
+          "sold": 5,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 7,
+          "active_end": 2790
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 322
+        },
+        "Tools & Shop Equipment": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 411
+        },
+        "Facility Support Equipment": {
+          "sold": 6,
+          "no_sale": 2,
+          "pulled": 3,
+          "new": 10,
+          "active_end": 2316
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 510
+        },
+        "Apparel & Lots": {
+          "sold": 1,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 1621
+        },
+        "Real Estate": {
+          "sold": 5,
+          "no_sale": 4,
+          "pulled": 2,
+          "new": 10,
+          "active_end": 2516
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 355
+        },
+        "Public Safety & Fire": {
+          "sold": 7,
+          "no_sale": 4,
+          "pulled": 3,
+          "new": 10,
+          "active_end": 2188
+        }
+      },
+      "totals": {
+        "sold": 27,
+        "no_sale": 15,
+        "pulled": 15,
+        "new": 50,
+        "active_end": 16937
+      }
+    },
+    {
+      "window_start": "2026-06-03T14:00:00Z",
+      "window_end": "2026-06-03T16:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 2,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 1448
+        },
+        "Heavy Equipment": {
+          "sold": 3,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 8,
+          "active_end": 733
+        },
+        "Computers & Electronics": {
+          "sold": 5,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 8,
+          "active_end": 1732
+        },
+        "Office Furniture": {
+          "sold": 8,
+          "no_sale": 4,
+          "pulled": 2,
+          "new": 15,
+          "active_end": 2791
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 321
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 412
+        },
+        "Facility Support Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 5,
+          "active_end": 2321
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 509
+        },
+        "Apparel & Lots": {
+          "sold": 3,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 6,
+          "active_end": 1621
+        },
+        "Real Estate": {
+          "sold": 4,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 5,
+          "active_end": 2515
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 355
+        },
+        "Public Safety & Fire": {
+          "sold": 10,
+          "no_sale": 2,
+          "pulled": 2,
+          "new": 16,
+          "active_end": 2190
+        }
+      },
+      "totals": {
+        "sold": 35,
+        "no_sale": 10,
+        "pulled": 13,
+        "new": 69,
+        "active_end": 16948
+      }
+    },
+    {
+      "window_start": "2026-06-03T16:00:00Z",
+      "window_end": "2026-06-03T18:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 9,
+          "no_sale": 4,
+          "pulled": 1,
+          "new": 12,
+          "active_end": 1446
+        },
+        "Heavy Equipment": {
+          "sold": 2,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 730
+        },
+        "Computers & Electronics": {
+          "sold": 10,
+          "no_sale": 4,
+          "pulled": 2,
+          "new": 19,
+          "active_end": 1735
+        },
+        "Office Furniture": {
+          "sold": 8,
+          "no_sale": 4,
+          "pulled": 1,
+          "new": 14,
+          "active_end": 2792
+        },
+        "Industrial Machinery": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 319
+        },
+        "Tools & Shop Equipment": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 410
+        },
+        "Facility Support Equipment": {
+          "sold": 7,
+          "no_sale": 6,
+          "pulled": 3,
+          "new": 15,
+          "active_end": 2320
+        },
+        "Lab & Medical": {
+          "sold": 2,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 508
+        },
+        "Apparel & Lots": {
+          "sold": 8,
+          "no_sale": 4,
+          "pulled": 4,
+          "new": 16,
+          "active_end": 1621
+        },
+        "Real Estate": {
+          "sold": 12,
+          "no_sale": 3,
+          "pulled": 1,
+          "new": 16,
+          "active_end": 2515
+        },
+        "Agricultural": {
+          "sold": 2,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 356
+        },
+        "Public Safety & Fire": {
+          "sold": 10,
+          "no_sale": 7,
+          "pulled": 2,
+          "new": 15,
+          "active_end": 2186
+        }
+      },
+      "totals": {
+        "sold": 72,
+        "no_sale": 35,
+        "pulled": 19,
+        "new": 116,
+        "active_end": 16938
+      }
+    },
+    {
+      "window_start": "2026-06-03T18:00:00Z",
+      "window_end": "2026-06-03T20:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 6,
+          "no_sale": 4,
+          "pulled": 1,
+          "new": 14,
+          "active_end": 1449
+        },
+        "Heavy Equipment": {
+          "sold": 4,
+          "no_sale": 2,
+          "pulled": 2,
+          "new": 10,
+          "active_end": 732
+        },
+        "Computers & Electronics": {
+          "sold": 7,
+          "no_sale": 2,
+          "pulled": 2,
+          "new": 10,
+          "active_end": 1734
+        },
+        "Office Furniture": {
+          "sold": 9,
+          "no_sale": 3,
+          "pulled": 3,
+          "new": 12,
+          "active_end": 2789
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 319
+        },
+        "Tools & Shop Equipment": {
+          "sold": 2,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 5,
+          "active_end": 412
+        },
+        "Facility Support Equipment": {
+          "sold": 7,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 9,
+          "active_end": 2320
+        },
+        "Lab & Medical": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 508
+        },
+        "Apparel & Lots": {
+          "sold": 11,
+          "no_sale": 3,
+          "pulled": 1,
+          "new": 16,
+          "active_end": 1622
+        },
+        "Real Estate": {
+          "sold": 7,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 13,
+          "active_end": 2518
+        },
+        "Agricultural": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 357
+        },
+        "Public Safety & Fire": {
+          "sold": 5,
+          "no_sale": 3,
+          "pulled": 3,
+          "new": 9,
+          "active_end": 2184
+        }
+      },
+      "totals": {
+        "sold": 60,
+        "no_sale": 21,
+        "pulled": 19,
+        "new": 106,
+        "active_end": 16944
+      }
+    },
+    {
+      "window_start": "2026-06-03T20:00:00Z",
+      "window_end": "2026-06-03T22:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 5,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 9,
+          "active_end": 1450
+        },
+        "Heavy Equipment": {
+          "sold": 4,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 11,
+          "active_end": 736
+        },
+        "Computers & Electronics": {
+          "sold": 6,
+          "no_sale": 3,
+          "pulled": 3,
+          "new": 10,
+          "active_end": 1732
+        },
+        "Office Furniture": {
+          "sold": 10,
+          "no_sale": 5,
+          "pulled": 3,
+          "new": 19,
+          "active_end": 2790
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 318
+        },
+        "Tools & Shop Equipment": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 412
+        },
+        "Facility Support Equipment": {
+          "sold": 18,
+          "no_sale": 6,
+          "pulled": 2,
+          "new": 28,
+          "active_end": 2322
+        },
+        "Lab & Medical": {
+          "sold": 2,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 508
+        },
+        "Apparel & Lots": {
+          "sold": 10,
+          "no_sale": 4,
+          "pulled": 3,
+          "new": 21,
+          "active_end": 1626
+        },
+        "Real Estate": {
+          "sold": 11,
+          "no_sale": 4,
+          "pulled": 5,
+          "new": 16,
+          "active_end": 2514
+        },
+        "Agricultural": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 355
+        },
+        "Public Safety & Fire": {
+          "sold": 12,
+          "no_sale": 2,
+          "pulled": 2,
+          "new": 17,
+          "active_end": 2185
+        }
+      },
+      "totals": {
+        "sold": 80,
+        "no_sale": 28,
+        "pulled": 26,
+        "new": 138,
+        "active_end": 16948
+      }
+    },
+    {
+      "window_start": "2026-06-03T22:00:00Z",
+      "window_end": "2026-06-04T00:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 6,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 8,
+          "active_end": 1449
+        },
+        "Heavy Equipment": {
+          "sold": 3,
+          "no_sale": 2,
+          "pulled": 2,
+          "new": 5,
+          "active_end": 734
+        },
+        "Computers & Electronics": {
+          "sold": 8,
+          "no_sale": 3,
+          "pulled": 1,
+          "new": 13,
+          "active_end": 1733
+        },
+        "Office Furniture": {
+          "sold": 10,
+          "no_sale": 5,
+          "pulled": 2,
+          "new": 18,
+          "active_end": 2791
+        },
+        "Industrial Machinery": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 5,
+          "active_end": 320
+        },
+        "Tools & Shop Equipment": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 409
+        },
+        "Facility Support Equipment": {
+          "sold": 10,
+          "no_sale": 4,
+          "pulled": 3,
+          "new": 15,
+          "active_end": 2320
+        },
+        "Lab & Medical": {
+          "sold": 2,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 6,
+          "active_end": 510
+        },
+        "Apparel & Lots": {
+          "sold": 5,
+          "no_sale": 5,
+          "pulled": 2,
+          "new": 10,
+          "active_end": 1624
+        },
+        "Real Estate": {
+          "sold": 6,
+          "no_sale": 3,
+          "pulled": 3,
+          "new": 14,
+          "active_end": 2516
+        },
+        "Agricultural": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 353
+        },
+        "Public Safety & Fire": {
+          "sold": 9,
+          "no_sale": 4,
+          "pulled": 1,
+          "new": 12,
+          "active_end": 2183
+        }
+      },
+      "totals": {
+        "sold": 62,
+        "no_sale": 31,
+        "pulled": 19,
+        "new": 106,
+        "active_end": 16942
+      }
+    },
+    {
+      "window_start": "2026-06-04T00:00:00Z",
+      "window_end": "2026-06-04T02:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 8,
+          "no_sale": 5,
+          "pulled": 2,
+          "new": 17,
+          "active_end": 1451
+        },
+        "Heavy Equipment": {
+          "sold": 2,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 734
+        },
+        "Computers & Electronics": {
+          "sold": 10,
+          "no_sale": 4,
+          "pulled": 1,
+          "new": 16,
+          "active_end": 1734
+        },
+        "Office Furniture": {
+          "sold": 12,
+          "no_sale": 13,
+          "pulled": 2,
+          "new": 27,
+          "active_end": 2791
+        },
+        "Industrial Machinery": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 318
+        },
+        "Tools & Shop Equipment": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 407
+        },
+        "Facility Support Equipment": {
+          "sold": 16,
+          "no_sale": 6,
+          "pulled": 2,
+          "new": 26,
+          "active_end": 2322
+        },
+        "Lab & Medical": {
+          "sold": 2,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 509
+        },
+        "Apparel & Lots": {
+          "sold": 6,
+          "no_sale": 7,
+          "pulled": 2,
+          "new": 17,
+          "active_end": 1626
+        },
+        "Real Estate": {
+          "sold": 15,
+          "no_sale": 6,
+          "pulled": 4,
+          "new": 24,
+          "active_end": 2515
+        },
+        "Agricultural": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 352
+        },
+        "Public Safety & Fire": {
+          "sold": 12,
+          "no_sale": 2,
+          "pulled": 3,
+          "new": 18,
+          "active_end": 2184
+        }
+      },
+      "totals": {
+        "sold": 86,
+        "no_sale": 47,
+        "pulled": 21,
+        "new": 155,
+        "active_end": 16943
+      }
+    },
+    {
+      "window_start": "2026-06-04T02:00:00Z",
+      "window_end": "2026-06-04T04:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1451
+        },
+        "Heavy Equipment": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 732
+        },
+        "Computers & Electronics": {
+          "sold": 4,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 7,
+          "active_end": 1734
+        },
+        "Office Furniture": {
+          "sold": 6,
+          "no_sale": 2,
+          "pulled": 2,
+          "new": 14,
+          "active_end": 2795
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 320
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 407
+        },
+        "Facility Support Equipment": {
+          "sold": 6,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 9,
+          "active_end": 2322
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 509
+        },
+        "Apparel & Lots": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 1626
+        },
+        "Real Estate": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2515
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 351
+        },
+        "Public Safety & Fire": {
+          "sold": 3,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 5,
+          "active_end": 2184
+        }
+      },
+      "totals": {
+        "sold": 20,
+        "no_sale": 5,
+        "pulled": 10,
+        "new": 38,
+        "active_end": 16946
+      }
+    },
+    {
+      "window_start": "2026-06-04T04:00:00Z",
+      "window_end": "2026-06-04T06:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 1449
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 732
+        },
+        "Computers & Electronics": {
+          "sold": 3,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 7,
+          "active_end": 1736
+        },
+        "Office Furniture": {
+          "sold": 2,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 6,
+          "active_end": 2798
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 320
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 409
+        },
+        "Facility Support Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 2324
+        },
+        "Lab & Medical": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 510
+        },
+        "Apparel & Lots": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 1626
+        },
+        "Real Estate": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 2513
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 352
+        },
+        "Public Safety & Fire": {
+          "sold": 3,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 5,
+          "active_end": 2184
+        }
+      },
+      "totals": {
+        "sold": 11,
+        "no_sale": 3,
+        "pulled": 8,
+        "new": 29,
+        "active_end": 16953
+      }
+    },
+    {
+      "window_start": "2026-06-04T06:00:00Z",
+      "window_end": "2026-06-04T08:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 4,
+          "active_end": 1453
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 732
+        },
+        "Computers & Electronics": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1736
+        },
+        "Office Furniture": {
+          "sold": 4,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 6,
+          "active_end": 2797
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 320
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 410
+        },
+        "Facility Support Equipment": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 5,
+          "active_end": 2326
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 509
+        },
+        "Apparel & Lots": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1626
+        },
+        "Real Estate": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 2511
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 352
+        },
+        "Public Safety & Fire": {
+          "sold": 4,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 8,
+          "active_end": 2186
+        }
+      },
+      "totals": {
+        "sold": 10,
+        "no_sale": 4,
+        "pulled": 6,
+        "new": 25,
+        "active_end": 16958
+      }
+    },
+    {
+      "window_start": "2026-06-04T08:00:00Z",
+      "window_end": "2026-06-04T10:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 2,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 5,
+          "active_end": 1454
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 734
+        },
+        "Computers & Electronics": {
+          "sold": 2,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 1734
+        },
+        "Office Furniture": {
+          "sold": 3,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 7,
+          "active_end": 2798
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 321
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 410
+        },
+        "Facility Support Equipment": {
+          "sold": 2,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 2325
+        },
+        "Lab & Medical": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 509
+        },
+        "Apparel & Lots": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 1628
+        },
+        "Real Estate": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2511
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 352
+        },
+        "Public Safety & Fire": {
+          "sold": 2,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 2185
+        }
+      },
+      "totals": {
+        "sold": 12,
+        "no_sale": 6,
+        "pulled": 9,
+        "new": 30,
+        "active_end": 16961
+      }
+    },
+    {
+      "window_start": "2026-06-04T10:00:00Z",
+      "window_end": "2026-06-04T12:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 1454
+        },
+        "Heavy Equipment": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 734
+        },
+        "Computers & Electronics": {
+          "sold": 3,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 2,
+          "active_end": 1730
+        },
+        "Office Furniture": {
+          "sold": 1,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 2797
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 321
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 412
+        },
+        "Facility Support Equipment": {
+          "sold": 2,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 8,
+          "active_end": 2330
+        },
+        "Lab & Medical": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 510
+        },
+        "Apparel & Lots": {
+          "sold": 6,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 9,
+          "active_end": 1628
+        },
+        "Real Estate": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 2512
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 352
+        },
+        "Public Safety & Fire": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 2187
+        }
+      },
+      "totals": {
+        "sold": 15,
+        "no_sale": 5,
+        "pulled": 11,
+        "new": 37,
+        "active_end": 16967
+      }
+    },
+    {
+      "window_start": "2026-06-04T12:00:00Z",
+      "window_end": "2026-06-04T14:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 3,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 8,
+          "active_end": 1456
+        },
+        "Heavy Equipment": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 732
+        },
+        "Computers & Electronics": {
+          "sold": 2,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 6,
+          "active_end": 1731
+        },
+        "Office Furniture": {
+          "sold": 4,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 2793
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 321
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 412
+        },
+        "Facility Support Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 2329
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 510
+        },
+        "Apparel & Lots": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 1627
+        },
+        "Real Estate": {
+          "sold": 3,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 2512
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 355
+        },
+        "Public Safety & Fire": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 2185
+        }
+      },
+      "totals": {
+        "sold": 15,
+        "no_sale": 6,
+        "pulled": 10,
+        "new": 27,
+        "active_end": 16963
+      }
+    },
+    {
+      "window_start": "2026-06-04T14:00:00Z",
+      "window_end": "2026-06-04T16:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 3,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 3,
+          "active_end": 1453
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 734
+        },
+        "Computers & Electronics": {
+          "sold": 3,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 1731
+        },
+        "Office Furniture": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2793
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 321
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 414
+        },
+        "Facility Support Equipment": {
+          "sold": 5,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 7,
+          "active_end": 2329
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 509
+        },
+        "Apparel & Lots": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1627
+        },
+        "Real Estate": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2512
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 354
+        },
+        "Public Safety & Fire": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 2183
+        }
+      },
+      "totals": {
+        "sold": 12,
+        "no_sale": 2,
+        "pulled": 8,
+        "new": 19,
+        "active_end": 16960
+      }
+    },
+    {
+      "window_start": "2026-06-04T16:00:00Z",
+      "window_end": "2026-06-04T18:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 5,
+          "no_sale": 2,
+          "pulled": 2,
+          "new": 8,
+          "active_end": 1452
+        },
+        "Heavy Equipment": {
+          "sold": 3,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 732
+        },
+        "Computers & Electronics": {
+          "sold": 5,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 8,
+          "active_end": 1731
+        },
+        "Office Furniture": {
+          "sold": 10,
+          "no_sale": 6,
+          "pulled": 2,
+          "new": 19,
+          "active_end": 2794
+        },
+        "Industrial Machinery": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 322
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 5,
+          "active_end": 417
+        },
+        "Facility Support Equipment": {
+          "sold": 13,
+          "no_sale": 6,
+          "pulled": 3,
+          "new": 21,
+          "active_end": 2328
+        },
+        "Lab & Medical": {
+          "sold": 2,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 508
+        },
+        "Apparel & Lots": {
+          "sold": 6,
+          "no_sale": 3,
+          "pulled": 2,
+          "new": 9,
+          "active_end": 1625
+        },
+        "Real Estate": {
+          "sold": 10,
+          "no_sale": 6,
+          "pulled": 5,
+          "new": 22,
+          "active_end": 2513
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 353
+        },
+        "Public Safety & Fire": {
+          "sold": 8,
+          "no_sale": 3,
+          "pulled": 1,
+          "new": 17,
+          "active_end": 2188
+        }
+      },
+      "totals": {
+        "sold": 63,
+        "no_sale": 31,
+        "pulled": 22,
+        "new": 119,
+        "active_end": 16963
+      }
+    },
+    {
+      "window_start": "2026-06-04T18:00:00Z",
+      "window_end": "2026-06-04T20:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 9,
+          "no_sale": 2,
+          "pulled": 3,
+          "new": 12,
+          "active_end": 1450
+        },
+        "Heavy Equipment": {
+          "sold": 2,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 6,
+          "active_end": 734
+        },
+        "Computers & Electronics": {
+          "sold": 10,
+          "no_sale": 3,
+          "pulled": 3,
+          "new": 17,
+          "active_end": 1732
+        },
+        "Office Furniture": {
+          "sold": 14,
+          "no_sale": 9,
+          "pulled": 4,
+          "new": 28,
+          "active_end": 2795
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 321
+        },
+        "Tools & Shop Equipment": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 419
+        },
+        "Facility Support Equipment": {
+          "sold": 11,
+          "no_sale": 4,
+          "pulled": 4,
+          "new": 16,
+          "active_end": 2325
+        },
+        "Lab & Medical": {
+          "sold": 2,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 6,
+          "active_end": 510
+        },
+        "Apparel & Lots": {
+          "sold": 9,
+          "no_sale": 3,
+          "pulled": 1,
+          "new": 13,
+          "active_end": 1625
+        },
+        "Real Estate": {
+          "sold": 8,
+          "no_sale": 3,
+          "pulled": 2,
+          "new": 11,
+          "active_end": 2511
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 353
+        },
+        "Public Safety & Fire": {
+          "sold": 9,
+          "no_sale": 8,
+          "pulled": 2,
+          "new": 19,
+          "active_end": 2188
+        }
+      },
+      "totals": {
+        "sold": 75,
+        "no_sale": 35,
+        "pulled": 24,
+        "new": 134,
+        "active_end": 16963
+      }
+    },
+    {
+      "window_start": "2026-06-04T20:00:00Z",
+      "window_end": "2026-06-04T22:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 8,
+          "no_sale": 2,
+          "pulled": 3,
+          "new": 14,
+          "active_end": 1451
+        },
+        "Heavy Equipment": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 735
+        },
+        "Computers & Electronics": {
+          "sold": 4,
+          "no_sale": 2,
+          "pulled": 2,
+          "new": 9,
+          "active_end": 1733
+        },
+        "Office Furniture": {
+          "sold": 5,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 2790
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 320
+        },
+        "Tools & Shop Equipment": {
+          "sold": 2,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 5,
+          "active_end": 420
+        },
+        "Facility Support Equipment": {
+          "sold": 7,
+          "no_sale": 7,
+          "pulled": 2,
+          "new": 19,
+          "active_end": 2328
+        },
+        "Lab & Medical": {
+          "sold": 2,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 2,
+          "active_end": 507
+        },
+        "Apparel & Lots": {
+          "sold": 5,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 5,
+          "active_end": 1622
+        },
+        "Real Estate": {
+          "sold": 16,
+          "no_sale": 5,
+          "pulled": 1,
+          "new": 22,
+          "active_end": 2511
+        },
+        "Agricultural": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 354
+        },
+        "Public Safety & Fire": {
+          "sold": 8,
+          "no_sale": 7,
+          "pulled": 2,
+          "new": 16,
+          "active_end": 2187
+        }
+      },
+      "totals": {
+        "sold": 59,
+        "no_sale": 31,
+        "pulled": 18,
+        "new": 103,
+        "active_end": 16958
+      }
+    },
+    {
+      "window_start": "2026-06-04T22:00:00Z",
+      "window_end": "2026-06-05T00:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 7,
+          "no_sale": 2,
+          "pulled": 2,
+          "new": 13,
+          "active_end": 1453
+        },
+        "Heavy Equipment": {
+          "sold": 5,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 731
+        },
+        "Computers & Electronics": {
+          "sold": 5,
+          "no_sale": 2,
+          "pulled": 2,
+          "new": 8,
+          "active_end": 1732
+        },
+        "Office Furniture": {
+          "sold": 17,
+          "no_sale": 14,
+          "pulled": 3,
+          "new": 35,
+          "active_end": 2791
+        },
+        "Industrial Machinery": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 318
+        },
+        "Tools & Shop Equipment": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 420
+        },
+        "Facility Support Equipment": {
+          "sold": 16,
+          "no_sale": 4,
+          "pulled": 4,
+          "new": 29,
+          "active_end": 2333
+        },
+        "Lab & Medical": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 6,
+          "active_end": 509
+        },
+        "Apparel & Lots": {
+          "sold": 12,
+          "no_sale": 3,
+          "pulled": 3,
+          "new": 19,
+          "active_end": 1623
+        },
+        "Real Estate": {
+          "sold": 16,
+          "no_sale": 6,
+          "pulled": 2,
+          "new": 23,
+          "active_end": 2510
+        },
+        "Agricultural": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 352
+        },
+        "Public Safety & Fire": {
+          "sold": 12,
+          "no_sale": 3,
+          "pulled": 1,
+          "new": 16,
+          "active_end": 2187
+        }
+      },
+      "totals": {
+        "sold": 94,
+        "no_sale": 37,
+        "pulled": 23,
+        "new": 155,
+        "active_end": 16959
+      }
+    },
+    {
+      "window_start": "2026-06-05T00:00:00Z",
+      "window_end": "2026-06-05T02:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 6,
+          "no_sale": 3,
+          "pulled": 1,
+          "new": 9,
+          "active_end": 1452
+        },
+        "Heavy Equipment": {
+          "sold": 2,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 731
+        },
+        "Computers & Electronics": {
+          "sold": 6,
+          "no_sale": 3,
+          "pulled": 3,
+          "new": 13,
+          "active_end": 1733
+        },
+        "Office Furniture": {
+          "sold": 15,
+          "no_sale": 6,
+          "pulled": 1,
+          "new": 22,
+          "active_end": 2791
+        },
+        "Industrial Machinery": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 316
+        },
+        "Tools & Shop Equipment": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 417
+        },
+        "Facility Support Equipment": {
+          "sold": 9,
+          "no_sale": 8,
+          "pulled": 4,
+          "new": 22,
+          "active_end": 2334
+        },
+        "Lab & Medical": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 506
+        },
+        "Apparel & Lots": {
+          "sold": 4,
+          "no_sale": 3,
+          "pulled": 1,
+          "new": 9,
+          "active_end": 1624
+        },
+        "Real Estate": {
+          "sold": 11,
+          "no_sale": 9,
+          "pulled": 3,
+          "new": 24,
+          "active_end": 2511
+        },
+        "Agricultural": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 349
+        },
+        "Public Safety & Fire": {
+          "sold": 5,
+          "no_sale": 4,
+          "pulled": 1,
+          "new": 9,
+          "active_end": 2186
+        }
+      },
+      "totals": {
+        "sold": 62,
+        "no_sale": 40,
+        "pulled": 19,
+        "new": 112,
+        "active_end": 16950
+      }
+    },
+    {
+      "window_start": "2026-06-05T02:00:00Z",
+      "window_end": "2026-06-05T04:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 2,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 1451
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 730
+        },
+        "Computers & Electronics": {
+          "sold": 2,
+          "no_sale": 3,
+          "pulled": 1,
+          "new": 7,
+          "active_end": 1734
+        },
+        "Office Furniture": {
+          "sold": 7,
+          "no_sale": 4,
+          "pulled": 2,
+          "new": 11,
+          "active_end": 2789
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 317
+        },
+        "Tools & Shop Equipment": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 7,
+          "active_end": 422
+        },
+        "Facility Support Equipment": {
+          "sold": 6,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 11,
+          "active_end": 2336
+        },
+        "Lab & Medical": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 506
+        },
+        "Apparel & Lots": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1624
+        },
+        "Real Estate": {
+          "sold": 2,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 2509
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 349
+        },
+        "Public Safety & Fire": {
+          "sold": 3,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 2182
+        }
+      },
+      "totals": {
+        "sold": 24,
+        "no_sale": 13,
+        "pulled": 10,
+        "new": 46,
+        "active_end": 16949
+      }
+    },
+    {
+      "window_start": "2026-06-05T04:00:00Z",
+      "window_end": "2026-06-05T06:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 4,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 6,
+          "active_end": 1450
+        },
+        "Heavy Equipment": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 7,
+          "active_end": 735
+        },
+        "Computers & Electronics": {
+          "sold": 4,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 6,
+          "active_end": 1734
+        },
+        "Office Furniture": {
+          "sold": 4,
+          "no_sale": 2,
+          "pulled": 2,
+          "new": 9,
+          "active_end": 2790
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 317
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 421
+        },
+        "Facility Support Equipment": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 2336
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 506
+        },
+        "Apparel & Lots": {
+          "sold": 2,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 7,
+          "active_end": 1627
+        },
+        "Real Estate": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2509
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 348
+        },
+        "Public Safety & Fire": {
+          "sold": 3,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 7,
+          "active_end": 2183
+        }
+      },
+      "totals": {
+        "sold": 19,
+        "no_sale": 6,
+        "pulled": 13,
+        "new": 45,
+        "active_end": 16956
+      }
+    },
+    {
+      "window_start": "2026-06-05T06:00:00Z",
+      "window_end": "2026-06-05T08:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 1449
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 734
+        },
+        "Computers & Electronics": {
+          "sold": 6,
+          "no_sale": 3,
+          "pulled": 1,
+          "new": 10,
+          "active_end": 1734
+        },
+        "Office Furniture": {
+          "sold": 7,
+          "no_sale": 3,
+          "pulled": 4,
+          "new": 11,
+          "active_end": 2787
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 316
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 424
+        },
+        "Facility Support Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 3,
+          "active_end": 2339
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 506
+        },
+        "Apparel & Lots": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 1629
+        },
+        "Real Estate": {
+          "sold": 6,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 10,
+          "active_end": 2511
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 348
+        },
+        "Public Safety & Fire": {
+          "sold": 4,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 6,
+          "active_end": 2183
+        }
+      },
+      "totals": {
+        "sold": 23,
+        "no_sale": 8,
+        "pulled": 12,
+        "new": 47,
+        "active_end": 16960
+      }
+    },
+    {
+      "window_start": "2026-06-05T08:00:00Z",
+      "window_end": "2026-06-05T10:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 1448
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 736
+        },
+        "Computers & Electronics": {
+          "sold": 3,
+          "no_sale": 3,
+          "pulled": 1,
+          "new": 6,
+          "active_end": 1733
+        },
+        "Office Furniture": {
+          "sold": 7,
+          "no_sale": 6,
+          "pulled": 2,
+          "new": 16,
+          "active_end": 2788
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 316
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 423
+        },
+        "Facility Support Equipment": {
+          "sold": 3,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 2336
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 505
+        },
+        "Apparel & Lots": {
+          "sold": 4,
+          "no_sale": 3,
+          "pulled": 1,
+          "new": 7,
+          "active_end": 1628
+        },
+        "Real Estate": {
+          "sold": 4,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 5,
+          "active_end": 2509
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 348
+        },
+        "Public Safety & Fire": {
+          "sold": 4,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 8,
+          "active_end": 2184
+        }
+      },
+      "totals": {
+        "sold": 25,
+        "no_sale": 15,
+        "pulled": 12,
+        "new": 46,
+        "active_end": 16954
+      }
+    },
+    {
+      "window_start": "2026-06-05T10:00:00Z",
+      "window_end": "2026-06-05T12:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 1447
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 738
+        },
+        "Computers & Electronics": {
+          "sold": 3,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 6,
+          "active_end": 1733
+        },
+        "Office Furniture": {
+          "sold": 4,
+          "no_sale": 3,
+          "pulled": 1,
+          "new": 7,
+          "active_end": 2787
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 317
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 423
+        },
+        "Facility Support Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2336
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 505
+        },
+        "Apparel & Lots": {
+          "sold": 2,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 5,
+          "active_end": 1628
+        },
+        "Real Estate": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2509
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 348
+        },
+        "Public Safety & Fire": {
+          "sold": 2,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 2182
+        }
+      },
+      "totals": {
+        "sold": 11,
+        "no_sale": 8,
+        "pulled": 6,
+        "new": 24,
+        "active_end": 16953
+      }
+    },
+    {
+      "window_start": "2026-06-05T12:00:00Z",
+      "window_end": "2026-06-05T14:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1447
+        },
+        "Heavy Equipment": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 738
+        },
+        "Computers & Electronics": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 1732
+        },
+        "Office Furniture": {
+          "sold": 7,
+          "no_sale": 6,
+          "pulled": 3,
+          "new": 16,
+          "active_end": 2787
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 317
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 423
+        },
+        "Facility Support Equipment": {
+          "sold": 4,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 2333
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 506
+        },
+        "Apparel & Lots": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 1629
+        },
+        "Real Estate": {
+          "sold": 4,
+          "no_sale": 3,
+          "pulled": 2,
+          "new": 7,
+          "active_end": 2507
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 348
+        },
+        "Public Safety & Fire": {
+          "sold": 4,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 5,
+          "active_end": 2181
+        }
+      },
+      "totals": {
+        "sold": 21,
+        "no_sale": 13,
+        "pulled": 12,
+        "new": 41,
+        "active_end": 16948
+      }
+    },
+    {
+      "window_start": "2026-06-05T14:00:00Z",
+      "window_end": "2026-06-05T16:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1447
+        },
+        "Heavy Equipment": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 738
+        },
+        "Computers & Electronics": {
+          "sold": 2,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 1731
+        },
+        "Office Furniture": {
+          "sold": 2,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 2787
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 317
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 423
+        },
+        "Facility Support Equipment": {
+          "sold": 2,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 2333
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 505
+        },
+        "Apparel & Lots": {
+          "sold": 2,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 4,
+          "active_end": 1628
+        },
+        "Real Estate": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2507
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 348
+        },
+        "Public Safety & Fire": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 2179
+        }
+      },
+      "totals": {
+        "sold": 10,
+        "no_sale": 4,
+        "pulled": 8,
+        "new": 17,
+        "active_end": 16943
+      }
+    },
+    {
+      "window_start": "2026-06-05T16:00:00Z",
+      "window_end": "2026-06-05T18:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 2,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 1444
+        },
+        "Heavy Equipment": {
+          "sold": 2,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 735
+        },
+        "Computers & Electronics": {
+          "sold": 9,
+          "no_sale": 3,
+          "pulled": 4,
+          "new": 14,
+          "active_end": 1729
+        },
+        "Office Furniture": {
+          "sold": 8,
+          "no_sale": 2,
+          "pulled": 2,
+          "new": 7,
+          "active_end": 2782
+        },
+        "Industrial Machinery": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 318
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 424
+        },
+        "Facility Support Equipment": {
+          "sold": 8,
+          "no_sale": 7,
+          "pulled": 2,
+          "new": 14,
+          "active_end": 2330
+        },
+        "Lab & Medical": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 5,
+          "active_end": 507
+        },
+        "Apparel & Lots": {
+          "sold": 7,
+          "no_sale": 5,
+          "pulled": 5,
+          "new": 14,
+          "active_end": 1625
+        },
+        "Real Estate": {
+          "sold": 18,
+          "no_sale": 7,
+          "pulled": 3,
+          "new": 30,
+          "active_end": 2509
+        },
+        "Agricultural": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 349
+        },
+        "Public Safety & Fire": {
+          "sold": 10,
+          "no_sale": 7,
+          "pulled": 2,
+          "new": 17,
+          "active_end": 2177
+        }
+      },
+      "totals": {
+        "sold": 67,
+        "no_sale": 34,
+        "pulled": 24,
+        "new": 111,
+        "active_end": 16929
+      }
+    },
+    {
+      "window_start": "2026-06-05T18:00:00Z",
+      "window_end": "2026-06-05T20:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 5,
+          "no_sale": 4,
+          "pulled": 1,
+          "new": 7,
+          "active_end": 1441
+        },
+        "Heavy Equipment": {
+          "sold": 4,
+          "no_sale": 3,
+          "pulled": 1,
+          "new": 11,
+          "active_end": 738
+        },
+        "Computers & Electronics": {
+          "sold": 3,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 6,
+          "active_end": 1729
+        },
+        "Office Furniture": {
+          "sold": 10,
+          "no_sale": 7,
+          "pulled": 3,
+          "new": 18,
+          "active_end": 2780
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 317
+        },
+        "Tools & Shop Equipment": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 423
+        },
+        "Facility Support Equipment": {
+          "sold": 3,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 3,
+          "active_end": 2327
+        },
+        "Lab & Medical": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 509
+        },
+        "Apparel & Lots": {
+          "sold": 5,
+          "no_sale": 3,
+          "pulled": 3,
+          "new": 9,
+          "active_end": 1623
+        },
+        "Real Estate": {
+          "sold": 18,
+          "no_sale": 4,
+          "pulled": 4,
+          "new": 24,
+          "active_end": 2507
+        },
+        "Agricultural": {
+          "sold": 2,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 6,
+          "active_end": 352
+        },
+        "Public Safety & Fire": {
+          "sold": 14,
+          "no_sale": 7,
+          "pulled": 2,
+          "new": 22,
+          "active_end": 2176
+        }
+      },
+      "totals": {
+        "sold": 66,
+        "no_sale": 31,
+        "pulled": 22,
+        "new": 112,
+        "active_end": 16922
+      }
+    },
+    {
+      "window_start": "2026-06-05T20:00:00Z",
+      "window_end": "2026-06-05T22:00:00Z",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 4,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 7,
+          "active_end": 1441
+        },
+        "Heavy Equipment": {
+          "sold": 2,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 5,
+          "active_end": 740
+        },
+        "Computers & Electronics": {
+          "sold": 6,
+          "no_sale": 4,
+          "pulled": 2,
+          "new": 12,
+          "active_end": 1729
+        },
+        "Office Furniture": {
+          "sold": 12,
+          "no_sale": 9,
+          "pulled": 6,
+          "new": 26,
+          "active_end": 2779
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 316
+        },
+        "Tools & Shop Equipment": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 424
+        },
+        "Facility Support Equipment": {
+          "sold": 7,
+          "no_sale": 4,
+          "pulled": 3,
+          "new": 16,
+          "active_end": 2329
+        },
+        "Lab & Medical": {
+          "sold": 2,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 7,
+          "active_end": 511
+        },
+        "Apparel & Lots": {
+          "sold": 5,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 10,
+          "active_end": 1625
+        },
+        "Real Estate": {
+          "sold": 16,
+          "no_sale": 4,
+          "pulled": 3,
+          "new": 22,
+          "active_end": 2506
+        },
+        "Agricultural": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 352
+        },
+        "Public Safety & Fire": {
+          "sold": 7,
+          "no_sale": 4,
+          "pulled": 4,
+          "new": 17,
+          "active_end": 2178
+        }
+      },
+      "totals": {
+        "sold": 63,
+        "no_sale": 30,
+        "pulled": 26,
+        "new": 127,
+        "active_end": 16930
+      }
+    },
+    {
+      "window_start": "2026-06-06T03:29:20.471696+00:00",
+      "window_end": "2026-06-06T06:53:01.911383+00:00",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Computers & Electronics": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Office Furniture": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Facility Support Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Apparel & Lots": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Real Estate": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Public Safety & Fire": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        }
+      },
+      "totals": {
+        "sold": 0,
+        "no_sale": 0,
+        "pulled": 0,
+        "new": 0,
+        "active_end": 0
+      }
+    },
+    {
+      "window_start": "2026-06-06T06:52:53.026209+00:00",
+      "window_end": "2026-06-06T10:03:57.397723+00:00",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Computers & Electronics": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Office Furniture": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Facility Support Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Apparel & Lots": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Real Estate": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Public Safety & Fire": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        }
+      },
+      "totals": {
+        "sold": 0,
+        "no_sale": 0,
+        "pulled": 0,
+        "new": 0,
+        "active_end": 0
+      }
+    },
+    {
+      "window_start": "2026-06-06T10:03:49.688364+00:00",
+      "window_end": "2026-06-06T13:42:50.961076+00:00",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Computers & Electronics": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Office Furniture": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Facility Support Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Apparel & Lots": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Real Estate": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Public Safety & Fire": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        }
+      },
+      "totals": {
+        "sold": 0,
+        "no_sale": 0,
+        "pulled": 0,
+        "new": 0,
+        "active_end": 0
+      }
+    },
+    {
+      "window_start": "2026-06-06T13:42:42.567995+00:00",
+      "window_end": "2026-06-06T15:15:47.938226+00:00",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Computers & Electronics": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Office Furniture": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Facility Support Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Apparel & Lots": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Real Estate": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Public Safety & Fire": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        }
+      },
+      "totals": {
+        "sold": 0,
+        "no_sale": 0,
+        "pulled": 0,
+        "new": 0,
+        "active_end": 0
+      }
+    },
+    {
+      "window_start": "2026-06-06T15:15:40.721266+00:00",
+      "window_end": "2026-06-06T17:14:51.243143+00:00",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Computers & Electronics": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Office Furniture": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Facility Support Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Apparel & Lots": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Real Estate": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Public Safety & Fire": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        }
+      },
+      "totals": {
+        "sold": 0,
+        "no_sale": 0,
+        "pulled": 0,
+        "new": 0,
+        "active_end": 0
+      }
+    },
+    {
+      "window_start": "2026-06-06T17:14:40.713591+00:00",
+      "window_end": "2026-06-06T19:22:56.870353+00:00",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Computers & Electronics": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Office Furniture": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Facility Support Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Apparel & Lots": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Real Estate": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Public Safety & Fire": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        }
+      },
+      "totals": {
+        "sold": 0,
+        "no_sale": 0,
+        "pulled": 0,
+        "new": 0,
+        "active_end": 0
+      }
+    },
+    {
+      "window_start": "2026-06-06T19:22:49.504397+00:00",
+      "window_end": "2026-06-06T21:04:57.113728+00:00",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Computers & Electronics": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Office Furniture": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Facility Support Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Apparel & Lots": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Real Estate": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Public Safety & Fire": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        }
+      },
+      "totals": {
+        "sold": 0,
+        "no_sale": 0,
+        "pulled": 0,
+        "new": 0,
+        "active_end": 0
+      }
+    },
+    {
+      "window_start": "2026-06-06T21:04:47.651746+00:00",
+      "window_end": "2026-06-06T23:04:09.242730+00:00",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Computers & Electronics": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Office Furniture": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Facility Support Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Apparel & Lots": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Real Estate": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Public Safety & Fire": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        }
+      },
+      "totals": {
+        "sold": 0,
+        "no_sale": 0,
+        "pulled": 0,
+        "new": 0,
+        "active_end": 0
+      }
+    },
+    {
+      "window_start": "2026-06-06T23:04:01.589256+00:00",
+      "window_end": "2026-06-07T03:56:11.647118+00:00",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Computers & Electronics": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Office Furniture": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Facility Support Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Apparel & Lots": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Real Estate": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Public Safety & Fire": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        }
+      },
+      "totals": {
+        "sold": 0,
+        "no_sale": 0,
+        "pulled": 0,
+        "new": 0,
+        "active_end": 0
+      }
+    },
+    {
+      "window_start": "2026-06-07T03:56:02.774094+00:00",
+      "window_end": "2026-06-07T07:56:52.819590+00:00",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Computers & Electronics": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Office Furniture": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Facility Support Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Apparel & Lots": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Real Estate": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Public Safety & Fire": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        }
+      },
+      "totals": {
+        "sold": 0,
+        "no_sale": 0,
+        "pulled": 0,
+        "new": 0,
+        "active_end": 0
+      }
+    },
+    {
+      "window_start": "2026-06-07T07:56:42.914617+00:00",
+      "window_end": "2026-06-07T10:32:29.498684+00:00",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Computers & Electronics": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Office Furniture": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Facility Support Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Apparel & Lots": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Real Estate": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Public Safety & Fire": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        }
+      },
+      "totals": {
+        "sold": 0,
+        "no_sale": 0,
+        "pulled": 0,
+        "new": 0,
+        "active_end": 0
+      }
+    },
+    {
+      "window_start": "2026-06-07T10:32:20.059937+00:00",
+      "window_end": "2026-06-07T13:52:26.763481+00:00",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Computers & Electronics": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Office Furniture": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Facility Support Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Apparel & Lots": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Real Estate": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Public Safety & Fire": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        }
+      },
+      "totals": {
+        "sold": 0,
+        "no_sale": 0,
+        "pulled": 0,
+        "new": 0,
+        "active_end": 0
+      }
+    },
+    {
+      "window_start": "2026-06-07T13:52:16.981709+00:00",
+      "window_end": "2026-06-07T15:24:01.365354+00:00",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Computers & Electronics": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Office Furniture": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Facility Support Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Apparel & Lots": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Real Estate": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Public Safety & Fire": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        }
+      },
+      "totals": {
+        "sold": 0,
+        "no_sale": 0,
+        "pulled": 0,
+        "new": 0,
+        "active_end": 0
+      }
+    },
+    {
+      "window_start": "2026-06-07T15:23:53.449021+00:00",
+      "window_end": "2026-06-07T17:16:41.507952+00:00",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Computers & Electronics": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Office Furniture": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Facility Support Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Apparel & Lots": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Real Estate": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Public Safety & Fire": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        }
+      },
+      "totals": {
+        "sold": 0,
+        "no_sale": 0,
+        "pulled": 0,
+        "new": 0,
+        "active_end": 0
+      }
+    },
+    {
+      "window_start": "2026-06-07T17:16:32.763656+00:00",
+      "window_end": "2026-06-07T19:22:05.004954+00:00",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Computers & Electronics": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Office Furniture": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Facility Support Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Apparel & Lots": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Real Estate": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Public Safety & Fire": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        }
+      },
+      "totals": {
+        "sold": 0,
+        "no_sale": 0,
+        "pulled": 0,
+        "new": 0,
+        "active_end": 0
+      }
+    },
+    {
+      "window_start": "2026-06-07T19:21:54.011997+00:00",
+      "window_end": "2026-06-07T21:13:03.765962+00:00",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Computers & Electronics": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Office Furniture": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Facility Support Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Apparel & Lots": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Real Estate": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Public Safety & Fire": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        }
+      },
+      "totals": {
+        "sold": 0,
+        "no_sale": 0,
+        "pulled": 0,
+        "new": 0,
+        "active_end": 0
+      }
+    },
+    {
+      "window_start": "2026-06-07T21:12:55.919788+00:00",
+      "window_end": "2026-06-07T23:04:42.892790+00:00",
+      "by_category": {
+        "Vehicles & Watercraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Heavy Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Computers & Electronics": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Office Furniture": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Industrial Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Tools & Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Facility Support Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Lab & Medical": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Apparel & Lots": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Real Estate": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        },
+        "Public Safety & Fire": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0
+        }
+      },
+      "totals": {
+        "sold": 0,
+        "no_sale": 0,
+        "pulled": 0,
+        "new": 0,
+        "active_end": 0
+      }
+    }
+  ],
+  "_note": "SAMPLE DATA for layout preview. Replaced by live data on first GitHub Actions run."
 }
