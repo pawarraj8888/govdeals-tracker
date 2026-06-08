@@ -1,579 +1,283 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GovDeals Disposition Tracker</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<style>
-  :root{
-    --blue:#1264ff; --blue-d:#0a44b8;
-    --ink:#0c1b33; --muted:#5a6b88; --faint:#8a99b5;
-    --sold:#00b27a; --nosale:#7b8aa5; --pulled:#ff5a4d; --listed:#1264ff; --new:#13b0c9; --gmv:#6a45e6;
-    --line:rgba(120,150,200,.22);
-    --glass:rgba(255,255,255,.55);
-    --glass-2:rgba(255,255,255,.72);
-    --radius:20px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%}
-  body{
-    font-family:'Plus Jakarta Sans',-apple-system,system-ui,sans-serif;
-    color:var(--ink); font-size:14px; line-height:1.5;
-    background:
-      radial-gradient(900px 600px at 12% -8%, rgba(91,155,255,.40), transparent 60%),
-      radial-gradient(800px 700px at 92% 4%, rgba(19,176,201,.30), transparent 55%),
-      radial-gradient(700px 700px at 70% 100%, rgba(18,100,255,.22), transparent 60%),
-      linear-gradient(160deg,#eaf1ff 0%, #f5f9ff 40%, #eef4ff 100%);
-    background-attachment:fixed; min-height:100vh;
-  }
-  .wrap{max-width:1280px;margin:0 auto;padding:clamp(16px,3vw,26px) clamp(12px,3vw,22px) 80px}
-  .num{font-variant-numeric:tabular-nums}
-  .glass{background:var(--glass);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);
-    border:1px solid rgba(255,255,255,.75);box-shadow:0 8px 30px rgba(18,60,140,.10), inset 0 1px 0 rgba(255,255,255,.6);border-radius:var(--radius)}
+#!/usr/bin/env python3
+"""
+GovDeals disposition tracker.
 
-  header{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:18px}
-  h1{font-family:'Outfit',sans-serif;font-weight:800;font-size:clamp(22px,4.6vw,30px);letter-spacing:-.6px;line-height:1.02}
-  h1 b{color:var(--blue);font-weight:900}
-  .sub{color:var(--muted);font-size:12.5px;margin-top:7px;max-width:560px}
-  .hmeta{text-align:right;font-size:11.5px;color:var(--muted);line-height:1.7}
-  .hmeta b{color:var(--ink)}
-  .badge{display:inline-flex;align-items:center;gap:6px;padding:4px 11px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.3px}
-  .badge.live{background:rgba(0,178,122,.14);color:#018a5f;border:1px solid rgba(0,178,122,.35)}
-  .badge.sample{background:rgba(255,150,30,.16);color:#a8620a;border:1px solid rgba(255,150,30,.4)}
-  .dot{width:7px;height:7px;border-radius:50%;background:#00b27a}
-  .badge.sample .dot{background:#e7920a}
+Every run:
+  1. Pulls the CURRENT active listing set for the whole marketplace
+     (one search, paginated) via GovDeals' own search/list API.
+  2. Diffs against the PREVIOUS snapshot. Items that disappeared = auctions
+     that closed.
+  3. Classifies each close as SOLD / NO_SALE / PULLED using last-seen bid
+     count, reserve status, and scheduled end time.
+  4. Buckets everything by each item's own categoryDescription and appends
+     one window record (per category + totals) to history.json.
 
-  .navrow{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px}
-  nav.tabs{display:inline-flex;gap:4px;padding:5px;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
-  nav.tabs button{font-family:'Outfit',sans-serif;font-weight:700;font-size:13px;color:var(--muted);background:transparent;border:none;cursor:pointer;padding:9px 18px;border-radius:14px;transition:.18s;white-space:nowrap}
-  nav.tabs button:hover{color:var(--ink)}
-  nav.tabs button.active{color:#fff;background:linear-gradient(180deg,var(--blue),var(--blue-d));box-shadow:0 4px 14px rgba(18,100,255,.4)}
-  .rangebar{display:inline-flex;gap:3px;padding:4px}
-  .rangebar button{font-family:'Outfit',sans-serif;font-weight:700;font-size:11.5px;color:var(--muted);background:transparent;border:none;cursor:pointer;padding:8px 13px;border-radius:11px;transition:.15s;white-space:nowrap}
-  .rangebar button.active{color:#fff;background:var(--blue)}
+Runs on a 2-hour cron (.github/workflows/track.yml). No Apify, no API keys
+to manage beyond the public client keys GovDeals embeds in its own frontend.
+"""
 
-  section{display:none;animation:rise .4s ease both}
-  section.show{display:block}
-  @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+import json
+import time
+import uuid
+import datetime as dt
+from pathlib import Path
 
-  .kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:13px;margin-bottom:18px}
-  @media(max-width:1000px){.kpis{grid-template-columns:repeat(3,1fr)}}
-  @media(max-width:560px){.kpis{grid-template-columns:repeat(2,1fr)}}
-  .kpi{padding:14px 15px;position:relative;overflow:hidden}
-  .kpi .lab{font-size:9.5px;letter-spacing:.7px;text-transform:uppercase;color:var(--muted);font-weight:600}
-  .kpi .val{font-family:'Outfit',sans-serif;font-weight:800;font-size:26px;line-height:1.05;margin-top:6px}
-  .kpi .d{font-size:10.5px;margin-top:5px;color:var(--faint)}
-  .kpi .strip{position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c,var(--blue))}
-  .c-sold{--c:var(--sold)} .c-sold .val{color:var(--sold)}
-  .c-nosale{--c:var(--nosale)}
-  .c-pulled{--c:var(--pulled)} .c-pulled .val{color:var(--pulled)}
-  .c-new{--c:var(--new)} .c-new .val{color:var(--new)}
-  .c-active{--c:var(--blue)} .c-active .val{color:var(--blue)}
-  .c-rate{--c:var(--gmv)} .c-rate .val{color:var(--gmv)}
-  .c-gmv{--c:var(--gmv)} .c-gmv .val{color:var(--gmv)}
-  .c-cash{--c:#0a9c8c} .c-cash .val{color:#0a9c8c}
+import requests
 
-  .grid2{display:grid;grid-template-columns:1.5fr 1fr;gap:16px;margin-bottom:16px}
-  .grid2.even{grid-template-columns:1fr 1fr}
-  @media(max-width:920px){.grid2,.grid2.even{grid-template-columns:1fr}}
-  .card{padding:18px}
-  .card h2{font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;letter-spacing:.3px;text-transform:uppercase}
-  .card .hint{color:var(--faint);font-size:11px;margin:3px 0 14px}
-  .card .foot{color:var(--muted);font-size:11.5px;margin-top:12px;display:flex;gap:16px;flex-wrap:wrap}
-  .card .foot b{color:var(--ink)}
-  .chart{position:relative;height:300px}
-  .chart.sm{height:262px}
-  .legend{display:flex;gap:15px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-top:12px}
-  .legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:middle}
+SEARCH_URL    = "https://maestro.lqdt1.com/search/list"
+SNAPSHOT_FILE = Path("snapshot.json")
+HISTORY_FILE  = Path("history.json")
+CLOSURES_FILE = Path("closures.json")     # item-level log of every auction that closed
+WINDOW_HOURS  = 1
+MAX_WINDOWS   = 1000
+MAX_CLOSURES  = 80000                       # rolling cap so the file stays loadable
+ROWS          = 200      # rows per page requested
+MAX_PAGES     = 1000     # safety cap
+SLEEP         = 0.20     # politeness delay between pages
 
-  .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
-  .search{flex:1;min-width:200px;display:flex;align-items:center;gap:9px;padding:11px 15px}
-  .search input{border:none;background:transparent;outline:none;font-family:inherit;font-size:14px;color:var(--ink);width:100%}
-  .search svg{flex:none;opacity:.5}
-  select{font-family:inherit;font-size:12.5px;color:var(--ink);background:var(--glass-2);border:1px solid rgba(255,255,255,.8);border-radius:13px;padding:10px 14px;cursor:pointer;outline:none}
-  .pills{display:inline-flex;gap:5px;padding:4px}
-  .pills button{font-family:inherit;font-weight:600;font-size:12px;color:var(--muted);background:transparent;border:none;cursor:pointer;padding:7px 13px;border-radius:10px;transition:.15s}
-  .pills button.active{color:#fff;background:var(--blue)}
-  .pills button[data-s="Sold"].active{background:var(--sold)}
-  .pills button[data-s="No-sale"].active{background:var(--nosale)}
-  .pills button[data-s="Pulled"].active{background:var(--pulled)}
-  .pills button[data-s="Listed"].active{background:var(--listed)}
-
-  .summary{display:flex;gap:20px;flex-wrap:wrap;padding:13px 18px;margin-bottom:14px;font-size:12.5px;color:var(--muted)}
-  .summary b{color:var(--ink);font-family:'Outfit',sans-serif;font-weight:700}
-
-  .tablewrap{padding:6px 4px;overflow-x:auto}
-  table{width:100%;border-collapse:collapse;font-size:12.5px}
-  th,td{text-align:right;padding:11px 13px;border-bottom:1px solid var(--line);white-space:nowrap}
-  th:first-child,td:first-child{text-align:left}
-  td:first-child{white-space:normal}
-  th{font-size:10px;letter-spacing:.6px;text-transform:uppercase;color:var(--faint);font-weight:700}
-  th.sortable{cursor:pointer;user-select:none}
-  th.sortable:hover{color:var(--blue)}
-  tbody tr{transition:background .12s}
-  tbody tr:hover{background:rgba(120,160,255,.10)}
-  td a{color:var(--blue);text-decoration:none}
-  td a:hover{text-decoration:underline}
-  .cat-link{color:var(--ink);cursor:pointer}
-  .cat-link:hover{color:var(--blue)}
-  .st{display:inline-block;padding:3px 10px;border-radius:999px;font-size:10.5px;font-weight:700}
-  .st.Sold{background:rgba(0,178,122,.15);color:#018a5f}
-  .st.Listed{background:rgba(18,100,255,.13);color:var(--blue-d)}
-  .st.Nosale{background:rgba(123,138,165,.18);color:#566480}
-  .st.Pulled{background:rgba(255,90,77,.15);color:#c43326}
-  .bar{display:inline-block;height:7px;border-radius:3px;background:var(--sold);vertical-align:middle;margin-left:8px}
-  .rate-cell{font-weight:700}
-  .pager{display:flex;justify-content:space-between;align-items:center;padding:14px 13px 6px;color:var(--muted);font-size:12px}
-  .pager button{font-family:inherit;background:var(--glass-2);border:1px solid rgba(255,255,255,.8);border-radius:11px;padding:8px 16px;cursor:pointer;color:var(--ink);font-weight:600}
-  .pager button:disabled{opacity:.4;cursor:default}
-  .count{color:var(--muted);font-size:12px;margin-left:auto}
-  .empty{text-align:center;color:var(--faint);padding:40px 0;font-size:13px}
-  .loading{text-align:center;color:var(--muted);padding:60px 0;font-size:14px}
-  @media(max-width:600px){
-    .chart{height:240px}.chart.sm{height:220px}
-    .card{padding:14px}.kpi{padding:12px 13px}
-    nav.tabs button{padding:8px 13px;font-size:12px}
-    header{align-items:flex-start}.hmeta{text-align:left}
-    h2{font-size:12px}
-    .summary{gap:14px;padding:12px 14px}
-  }
-</style>
-</head>
-<body>
-<div class="wrap">
-  <header>
-    <div>
-      <h1>GOVDEALS <b>DISPOSITION</b></h1>
-      <div class="sub">The full active marketplace is snapshotted every <span id="cad">hour</span>. Listings that vanish = auctions
-        that closed. Sold is inferred — reserve auctions by whether the reserve was met, others by visible bidding;
-        the source hides bid counts, so single-bid sales at the opening price are undercounted. Figures are a conservative floor.</div>
-    </div>
-    <div class="hmeta">
-      <div id="m-badge"></div>
-      <div>active now <b id="m-active" class="num">—</b></div>
-      <div>updated <b id="m-updated">—</b></div>
-    </div>
-  </header>
-
-  <div class="navrow">
-    <nav class="tabs glass" id="tabs">
-      <button data-tab="monitor" class="active">Monitor</button>
-      <button data-tab="overtime">Over Time</button>
-      <button data-tab="categories">Categories</button>
-      <button data-tab="items">Items</button>
-    </nav>
-    <div class="rangebar glass" id="rangebar">
-      <button data-h="24">24h</button>
-      <button data-h="168">7d</button>
-      <button data-h="720">30d</button>
-      <button data-h="0" class="active">All</button>
-    </div>
-  </div>
-
-  <div id="boot" class="loading glass" style="padding:60px">Loading data…</div>
-
-  <section id="monitor">
-    <div class="kpis" id="kpis"></div>
-    <div class="grid2">
-      <div class="card glass">
-        <h2>Closures per window</h2>
-        <div class="hint">Stacked outcome of every auction that left the active set.</div>
-        <div class="chart"><canvas id="cStack"></canvas></div>
-        <div class="legend">
-          <span><i style="background:var(--sold)"></i>Sold</span>
-          <span><i style="background:var(--nosale)"></i>No-sale</span>
-          <span><i style="background:var(--pulled)"></i>Pulled</span>
-          <span><i style="background:var(--new)"></i>Newly listed</span>
-        </div>
-      </div>
-      <div class="card glass">
-        <h2>Sell-through rate</h2>
-        <div class="hint">Sold &divide; total closed, per window.</div>
-        <div class="chart sm"><canvas id="cRate"></canvas></div>
-      </div>
-    </div>
-    <div class="grid2 even">
-      <div class="card glass">
-        <h2>GMV sold per window</h2>
-        <div class="hint">Dollar value of items sold each window.</div>
-        <div class="chart sm"><canvas id="cGMV"></canvas></div>
-      </div>
-      <div class="card glass">
-        <h2>Sold price distribution</h2>
-        <div class="hint">Where sold prices land (logged closures).</div>
-        <div class="chart sm"><canvas id="cDist"></canvas></div>
-        <div class="foot" id="distFoot"></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="overtime">
-    <div class="grid2 even">
-      <div class="card glass">
-        <h2>Cumulative GMV</h2>
-        <div class="hint">Running dollar value sold since tracking began.</div>
-        <div class="chart"><canvas id="cGMVcum"></canvas></div>
-      </div>
-      <div class="card glass">
-        <h2>Average sale price</h2>
-        <div class="hint">Per-window mean hammer of sold items.</div>
-        <div class="chart"><canvas id="cAvg"></canvas></div>
-      </div>
-    </div>
-    <div class="grid2 even">
-      <div class="card glass">
-        <h2>Outcomes over time</h2>
-        <div class="hint">Per-window sold / no-sale / pulled.</div>
-        <div class="chart sm"><canvas id="cTrend"></canvas></div>
-      </div>
-      <div class="card glass">
-        <h2>Cumulative items sold</h2>
-        <div class="hint">Running count since tracking began.</div>
-        <div class="chart sm"><canvas id="cCum"></canvas></div>
-      </div>
-    </div>
-    <div class="card glass">
-      <h2>Window log</h2>
-      <div class="hint">Most recent windows first.</div>
-      <div class="tablewrap"><table>
-        <thead><tr><th>Window end (UTC)</th><th>Sold</th><th>GMV</th><th>No-sale</th><th>Pulled</th><th>New</th><th>Active</th><th>Sell-through</th></tr></thead>
-        <tbody id="windowLog"></tbody>
-      </table></div>
-    </div>
-  </section>
-
-  <section id="categories">
-    <div class="controls">
-      <div class="search glass">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-        <input id="catSearch" placeholder="Search categories...">
-      </div>
-      <span class="count" id="catCount"></span>
-    </div>
-    <div class="card glass">
-      <div class="tablewrap"><table>
-        <thead><tr>
-          <th class="sortable" data-k="category">Category</th>
-          <th class="sortable" data-k="active">Active</th>
-          <th class="sortable" data-k="active_value">Inv. value</th>
-          <th class="sortable" data-k="sold">Sold</th>
-          <th class="sortable" data-k="gmv">GMV</th>
-          <th class="sortable" data-k="avg">Avg price</th>
-          <th class="sortable" data-k="no_sale">No-sale</th>
-          <th class="sortable" data-k="pulled">Pulled</th>
-          <th class="sortable" data-k="rate">Sell-through</th>
-        </tr></thead>
-        <tbody id="catTable"></tbody>
-      </table></div>
-    </div>
-  </section>
-
-  <section id="items">
-    <div class="controls">
-      <div class="search glass">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-        <input id="itemSearch" placeholder="Search items by title...">
-      </div>
-      <div class="pills glass" id="statusPills">
-        <button data-s="" class="active">All</button>
-        <button data-s="Listed">Listed</button>
-        <button data-s="Sold">Sold</button>
-        <button data-s="No-sale">No-sale</button>
-        <button data-s="Pulled">Pulled</button>
-      </div>
-      <select id="itemCat"><option value="">All categories</option></select>
-      <select id="itemSort">
-        <option value="date">Newest</option>
-        <option value="bidhigh">Highest bid</option>
-        <option value="bidlow">Lowest bid</option>
-        <option value="bidup">With bidding</option>
-      </select>
-    </div>
-    <div class="summary glass" id="itemSummary"></div>
-    <div class="card glass">
-      <div class="tablewrap"><table>
-        <thead><tr><th>Item</th><th>Category</th><th>Current bid</th><th>Bidding</th><th>End / Closed</th><th>Status</th></tr></thead>
-        <tbody id="itemTable"></tbody>
-      </table></div>
-      <div class="pager">
-        <button id="prev">&lsaquo; Prev</button>
-        <span id="pageInfo" class="num"></span>
-        <button id="next">Next &rsaquo;</button>
-      </div>
-    </div>
-  </section>
-</div>
-
-<script>
-/* ---------- state + helpers ---------- */
-const S={hist:null,snap:null,clo:null,live:false,items:[],active:[],closed:[],cats:[],met:null,range:0,lastTs:0,wh:1,
-  itemFilter:{q:"",status:"",cat:"",sort:"date",page:0},catSort:{k:"gmv",dir:-1},catQ:""};
-const PAGE=50;
-const fmt=n=>n==null?"\u2014":Number(n).toLocaleString("en-US");
-const money=n=>n?"$"+Number(n).toLocaleString("en-US"):"$0";
-function moneyShort(n){n=Number(n)||0;if(n>=1e6)return"$"+(n/1e6).toFixed(n>=1e7?0:1)+"M";if(n>=1e3)return"$"+(n/1e3).toFixed(n>=1e4?0:1)+"k";return"$"+Math.round(n);}
-const titleCase=s=>s==="no_sale"?"No-sale":s.charAt(0).toUpperCase()+s.slice(1);
-const dshort=s=>{if(!s)return"\u2014";const d=new Date(s);return isNaN(d)?"\u2014":d.toISOString().slice(0,16).replace("T"," ");};
-const assetUrl=id=>{const p=String(id).split("-");return p[1]&&p[0]?"https://www.govdeals.com/asset/"+p[1]+"/"+p[0]:"#";};
-function median(arr){if(!arr.length)return 0;const a=arr.slice().sort((x,y)=>x-y);const m=a.length>>1;return a.length%2?a[m]:(a[m-1]+a[m])/2;}
-const snapItems=()=>Object.values((S.snap&&S.snap.items)||{});
-const activeNow=()=>{const W2=S.hist.windows;return W2.length?W2[W2.length-1].totals.active_end:snapItems().length;};
-const invNow=()=>{const W2=S.hist.windows;return W2.length?W2[W2.length-1].totals.active_value:snapItems().reduce((a,i)=>a+(Number(i.current_bid)||0),0);};
-
-async function getJSON(f){try{const r=await fetch(f,{cache:"no-store"});if(r.ok)return await r.json();}catch(e){}return null;}
-
-async function boot(){
-  const res=await Promise.all([getJSON("history.json"),getJSON("snapshot.json"),getJSON("closures.json")]);
-  const h=res[0],s=res[1],c=res[2];
-  S.hist=(h&&Array.isArray(h.windows))?h:{categories:[],window_hours:1,windows:[],last_updated:(h&&h.last_updated)||null};
-  S.snap=(s&&s.items)?s:{items:{}};
-  S.clo=(c&&c.closures)?c:{closures:[]};
-  S.wh=S.hist.window_hours||1;
-
-  const haveData=snapItems().length>0||S.hist.windows.length>0;
-  if(!haveData){
-    document.getElementById("boot").innerHTML=
-      "<div style='font-size:18px;font-weight:700;color:var(--ink);margin-bottom:8px'>Waiting for the first tracker run</div>"+
-      "<div>No data has been collected yet. Once the scraper runs, real listings and sales appear here \u2014 nothing is shown until then.</div>";
-    return;
-  }
-
-  S.live=S.hist.windows.length>0;
-  S.active=snapItems().map(it=>({...it,status:"Listed",when:it.end_date}));
-  S.closed=(S.clo.closures||[]).map(it=>({...it,status:titleCase(it.status),when:it.closed_at}));
-  S.cats=(S.hist.categories&&S.hist.categories.length)?S.hist.categories.slice()
-        :[...new Set(S.active.concat(S.closed).map(i=>i.category))].sort();
-  S.lastTs=new Date(S.hist.last_updated||Date.now()).getTime();
-  applyRange();
-
-  // cadence label
-  const cad=document.getElementById("cad");if(cad)cad.textContent=S.wh===1?"hour":S.wh+" hours";
-
-  document.getElementById("boot").style.display="none";
-  document.getElementById("monitor").classList.add("show");
-  renderHeader();renderMonitor();renderCategories();initItems();
+# Public client keys baked into the GovDeals frontend (same for every visitor).
+# If the API starts returning 401/403, re-grab these from DevTools.
+BASE_HEADERS = {
+    "Content-Type": "application/json",
+    "Accept": "application/json, text/plain, */*",
+    "Origin": "https://www.govdeals.com",
+    "Referer": "https://www.govdeals.com/",
+    "User-Agent": ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                   "AppleWebKit/537.36 (KHTML, like Gecko) "
+                   "Chrome/148.0.0.0 Safari/537.36"),
+    "Ocp-Apim-Subscription-Key": "cf620d1d8f904b5797507dc5fd1fdb80",
+    "x-api-key": "af93060f-337e-428c-87b8-c74b5837d6cd",
+    "x-user-id": "-1",
+    "x-user-timezone": "America/New_York",
+    "x-referer": "https://www.govdeals.com/en/search",
 }
 
-function inRange(ts){if(!S.range)return true;const d=new Date(ts).getTime();return !isNaN(d)&&d>=S.lastTs-S.range*3600e3;}
-function W(){return S.hist.windows.filter(w=>inRange(w.window_end));}
-function cloRaw(){return (S.clo.closures||[]).filter(c=>inRange(c.closed_at));}
-function applyRange(){
-  S.items=S.active.concat(S.closed.filter(c=>inRange(c.when)));
-  S.met=computeMetrics(cloRaw());
-}
 
-function computeMetrics(cl){
-  cl=cl||(S.clo.closures||[]);
-  const sold=cl.filter(c=>c.status==="sold");
-  const closed=cl.length;
-  const soldPrices=sold.map(c=>Number(c.current_bid)||0);
-  const withRes=cl.filter(c=>c.has_reserve);
-  const resSold=withRes.filter(c=>c.status==="sold").length;
-  return {
-    gmvTrailing:soldPrices.reduce((a,b)=>a+b,0),
-    sellThrough:closed?sold.length/closed:0,
-    reserveClear:withRes.length?resSold/withRes.length:null,
-    median:median(soldPrices),
-    avgPrice:sold.length?soldPrices.reduce((a,b)=>a+b,0)/sold.length:0,
-    buckets:[
-      soldPrices.filter(p=>p<100).length,
-      soldPrices.filter(p=>p>=100&&p<1000).length,
-      soldPrices.filter(p=>p>=1000&&p<10000).length,
-      soldPrices.filter(p=>p>=10000).length
-    ]
-  };
-}
-function bidFlag(i){const rm=i.has_reserve&&!i.reserve_not_met;return (i.had_bids||rm||((i.peak_bid||i.current_bid||0)>(i.start_bid||i.current_bid||0))||i.high_bidder)?1:0;}
-function endingSoon(hours){
-  const ref=new Date(S.hist.last_updated||Date.now()).getTime();
-  return Object.values(S.snap.items||{}).filter(it=>{const e=new Date(it.end_date).getTime();return e>=ref&&e<=ref+hours*3600e3;}).length;
-}
+def now_utc():
+    return dt.datetime.now(dt.timezone.utc)
 
-function renderHeader(){
-  document.getElementById("m-active").textContent=fmt(activeNow());
-  document.getElementById("m-updated").textContent=dshort(S.hist.last_updated)+"Z";
-  document.getElementById("m-badge").innerHTML=S.live
-    ?'<span class="badge live"><span class="dot"></span>LIVE DATA</span>'
-    :'<span class="badge sample"><span class="dot"></span>COLLECTING \u2014 first window pending</span>';
-}
 
-const baseScales=()=>({x:{grid:{color:"rgba(120,150,200,.16)"},ticks:{color:"#5a6b88",maxRotation:0,autoSkip:true,maxTicksLimit:8,font:{family:"Plus Jakarta Sans",size:10}}},
-  y:{grid:{color:"rgba(120,150,200,.16)"},ticks:{color:"#5a6b88",font:{family:"Plus Jakarta Sans",size:10}}}});
-function chartOpts(yover){const sc=baseScales();if(yover)sc.y=Object.assign(sc.y,yover);
-  return{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{padding:10,backgroundColor:"rgba(12,27,51,.92)",cornerRadius:10}},scales:sc};}
-function moneyAxis(){return chartOpts({ticks:{callback:v=>moneyShort(v),color:"#5a6b88",font:{family:"Plus Jakarta Sans",size:10}}});}
-let charts={};
-function mkChart(id,cfg){if(charts[id])charts[id].destroy();charts[id]=new Chart(document.getElementById(id),cfg);}
-const labelsOf=W=>W.map(w=>new Date(w.window_end).toISOString().slice(5,16).replace("T"," "));
+def _search_page(session, page):
+    headers = dict(BASE_HEADERS)
+    headers["x-api-correlation-id"] = str(uuid.uuid4())
+    headers["x-ecom-session-id"] = str(uuid.uuid4())
+    body = {
+        "categoryIds": "", "businessId": "GD", "searchText": "*", "isQAL": False,
+        "locationId": None, "model": "", "makebrand": "", "auctionTypeId": None,
+        "page": page, "displayRows": ROWS, "sortField": "bestfit",
+        "sortOrder": "desc", "sessionId": str(uuid.uuid4()), "requestType": "search",
+        "responseStyle": "fullResponse", "facets": [], "facetsFilter": [],
+        "timeType": "", "sellerTypeId": None, "accountIds": [],
+    }
+    for attempt in range(2):
+        try:
+            r = session.post(SEARCH_URL, headers=headers, json=body, timeout=90)
+            r.raise_for_status()
+            return r.json().get("assetSearchResults") or []
+        except Exception as e:
+            if attempt == 0:
+                time.sleep(2)
+                continue
+            print(f"  ! page {page} failed: {e}")
+            return None
 
-function renderMonitor(){
-  const all=S.hist.windows; const has=all.length>0;
-  const last=has?all[all.length-1]:null, prev=has?(all[all.length-2]||last):null;
-  const Wc=W(); const m=S.met;
-  const k=has?last.totals:{sold:0,no_sale:0,pulled:0,new:0,active_end:activeNow(),sold_value:0,active_value:invNow()};
-  const kp=(has&&prev)?prev.totals:k;
-  const dd=(a,b)=>{const d=a-b;return(d>=0?"+":"")+d;};
-  const closed=k.sold+k.no_sale+k.pulled;const rate=closed?Math.round(100*k.sold/closed):0;
-  const avgWin=k.sold?k.sold_value/k.sold:m.avgPrice;
-  const wnote=has?"this window":"awaiting first window";
-  const cards=[
-    ["c-active","Active total",fmt(k.active_end),has?dd(k.active_end,kp.active_end)+" vs prev":"on platform now"],
-    ["c-sold","Sold (last window)",fmt(k.sold),wnote],
-    ["c-nosale","No-sale",fmt(k.no_sale),wnote],
-    ["c-pulled","Pulled",fmt(k.pulled),wnote],
-    ["c-new","Newly listed",fmt(k.new),wnote],
-    ["c-rate","Sell-through",rate+"%",wnote],
-    ["c-gmv","GMV sold (window)",moneyShort(k.sold_value),wnote],
-    ["c-cash","Avg sale price",moneyShort(avgWin),wnote],
-    ["c-cash","Active inv. value",moneyShort(k.active_value||0),"on platform now"],
-    ["c-new","Sell-through (trail)",Math.round(m.sellThrough*100)+"%","closed lots"],
-    ["c-rate","Reserve clears",(m.reserveClear==null?"\u2014":Math.round(m.reserveClear*100)+"%"),"reserved lots"],
-    ["c-active","Ending \u226424h",fmt(endingSoon(24)),"active auctions"]
-  ];
-  document.getElementById("kpis").innerHTML=cards.map(a=>
-    '<div class="kpi glass '+a[0]+'"><div class="strip"></div><div class="lab">'+a[1]+'</div><div class="val num">'+a[2]+'</div><div class="d">'+a[3]+'</div></div>').join("");
 
-  const labels=labelsOf(Wc),ser=key=>Wc.map(w=>w.totals[key]);
-  mkChart("cStack",{type:"bar",data:{labels,datasets:[
-    {label:"Sold",data:ser("sold"),backgroundColor:"#00b27a",stack:"x",borderRadius:3},
-    {label:"No-sale",data:ser("no_sale"),backgroundColor:"#7b8aa5",stack:"x",borderRadius:3},
-    {label:"Pulled",data:ser("pulled"),backgroundColor:"#ff5a4d",stack:"x",borderRadius:3},
-    {label:"New",data:ser("new"),type:"line",borderColor:"#13b0c9",backgroundColor:"transparent",borderWidth:2,pointRadius:0,tension:.35}]},
-    options:(function(){const o=chartOpts();o.scales.x.stacked=true;o.scales.y.stacked=true;return o;})()});
-  const r2=Wc.map(w=>{const c=w.totals.sold+w.totals.no_sale+w.totals.pulled;return c?+(100*w.totals.sold/c).toFixed(1):0;});
-  mkChart("cRate",{type:"line",data:{labels,datasets:[{data:r2,borderColor:"#1264ff",backgroundColor:"rgba(18,100,255,.12)",fill:true,borderWidth:2.5,pointRadius:0,tension:.35}]},
-    options:chartOpts({suggestedMin:0,suggestedMax:100,ticks:{callback:v=>v+"%",color:"#5a6b88",font:{family:"Plus Jakarta Sans",size:10}}})});
-  mkChart("cGMV",{type:"bar",data:{labels,datasets:[{data:ser("sold_value"),backgroundColor:"#6a45e6",borderRadius:4}]},options:moneyAxis()});
-  mkChart("cDist",{type:"doughnut",data:{labels:["< $100","$100\u20131k","$1k\u201310k","$10k+"],
-    datasets:[{data:m.buckets,backgroundColor:["#9db4e8","#5b9bff","#1264ff","#0a2f8a"],borderWidth:0}]},
-    options:{responsive:true,maintainAspectRatio:false,cutout:"62%",plugins:{legend:{position:"right",labels:{color:"#5a6b88",font:{family:"Plus Jakarta Sans",size:11},boxWidth:12}}}}});
-  document.getElementById("distFoot").innerHTML=
-    "median sale <b>"+moneyShort(m.median)+"</b>"+
-    (m.reserveClear==null?"":" \u00b7 reserve clears <b>"+Math.round(m.reserveClear*100)+"%</b>")+
-    " \u00b7 GMV (trailing) <b>"+moneyShort(m.gmvTrailing)+"</b>";
-}
+def normalize(it):
+    aid = it.get("assetId")
+    acct = it.get("accountId")
+    end = it.get("assetAuctionEndDateUtc") or it.get("assetAuctionEndDate")
+    return {
+        "id": f"{acct}-{aid}",
+        "title": it.get("assetShortDescription") or "",
+        "category": it.get("categoryDescription") or it.get("assetCategory") or "Uncategorized",
+        "current_bid": float(it.get("currentBid") or 0),
+        "bid_count": int(it.get("bidCount") or 0),
+        "high_bidder": bool(it.get("highBidder")),
+        "end_date": end,
+        "has_reserve": bool(it.get("hasReservePrice")),
+        "reserve_not_met": bool(it.get("isReserveNotMet")),
+    }
 
-function renderOverTime(){
-  const Wc=W(),labels=labelsOf(Wc),ser=key=>Wc.map(w=>w.totals[key]);
-  let g=0;const gcum=Wc.map(w=>{g+=w.totals.sold_value||0;return g;});
-  mkChart("cGMVcum",{type:"line",data:{labels,datasets:[{data:gcum,borderColor:"#6a45e6",backgroundColor:"rgba(106,69,230,.13)",fill:true,borderWidth:2.5,pointRadius:0,tension:.3}]},options:moneyAxis()});
-  const avg=Wc.map(w=>w.totals.sold?Math.round(w.totals.sold_value/w.totals.sold):0);
-  mkChart("cAvg",{type:"line",data:{labels,datasets:[{data:avg,borderColor:"#0a9c8c",backgroundColor:"rgba(10,156,140,.12)",fill:true,borderWidth:2.5,pointRadius:0,tension:.3}]},options:moneyAxis()});
-  mkChart("cTrend",{type:"line",data:{labels,datasets:[
-    {label:"Sold",data:ser("sold"),borderColor:"#00b27a",borderWidth:2,pointRadius:0,tension:.3,backgroundColor:"transparent"},
-    {label:"No-sale",data:ser("no_sale"),borderColor:"#7b8aa5",borderWidth:2,pointRadius:0,tension:.3,backgroundColor:"transparent"},
-    {label:"Pulled",data:ser("pulled"),borderColor:"#ff5a4d",borderWidth:2,pointRadius:0,tension:.3,backgroundColor:"transparent"}]},options:chartOpts()});
-  let run=0;const cum=Wc.map(w=>{run+=w.totals.sold;return run;});
-  mkChart("cCum",{type:"line",data:{labels,datasets:[{data:cum,borderColor:"#00b27a",backgroundColor:"rgba(0,178,122,.13)",fill:true,borderWidth:2.5,pointRadius:0,tension:.3}]},options:chartOpts()});
-  const rows=Wc.slice().reverse().map(w=>{const c=w.totals.sold+w.totals.no_sale+w.totals.pulled;const r=c?Math.round(100*w.totals.sold/c):0;
-    return '<tr><td>'+dshort(w.window_end)+'</td><td class="num" style="color:var(--sold)">'+w.totals.sold+'</td>'+
-      '<td class="num" style="color:var(--gmv)">'+moneyShort(w.totals.sold_value||0)+'</td>'+
-      '<td class="num">'+w.totals.no_sale+'</td><td class="num" style="color:var(--pulled)">'+w.totals.pulled+'</td>'+
-      '<td class="num" style="color:var(--new)">'+w.totals.new+'</td><td class="num">'+fmt(w.totals.active_end)+'</td>'+
-      '<td class="num rate-cell">'+r+'%</td></tr>';}).join("");
-  document.getElementById("windowLog").innerHTML=rows||'<tr><td colspan="8" class="empty">No windows yet \u2014 first one appears after two runs.</td></tr>';
-}
 
-function categoryRows(){
-  const map={};
-  const ensure=c=>(map[c]=map[c]||{category:c,active:0,active_value:0,sold:0,no_sale:0,pulled:0,gmv:0});
-  S.cats.forEach(ensure);
-  Object.values(S.snap.items||{}).forEach(it=>{const m=ensure(it.category);m.active++;m.active_value+=Number(it.current_bid)||0;});
-  cloRaw().forEach(it=>{const m=ensure(it.category);
-    if(it.status==="sold"){m.sold++;m.gmv+=Number(it.current_bid)||0;}
-    else if(it.status==="pulled")m.pulled++;else m.no_sale++;});
-  return Object.values(map).map(m=>{const cl=m.sold+m.no_sale+m.pulled;m.rate=cl?m.sold/cl:0;m.avg=m.sold?m.gmv/m.sold:0;return m;});
-}
-function renderCategories(){
-  let rows=categoryRows();
-  if(S.catQ)rows=rows.filter(r=>r.category.toLowerCase().includes(S.catQ));
-  const k=S.catSort.k,dir=S.catSort.dir;
-  rows.sort((a,b)=>k==="category"?a.category.localeCompare(b.category)*dir:(a[k]-b[k])*dir);
-  const maxG=Math.max(1,...rows.map(r=>r.gmv));
-  document.getElementById("catCount").textContent=rows.length+" categories";
-  document.getElementById("catTable").innerHTML=rows.length?rows.map(r=>
-    '<tr><td><span class="cat-link" data-cat="'+r.category.replace(/"/g,"&quot;")+'">'+r.category+'</span>'+
-      '<span class="bar" style="background:var(--gmv);width:'+Math.round(r.gmv/maxG*48)+'px"></span></td>'+
-      '<td class="num">'+fmt(r.active)+'</td><td class="num">'+moneyShort(r.active_value)+'</td>'+
-      '<td class="num" style="color:var(--sold)">'+r.sold+'</td>'+
-      '<td class="num" style="color:var(--gmv)">'+moneyShort(r.gmv)+'</td>'+
-      '<td class="num">'+moneyShort(r.avg)+'</td>'+
-      '<td class="num">'+r.no_sale+'</td><td class="num" style="color:var(--pulled)">'+r.pulled+'</td>'+
-      '<td class="num rate-cell">'+Math.round(r.rate*100)+'%</td></tr>').join("")
-    :'<tr><td colspan="9" class="empty">No categories match.</td></tr>';
-  document.querySelectorAll(".cat-link").forEach(el=>el.onclick=()=>{
-    S.itemFilter.cat=el.dataset.cat;S.itemFilter.page=0;document.getElementById("itemCat").value=el.dataset.cat;
-    switchTab("items");renderItems();});
-}
+def fetch_all_active():
+    session = requests.Session()
+    items, page, complete = {}, 1, True
+    while page <= MAX_PAGES:
+        results = _search_page(session, page)
+        if results is None:        # hard failure mid-pagination -> set incomplete
+            complete = False
+            break
+        if not results:            # empty page = clean end of results
+            break
+        for it in results:
+            n = normalize(it)
+            items[n["id"]] = n
+        if page % 20 == 0:
+            print(f"  page {page:>4} ... {len(items):>6} items so far")
+        page += 1
+        time.sleep(SLEEP)
+    print(f"  pulled {len(items)} active listings across "
+          f"{len({i['category'] for i in items.values()})} categories"
+          f"{'' if complete else '  [INCOMPLETE]'}")
+    return {"captured_at": now_utc().isoformat(), "items": items}, complete
 
-function initItems(){
-  document.getElementById("itemCat").innerHTML='<option value="">All categories</option>'+S.cats.map(c=>'<option>'+c+'</option>').join("");
-  renderItems();
-}
-function filteredItems(){
-  const f=S.itemFilter;let r=S.items;
-  if(f.status)r=r.filter(i=>i.status===f.status);
-  if(f.cat)r=r.filter(i=>i.category===f.cat);
-  if(f.q){const q=f.q.toLowerCase();r=r.filter(i=>(i.title||"").toLowerCase().includes(q)||(i.category||"").toLowerCase().includes(q));}
-  if(f.sort==="date")r=r.slice().sort((a,b)=>new Date(b.when||0)-new Date(a.when||0));
-  else if(f.sort==="bidhigh")r=r.slice().sort((a,b)=>(b.current_bid||0)-(a.current_bid||0));
-  else if(f.sort==="bidlow")r=r.slice().sort((a,b)=>(a.current_bid||0)-(b.current_bid||0));
-  else if(f.sort==="bidup")r=r.slice().sort((a,b)=>(bidFlag(b)-bidFlag(a))||((b.current_bid||0)-(a.current_bid||0)));
-  return r;
-}
-function renderItems(){
-  const r=filteredItems();const f=S.itemFilter;
-  const totalBid=r.reduce((a,i)=>a+(Number(i.current_bid)||0),0);
-  const soldN=r.filter(i=>i.status==="Sold").length;
-  const soldVal=r.filter(i=>i.status==="Sold").reduce((a,i)=>a+(Number(i.current_bid)||0),0);
-  document.getElementById("itemSummary").innerHTML=
-    '<span><b>'+fmt(r.length)+'</b> items</span>'+
-    '<span><b>'+moneyShort(totalBid)+'</b> total current bid</span>'+
-    '<span><b>'+fmt(soldN)+'</b> sold \u00b7 <b>'+moneyShort(soldVal)+'</b> GMV</span>';
-  const pages=Math.max(1,Math.ceil(r.length/PAGE));
-  if(f.page>=pages)f.page=pages-1;if(f.page<0)f.page=0;
-  const slice=r.slice(f.page*PAGE,f.page*PAGE+PAGE);
-  document.getElementById("itemTable").innerHTML=slice.length?slice.map(i=>{
-    const cls=i.status==="No-sale"?"Nosale":i.status;
-    const link=i.status==="Listed"?'<a href="'+assetUrl(i.id)+'" target="_blank" rel="noopener">'+(i.title||"(untitled)")+'</a>':(i.title||"(untitled)");
-    const bid=bidFlag(i)?'<span style="color:var(--sold)">\u25cf</span>':'<span style="color:var(--faint)">\u2014</span>';
-    return '<tr><td>'+link+'</td><td>'+i.category+'</td><td class="num">'+money(i.current_bid)+'</td>'+
-      '<td class="num">'+bid+'</td><td class="num">'+dshort(i.when)+'</td>'+
-      '<td><span class="st '+cls+'">'+i.status+'</span></td></tr>';}).join("")
-    :'<tr><td colspan="6" class="empty">No items match your filters.</td></tr>';
-  document.getElementById("pageInfo").textContent=(r.length?f.page*PAGE+1:0)+"\u2013"+Math.min((f.page+1)*PAGE,r.length)+" of "+fmt(r.length);
-  document.getElementById("prev").disabled=f.page<=0;
-  document.getElementById("next").disabled=f.page>=pages-1;
-}
 
-function switchTab(name){
-  document.querySelectorAll("nav.tabs button").forEach(b=>b.classList.toggle("active",b.dataset.tab===name));
-  document.querySelectorAll("section").forEach(s=>s.classList.toggle("show",s.id===name));
-  if(name==="overtime")renderOverTime();
-  if(name==="monitor")renderMonitor();
-}
-document.querySelectorAll("nav.tabs button").forEach(b=>b.onclick=()=>switchTab(b.dataset.tab));
-let t1;document.getElementById("catSearch").addEventListener("input",e=>{clearTimeout(t1);t1=setTimeout(()=>{S.catQ=e.target.value.trim().toLowerCase();renderCategories();},120);});
-document.querySelectorAll("#categories th.sortable").forEach(th=>th.onclick=()=>{const k=th.dataset.k;S.catSort.dir=S.catSort.k===k?-S.catSort.dir:-1;S.catSort.k=k;renderCategories();});
-let t2;document.getElementById("itemSearch").addEventListener("input",e=>{clearTimeout(t2);t2=setTimeout(()=>{S.itemFilter.q=e.target.value.trim();S.itemFilter.page=0;renderItems();},140);});
-document.getElementById("statusPills").querySelectorAll("button").forEach(b=>b.onclick=()=>{
-  document.getElementById("statusPills").querySelectorAll("button").forEach(x=>x.classList.remove("active"));
-  b.classList.add("active");S.itemFilter.status=b.dataset.s;S.itemFilter.page=0;renderItems();});
-document.getElementById("itemCat").onchange=e=>{S.itemFilter.cat=e.target.value;S.itemFilter.page=0;renderItems();};
-document.getElementById("itemSort").onchange=e=>{S.itemFilter.sort=e.target.value;S.itemFilter.page=0;renderItems();};
-document.getElementById("prev").onclick=()=>{S.itemFilter.page--;renderItems();};
-document.getElementById("next").onclick=()=>{S.itemFilter.page++;renderItems();};
-document.getElementById("rangebar").querySelectorAll("button").forEach(b=>b.onclick=()=>{
-  document.getElementById("rangebar").querySelectorAll("button").forEach(x=>x.classList.remove("active"));
-  b.classList.add("active");S.range=+b.dataset.h;S.itemFilter.page=0;applyRange();
-  renderMonitor();renderCategories();renderItems();
-  if(document.getElementById("overtime").classList.contains("show"))renderOverTime();
-});
-boot();
-</script>
-</body>
-</html>
+def parse_end(s):
+    if not s:
+        return None
+    try:
+        return dt.datetime.fromisoformat(s.replace("Z", "+00:00"))
+    except Exception:
+        return None
+
+
+def has_bids(item):
+    """True if real bidding occurred: current bid rose above its first-seen level,
+    or a high bidder is present. bidCount is unreliable from the list API (always null)."""
+    cur = item.get("current_bid", 0) or 0
+    start = item.get("start_bid", cur)
+    peak = item.get("peak_bid", cur)
+    return peak > start or bool(item.get("high_bidder"))
+
+
+def classify(item, when):
+    """Why did this listing leave the active set? Uses its last-seen state.
+    The list API exposes no bid count, bidder, or sold flag, so:
+      - reserve auctions: reserve met at close => sold (near ground truth)
+      - no-reserve auctions: sold if the bid visibly rose (movement proxy).
+        Single bids at the opening price don't move currentBid, so no-reserve
+        sales are a known undercount; reserve auctions are reliable."""
+    end = parse_end(item.get("end_date"))
+    if end and end.tzinfo is None:
+        end = end.replace(tzinfo=dt.timezone.utc)
+    if end and end > when + dt.timedelta(hours=WINDOW_HOURS):
+        return "pulled"
+    if item.get("has_reserve"):
+        return "no_sale" if item.get("reserve_not_met") else "sold"
+    return "sold" if has_bids(item) else "no_sale"
+
+
+def diff(prev, curr):
+    when = now_utc()
+    p_items = prev.get("items", {}) if prev else {}
+    c_items = curr["items"]
+    p_ids, c_ids = set(p_items), set(c_items)
+
+    cats = {i["category"] for i in c_items.values()} | {i["category"] for i in p_items.values()}
+    keys = ["sold", "no_sale", "pulled", "new", "active_end", "sold_value", "active_value"]
+    by_cat = {c: {k: 0 for k in keys} for c in cats}
+
+    for cid, it in c_items.items():
+        b = by_cat[it["category"]]
+        b["active_end"] += 1
+        b["active_value"] += int(it.get("current_bid") or 0)
+        if cid not in p_ids:
+            b["new"] += 1
+
+    for pid in (p_ids - c_ids):
+        it = p_items[pid]
+        b = by_cat[it["category"]]
+        st = classify(it, when)
+        b[st] += 1
+        if st == "sold":
+            b["sold_value"] += int(it.get("current_bid") or 0)
+
+    totals = {k: sum(by_cat[c][k] for c in by_cat) for k in keys}
+    return by_cat, totals, sorted(cats)
+
+
+def build_closures(prev, curr, when):
+    """Item-level records for every listing that left the active set this window."""
+    p_items = prev.get("items", {}) if prev else {}
+    gone = set(p_items) - set(curr["items"])
+    recs = []
+    for pid in gone:
+        it = p_items[pid]
+        recs.append({
+            "id": pid,
+            "title": it.get("title", ""),
+            "category": it.get("category", "Uncategorized"),
+            "current_bid": it.get("current_bid", 0),
+            "bid_count": it.get("bid_count", 0),
+            "had_bids": has_bids(it),
+            "end_date": it.get("end_date"),
+            "has_reserve": it.get("has_reserve", False),
+            "reserve_not_met": it.get("reserve_not_met", False),
+            "status": classify(it, when),
+            "closed_at": when.isoformat(),
+        })
+    return recs
+
+
+def load(path, default):
+    if path.exists():
+        try:
+            return json.loads(path.read_text())
+        except Exception:
+            return default
+    return default
+
+
+def main():
+    print(f"GovDeals tracker · {now_utc().isoformat()}")
+    prev = load(SNAPSHOT_FILE, None)
+    curr, complete = fetch_all_active()
+    if not curr["items"]:
+        print("No items pulled — aborting without overwriting good data.")
+        return
+    if not complete:
+        print("Fetch was INCOMPLETE (a page failed mid-pagination). Skipping this "
+              "window so missing items aren't mis-counted as pulled. State untouched.")
+        return
+    if prev and prev.get("items") and len(curr["items"]) < 0.6 * len(prev["items"]):
+        print(f"Only fetched {len(curr['items'])} vs previous {len(prev['items'])} "
+              f"(<60%) — likely a partial pull. Skipping window. State untouched.")
+        return
+
+    # Carry each item's first-seen bid forward so we can detect real bidding
+    # (current bid rising above its starting level). bidCount is always null here.
+    prev_items = prev.get("items", {}) if prev else {}
+    for iid, it in curr["items"].items():
+        pit = prev_items.get(iid)
+        it["start_bid"] = pit.get("start_bid", pit.get("current_bid", it["current_bid"])) if pit else it["current_bid"]
+        it["peak_bid"] = max(it["current_bid"], pit.get("peak_bid", pit.get("current_bid", 0))) if pit else it["current_bid"]
+
+    hist = load(HISTORY_FILE, {"categories": [], "window_hours": WINDOW_HOURS, "windows": []})
+    hist.pop("_note", None)                      # drop the sample marker
+    hist["windows"] = [w for w in hist.get("windows", []) if "by_category" in w]
+
+    cats = sorted({i["category"] for i in curr["items"].values()})
+    closures = load(CLOSURES_FILE, {"last_updated": None, "closures": []})
+    if prev is None:
+        print("First run — baseline snapshot saved, no window emitted yet.")
+    else:
+        when = now_utc()
+        by_cat, totals, cats = diff(prev, curr)
+        hist["windows"].append({
+            "window_start": prev["captured_at"],
+            "window_end":   when.isoformat(),
+            "by_category":  by_cat,
+            "totals":       totals,
+        })
+        hist["windows"] = hist["windows"][-MAX_WINDOWS:]
+        recs = build_closures(prev, curr, when)
+        closures["closures"].extend(recs)
+        closures["closures"] = closures["closures"][-MAX_CLOSURES:]
+        print(f"Window closed: {totals['sold']} sold / {totals['no_sale']} no-sale "
+              f"/ {totals['pulled']} pulled / {totals['new']} new")
+
+    # union of categories ever seen, so the dashboard keeps a stable list
+    hist["categories"] = sorted(set(hist.get("categories", [])) | set(cats))
+    hist["window_hours"] = WINDOW_HOURS
+    hist["last_updated"] = now_utc().isoformat()
+
+    HISTORY_FILE.write_text(json.dumps(hist, indent=2))
+    SNAPSHOT_FILE.write_text(json.dumps(curr))
+    closures["last_updated"] = now_utc().isoformat()
+    CLOSURES_FILE.write_text(json.dumps(closures))
+    print(f"Wrote history.json + snapshot.json + closures.json "
+          f"({len(closures['closures'])} closures logged)")
+
+
+if __name__ == "__main__":
+    main()
