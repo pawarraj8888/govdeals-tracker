@@ -133,6 +133,21 @@
   .count{color:var(--muted);font-size:12px;margin-left:auto}
   .empty{text-align:center;color:var(--faint);padding:40px 0;font-size:13px}
   .loading{text-align:center;color:var(--muted);padding:60px 0;font-size:14px}
+
+  .info-btn{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--faint);font-size:10px;font-weight:700;font-style:italic;font-family:Georgia,serif;line-height:1;cursor:pointer;margin-left:7px;vertical-align:middle}
+  .info-btn:hover{color:var(--blue);border-color:var(--blue)}
+  .kpi{cursor:pointer}
+  .kpi .idot{position:absolute;top:8px;right:11px;color:var(--faint);font-size:11px;font-style:italic;font-family:Georgia,serif}
+  .kpi:hover .idot{color:var(--blue)}
+  .guide-btn{display:inline-flex;align-items:center;gap:6px;font-family:'Outfit',sans-serif;font-weight:700;font-size:12px;color:var(--blue);background:rgba(18,100,255,.08);border:1px solid rgba(18,100,255,.25);cursor:pointer;padding:9px 14px;border-radius:13px}
+  .guide-btn:hover{background:rgba(18,100,255,.14)}
+  .modal{position:fixed;inset:0;background:rgba(12,27,51,.42);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);display:none;align-items:center;justify-content:center;z-index:60;padding:20px}
+  .modal.show{display:flex;animation:rise .22s ease both}
+  .modal-card{background:rgba(255,255,255,.95);border:1px solid rgba(255,255,255,.9);box-shadow:0 24px 70px rgba(18,60,140,.28);border-radius:18px;max-width:470px;width:100%;padding:24px 24px 26px;position:relative}
+  .modal-card h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:18px;margin-bottom:10px;color:var(--ink);padding-right:26px}
+  .modal-card p{font-size:13.5px;line-height:1.7;color:var(--muted)}
+  .modal-x{position:absolute;top:13px;right:16px;background:none;border:none;font-size:24px;line-height:1;color:var(--faint);cursor:pointer}
+  .modal-x:hover{color:var(--ink)}
   @media(max-width:600px){
     .chart{height:240px}.chart.sm{height:220px}
     .card{padding:14px}.kpi{padding:12px 13px}
@@ -166,11 +181,14 @@
       <button data-tab="categories">Categories</button>
       <button data-tab="items">Items</button>
     </nav>
-    <div class="rangebar glass" id="rangebar">
-      <button data-h="24">24h</button>
-      <button data-h="168">7d</button>
-      <button data-h="720">30d</button>
-      <button data-h="0" class="active">All</button>
+    <div style="display:inline-flex;gap:10px;align-items:center">
+      <button class="guide-btn" data-info="about">&#9432; How to read this</button>
+      <div class="rangebar glass" id="rangebar">
+        <button data-h="24">24h</button>
+        <button data-h="168">7d</button>
+        <button data-h="720">30d</button>
+        <button data-h="0" class="active">All</button>
+      </div>
     </div>
   </div>
 
@@ -180,7 +198,7 @@
     <div class="kpis" id="kpis"></div>
     <div class="grid2">
       <div class="card glass">
-        <h2>Closures per window</h2>
+        <h2>Closures per window<button class="info-btn" data-info="c_closures">i</button></h2>
         <div class="hint">Stacked outcome of every auction that left the active set.</div>
         <div class="chart"><canvas id="cStack"></canvas></div>
         <div class="legend">
@@ -191,19 +209,19 @@
         </div>
       </div>
       <div class="card glass">
-        <h2>Sell-through rate</h2>
+        <h2>Sell-through rate<button class="info-btn" data-info="c_rate">i</button></h2>
         <div class="hint">Sold &divide; total closed, per window.</div>
         <div class="chart sm"><canvas id="cRate"></canvas></div>
       </div>
     </div>
     <div class="grid2 even">
       <div class="card glass">
-        <h2>GMV sold per window</h2>
+        <h2>GMV sold per window<button class="info-btn" data-info="c_gmv">i</button></h2>
         <div class="hint">Dollar value of items sold each window.</div>
         <div class="chart sm"><canvas id="cGMV"></canvas></div>
       </div>
       <div class="card glass">
-        <h2>Sold price distribution</h2>
+        <h2>Sold price distribution<button class="info-btn" data-info="c_dist">i</button></h2>
         <div class="hint">Where sold prices land (logged closures).</div>
         <div class="chart sm"><canvas id="cDist"></canvas></div>
         <div class="foot" id="distFoot"></div>
@@ -214,30 +232,30 @@
   <section id="overtime">
     <div class="grid2 even">
       <div class="card glass">
-        <h2>Cumulative GMV</h2>
+        <h2>Cumulative GMV<button class="info-btn" data-info="c_gmvcum">i</button></h2>
         <div class="hint">Running dollar value sold since tracking began.</div>
         <div class="chart"><canvas id="cGMVcum"></canvas></div>
       </div>
       <div class="card glass">
-        <h2>Average sale price</h2>
+        <h2>Average sale price<button class="info-btn" data-info="c_avg">i</button></h2>
         <div class="hint">Per-window mean hammer of sold items.</div>
         <div class="chart"><canvas id="cAvg"></canvas></div>
       </div>
     </div>
     <div class="grid2 even">
       <div class="card glass">
-        <h2>Outcomes over time</h2>
+        <h2>Outcomes over time<button class="info-btn" data-info="c_trend">i</button></h2>
         <div class="hint">Per-window sold / no-sale / pulled.</div>
         <div class="chart sm"><canvas id="cTrend"></canvas></div>
       </div>
       <div class="card glass">
-        <h2>Cumulative items sold</h2>
+        <h2>Cumulative items sold<button class="info-btn" data-info="c_cum">i</button></h2>
         <div class="hint">Running count since tracking began.</div>
         <div class="chart sm"><canvas id="cCum"></canvas></div>
       </div>
     </div>
     <div class="card glass">
-      <h2>Window log</h2>
+      <h2>Window log<button class="info-btn" data-info="c_wlog">i</button></h2>
       <div class="hint">Most recent windows first.</div>
       <div class="tablewrap"><table>
         <thead><tr><th>Window end (UTC)</th><th>Sold</th><th>GMV</th><th>No-sale</th><th>Pulled</th><th>New</th><th>Active</th><th>Sell-through</th></tr></thead>
@@ -421,21 +439,21 @@ function renderMonitor(){
   const avgWin=k.sold?k.sold_value/k.sold:m.avgPrice;
   const wnote=has?"this window":"awaiting first window";
   const cards=[
-    ["c-active","Active total",fmt(k.active_end),has?dd(k.active_end,kp.active_end)+" vs prev":"on platform now"],
-    ["c-sold","Sold (last window)",fmt(k.sold),wnote],
-    ["c-nosale","No-sale",fmt(k.no_sale),wnote],
-    ["c-pulled","Pulled",fmt(k.pulled),wnote],
-    ["c-new","Newly listed",fmt(k.new),wnote],
-    ["c-rate","Sell-through",rate+"%",wnote],
-    ["c-gmv","GMV sold (window)",moneyShort(k.sold_value),wnote],
-    ["c-cash","Avg sale price",moneyShort(avgWin),wnote],
-    ["c-cash","Active inv. value",moneyShort(k.active_value||0),"on platform now"],
-    ["c-new","Sell-through (trail)",Math.round(m.sellThrough*100)+"%","closed lots"],
-    ["c-rate","Reserve clears",(m.reserveClear==null?"\u2014":Math.round(m.reserveClear*100)+"%"),"reserved lots"],
-    ["c-active","Ending \u226424h",fmt(endingSoon(24)),"active auctions"]
+    ["c-active","Active total",fmt(k.active_end),has?dd(k.active_end,kp.active_end)+" vs prev":"on platform now","active"],
+    ["c-sold","Sold (last window)",fmt(k.sold),wnote,"sold_w"],
+    ["c-nosale","No-sale",fmt(k.no_sale),wnote,"nosale"],
+    ["c-pulled","Pulled",fmt(k.pulled),wnote,"pulled"],
+    ["c-new","Newly listed",fmt(k.new),wnote,"new"],
+    ["c-rate","Sell-through",rate+"%",wnote,"sellthrough"],
+    ["c-gmv","GMV sold (window)",moneyShort(k.sold_value),wnote,"gmv_w"],
+    ["c-cash","Avg sale price",moneyShort(avgWin),wnote,"avg_w"],
+    ["c-cash","Active inv. value",moneyShort(k.active_value||0),"on platform now","invval"],
+    ["c-new","Sell-through (trail)",Math.round(m.sellThrough*100)+"%","closed lots","sellthrough_t"],
+    ["c-rate","Reserve clears",(m.reserveClear==null?"\u2014":Math.round(m.reserveClear*100)+"%"),"reserved lots","reserve"],
+    ["c-active","Ending \u226424h",fmt(endingSoon(24)),"active auctions","ending"]
   ];
   document.getElementById("kpis").innerHTML=cards.map(a=>
-    '<div class="kpi glass '+a[0]+'"><div class="strip"></div><div class="lab">'+a[1]+'</div><div class="val num">'+a[2]+'</div><div class="d">'+a[3]+'</div></div>').join("");
+    '<div class="kpi glass '+a[0]+'" data-info="'+a[4]+'"><div class="strip"></div><div class="idot">&#9432;</div><div class="lab">'+a[1]+'</div><div class="val num">'+a[2]+'</div><div class="d">'+a[3]+'</div></div>').join("");
 
   const labels=labelsOf(Wc),ser=key=>Wc.map(w=>w.totals[key]);
   mkChart("cStack",{type:"bar",data:{labels,datasets:[
@@ -573,7 +591,50 @@ document.getElementById("rangebar").querySelectorAll("button").forEach(b=>b.oncl
   renderMonitor();renderCategories();renderItems();
   if(document.getElementById("overtime").classList.contains("show"))renderOverTime();
 });
+/* ---------- info / definitions ---------- */
+const DEFS={
+  about:{t:"How to read this dashboard",b:"This tracks the entire GovDeals marketplace, the auction platform run by Liquidity Services (NASDAQ: LQDT) where governments and companies sell surplus assets. Every hour the full set of live listings is snapshotted; a listing that disappears between snapshots is an auction that closed. Each closed auction is classified as <b>sold</b>, <b>no-sale</b>, or <b>pulled</b>.<br><br>Because the source hides bid counts, <b>sold is inferred</b>: a reserve auction counts as sold when its reserve was met; a no-reserve auction counts as sold when bidding moved the price above the opening bid. A single bid at the opening price on a no-reserve lot is invisible, so sold counts and GMV are a <b>conservative floor</b> — most reliable on reserve lots. A \u201cwindow\u201d is one hourly interval. Use the time-range buttons (24h / 7d / 30d / All) to rescope every number and chart. Click any tile or the \u24d8 on any chart for its definition."},
+  active:{t:"Active total",b:"Number of live auction listings on the platform right now, across all ~520 categories. This is the current size of the marketplace."},
+  sold_w:{t:"Sold (last window)",b:"Items that closed in the most recent hourly window and are inferred to have sold. Reserve lots: reserve was met. No-reserve lots: bidding rose above the opening price. A conservative floor \u2014 opening-price single-bid sales aren\u2019t visible."},
+  nosale:{t:"No-sale",b:"Auctions that closed without selling \u2014 either no qualifying bids, or a reserve price that was never met."},
+  pulled:{t:"Pulled",b:"Listings that vanished <i>before</i> their scheduled end date \u2014 i.e. withdrawn by the seller rather than sold or expired naturally."},
+  new:{t:"Newly listed",b:"Listings that appeared on the platform since the previous snapshot \u2014 the inflow of fresh inventory."},
+  sellthrough:{t:"Sell-through (window)",b:"Of everything that closed in this window, the share that sold: sold \u00f7 (sold + no-sale + pulled). A read on how well inventory is clearing."},
+  gmv_w:{t:"GMV sold (window)",b:"Gross merchandise value sold in the window \u2014 the summed final high bid of every item inferred sold. A conservative floor on platform revenue for the period (a late bid in an auction\u2019s final minutes can be missed)."},
+  avg_w:{t:"Average sale price",b:"GMV \u00f7 number of items sold, for the window \u2014 the mean hammer price."},
+  invval:{t:"Active inventory value",b:"Sum of current bids across every live listing right now \u2014 the dollar value of merchandise currently sitting on the platform."},
+  sellthrough_t:{t:"Sell-through (trailing)",b:"Sold \u00f7 all closed auctions across the full logged history (or the selected time range), not just one window \u2014 a smoother clearance rate."},
+  reserve:{t:"Reserve clears",b:"Among auctions carrying a hidden reserve price, the share where the reserve was met (so they sold). A clean demand-quality signal, since reserve outcomes are directly observable."},
+  ending:{t:"Ending \u226424h",b:"Live auctions scheduled to close within the next 24 hours \u2014 the near-term pipeline of closings to expect."},
+  c_closures:{t:"Closures per window",b:"For each hourly window, a stacked bar of how closed auctions resolved \u2014 sold / no-sale / pulled \u2014 with newly-listed inventory overlaid as a line."},
+  c_rate:{t:"Sell-through rate",b:"The share of closed auctions that sold, plotted over time. Rising = inventory clearing better."},
+  c_gmv:{t:"GMV sold per window",b:"Dollar value of items sold in each window over time \u2014 the revenue pulse of the marketplace."},
+  c_dist:{t:"Sold price distribution",b:"How sold items split across price bands (under $100, $100\u20131k, $1k\u201310k, $10k+) \u2014 shows whether GMV is driven by volume of small lots or a few large ones."},
+  c_gmvcum:{t:"Cumulative GMV",b:"Running total of dollars sold since tracking began, within the selected range."},
+  c_avg:{t:"Average sale price",b:"Mean sale price per window over time."},
+  c_trend:{t:"Outcomes over time",b:"Per-window sold, no-sale, and pulled counts as lines \u2014 the trend behind the stacked bars."},
+  c_cum:{t:"Cumulative items sold",b:"Running count of items sold since tracking began."},
+  c_wlog:{t:"Window log",b:"The raw table behind every chart \u2014 each hourly window with its sold, GMV, no-sale, pulled, new, active total, and sell-through. Most recent first."}
+};
+function openInfo(key){const d=DEFS[key];if(!d)return;document.getElementById("infoTitle").innerHTML=d.t;document.getElementById("infoBody").innerHTML=d.b;document.getElementById("infoModal").classList.add("show");}
+function closeInfo(){document.getElementById("infoModal").classList.remove("show");}
+document.addEventListener("click",function(e){
+  const t=e.target.closest("[data-info]");
+  if(t){openInfo(t.getAttribute("data-info"));return;}
+  if(e.target.closest(".modal-x")||e.target.id==="infoModal")closeInfo();
+});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeInfo();});
+
 boot();
 </script>
+
+<div id="infoModal" class="modal">
+  <div class="modal-card">
+    <button class="modal-x" aria-label="Close">&times;</button>
+    <h3 id="infoTitle"></h3>
+    <p id="infoBody"></p>
+  </div>
+</div>
+
 </body>
 </html>
