@@ -6,247 +6,465 @@
 <title>GovDeals Disposition Tracker</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
   :root{
-    --bg:#0a0c0f; --panel:#11151b; --panel2:#161b23; --line:#222b36;
-    --ink:#e7edf3; --dim:#8a97a6; --faint:#5a6675;
-    --amber:#ffb020; --amber-d:#9a6a12;
-    --sold:#22d39a; --nosale:#5a6675; --pulled:#ff6b5e; --new:#4aa8ff;
-    --grid:#1a212b;
+    --blue:#1264ff; --blue-d:#0a44b8; --blue-l:#5b9bff;
+    --ink:#0c1b33; --muted:#5a6b88; --faint:#8a99b5;
+    --sold:#00b27a; --nosale:#7b8aa5; --pulled:#ff5a4d; --listed:#1264ff; --new:#13b0c9;
+    --line:rgba(120,150,200,.22);
+    --glass:rgba(255,255,255,.55);
+    --glass-2:rgba(255,255,255,.72);
+    --radius:20px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
   body{
-    background:var(--bg); color:var(--ink);
-    font-family:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
-    font-size:13px; line-height:1.5;
-    background-image:
-      linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);
-    background-size:38px 38px;
+    font-family:'Plus Jakarta Sans',-apple-system,system-ui,sans-serif;
+    color:var(--ink); font-size:14px; line-height:1.5;
+    background:
+      radial-gradient(900px 600px at 12% -8%, rgba(91,155,255,.40), transparent 60%),
+      radial-gradient(800px 700px at 92% 4%, rgba(19,176,201,.30), transparent 55%),
+      radial-gradient(700px 700px at 70% 100%, rgba(18,100,255,.22), transparent 60%),
+      linear-gradient(160deg,#eaf1ff 0%, #f5f9ff 40%, #eef4ff 100%);
+    background-attachment:fixed;
     min-height:100vh;
   }
-  .wrap{max-width:1320px;margin:0 auto;padding:26px 20px 70px}
-  header{display:flex;justify-content:space-between;align-items:flex-end;
-    border-bottom:2px solid var(--amber);padding-bottom:14px;margin-bottom:6px;flex-wrap:wrap;gap:14px}
-  h1{font-family:'Archivo',sans-serif;font-weight:900;font-size:30px;letter-spacing:-.5px;line-height:1}
-  h1 .tag{color:var(--amber)}
-  .sub{color:var(--dim);font-size:11.5px;margin-top:7px;max-width:640px}
-  .meta{text-align:right;font-size:11px;color:var(--dim)}
-  .meta b{color:var(--ink)}
-  .badge{display:inline-block;background:var(--amber-d);color:#1a1206;font-weight:700;
-    padding:3px 8px;border-radius:3px;font-size:10px;letter-spacing:.5px;margin-top:6px}
-  .badge.live{background:var(--sold);color:#03150f}
-
-  .kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:22px 0}
-  .kpi{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 16px;position:relative;overflow:hidden}
-  .kpi:before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent,var(--amber))}
-  .kpi .lab{color:var(--dim);font-size:10px;letter-spacing:1px;text-transform:uppercase}
-  .kpi .val{font-family:'Archivo',sans-serif;font-weight:800;font-size:30px;margin-top:4px;line-height:1}
-  .kpi .delta{font-size:11px;margin-top:5px;color:var(--faint)}
-  .kpi.sold{--accent:var(--sold)} .kpi.sold .val{color:var(--sold)}
-  .kpi.new{--accent:var(--new)} .kpi.new .val{color:var(--new)}
-  .kpi.nosale{--accent:var(--nosale)}
-  .kpi.pulled{--accent:var(--pulled)} .kpi.pulled .val{color:var(--pulled)}
-  .kpi.active{--accent:var(--amber)} .kpi.active .val{color:var(--amber)}
-
-  .row{display:grid;grid-template-columns:1.55fr 1fr;gap:16px;margin-bottom:16px}
-  @media(max-width:980px){.row{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px}
-  .card h2{font-family:'Archivo',sans-serif;font-size:13px;font-weight:700;letter-spacing:.5px;
-    text-transform:uppercase;color:var(--ink);margin-bottom:2px}
-  .card .hint{color:var(--faint);font-size:10.5px;margin-bottom:12px}
-  .chart-box{position:relative;height:300px}
-  .chart-box.sm{height:260px}
-
-  .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:10.5px;color:var(--dim);margin-top:10px}
-  .legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:middle}
-
-  table{width:100%;border-collapse:collapse;font-size:11.5px}
-  th,td{text-align:right;padding:7px 8px;border-bottom:1px solid var(--grid)}
-  th{color:var(--faint);font-weight:500;text-transform:uppercase;font-size:9.5px;letter-spacing:.8px;
-    position:sticky;top:0;background:var(--panel)}
-  td:first-child,th:first-child{text-align:left}
-  tbody tr:hover{background:var(--panel2)}
-  .cat-name{color:var(--ink)}
+  .wrap{max-width:1280px;margin:0 auto;padding:26px 22px 80px}
   .num{font-variant-numeric:tabular-nums}
-  .s-sold{color:var(--sold)} .s-new{color:var(--new)} .s-pull{color:var(--pulled)} .s-dim{color:var(--dim)}
-  .bar{display:inline-block;height:6px;background:var(--sold);border-radius:2px;vertical-align:middle;margin-left:6px}
-  .table-scroll{max-height:430px;overflow-y:auto}
 
-  .controls{display:flex;gap:8px;align-items:center;margin:4px 0 2px;flex-wrap:wrap}
-  .controls label{color:var(--faint);font-size:10.5px}
-  select{background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:5px;
-    padding:5px 9px;font-family:inherit;font-size:11.5px}
-  .foot{color:var(--faint);font-size:10.5px;margin-top:24px;border-top:1px solid var(--line);padding-top:14px;line-height:1.7}
-  .foot code{color:var(--amber);background:var(--panel2);padding:1px 5px;border-radius:3px}
-  .pulse{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--sold);margin-right:6px;
-    box-shadow:0 0 0 0 rgba(34,211,154,.6);animation:p 2s infinite}
-  @keyframes p{0%{box-shadow:0 0 0 0 rgba(34,211,154,.5)}70%{box-shadow:0 0 0 7px rgba(34,211,154,0)}100%{box-shadow:0 0 0 0 rgba(34,211,154,0)}}
+  .glass{
+    background:var(--glass);
+    backdrop-filter:blur(22px) saturate(180%);
+    -webkit-backdrop-filter:blur(22px) saturate(180%);
+    border:1px solid rgba(255,255,255,.75);
+    box-shadow:0 8px 30px rgba(18,60,140,.10), inset 0 1px 0 rgba(255,255,255,.6);
+    border-radius:var(--radius);
+  }
+
+  header{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:18px}
+  h1{font-family:'Outfit',sans-serif;font-weight:800;font-size:30px;letter-spacing:-.6px;line-height:1.02;color:var(--ink)}
+  h1 b{color:var(--blue);font-weight:900}
+  .sub{color:var(--muted);font-size:12.5px;margin-top:7px;max-width:560px}
+  .hmeta{text-align:right;font-size:11.5px;color:var(--muted);line-height:1.7}
+  .hmeta b{color:var(--ink)}
+  .badge{display:inline-flex;align-items:center;gap:6px;padding:4px 11px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.3px}
+  .badge.live{background:rgba(0,178,122,.14);color:#018a5f;border:1px solid rgba(0,178,122,.35)}
+  .badge.sample{background:rgba(255,150,30,.16);color:#a8620a;border:1px solid rgba(255,150,30,.4)}
+  .dot{width:7px;height:7px;border-radius:50%;background:#00b27a}
+  .badge.sample .dot{background:#e7920a}
+
+  nav.tabs{display:inline-flex;gap:4px;padding:5px;margin-bottom:20px}
+  nav.tabs button{
+    font-family:'Outfit',sans-serif;font-weight:700;font-size:13px;letter-spacing:.2px;
+    color:var(--muted);background:transparent;border:none;cursor:pointer;
+    padding:9px 18px;border-radius:14px;transition:.18s;
+  }
+  nav.tabs button:hover{color:var(--ink)}
+  nav.tabs button.active{color:#fff;background:linear-gradient(180deg,var(--blue),var(--blue-d));
+    box-shadow:0 4px 14px rgba(18,100,255,.4)}
+
+  section{display:none;animation:rise .4s ease both}
+  section.show{display:block}
+  @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  .kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:13px;margin-bottom:18px}
+  @media(max-width:1000px){.kpis{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:560px){.kpis{grid-template-columns:repeat(2,1fr)}}
+  .kpi{padding:15px 16px;position:relative;overflow:hidden}
+  .kpi .lab{font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .kpi .val{font-family:'Outfit',sans-serif;font-weight:800;font-size:30px;line-height:1.05;margin-top:6px}
+  .kpi .d{font-size:11px;margin-top:5px;color:var(--faint)}
+  .kpi .strip{position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c,var(--blue))}
+  .c-sold{--c:var(--sold)} .c-sold .val{color:var(--sold)}
+  .c-nosale{--c:var(--nosale)}
+  .c-pulled{--c:var(--pulled)} .c-pulled .val{color:var(--pulled)}
+  .c-new{--c:var(--new)} .c-new .val{color:var(--new)}
+  .c-active{--c:var(--blue)} .c-active .val{color:var(--blue)}
+  .c-rate{--c:#7b5bff} .c-rate .val{color:#6a45e6}
+
+  .grid2{display:grid;grid-template-columns:1.5fr 1fr;gap:16px;margin-bottom:16px}
+  @media(max-width:920px){.grid2{grid-template-columns:1fr}}
+  .card{padding:18px}
+  .card h2{font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;color:var(--ink)}
+  .card .hint{color:var(--faint);font-size:11px;margin:3px 0 14px}
+  .chart{position:relative;height:300px}
+  .chart.sm{height:262px}
+  .legend{display:flex;gap:15px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-top:12px}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:middle}
+
+  .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+  .search{flex:1;min-width:220px;display:flex;align-items:center;gap:9px;padding:11px 15px}
+  .search input{border:none;background:transparent;outline:none;font-family:inherit;font-size:14px;color:var(--ink);width:100%}
+  .search svg{flex:none;opacity:.5}
+  select{font-family:inherit;font-size:12.5px;color:var(--ink);background:var(--glass-2);
+    border:1px solid rgba(255,255,255,.8);border-radius:13px;padding:10px 14px;cursor:pointer;outline:none}
+  .pills{display:inline-flex;gap:5px;padding:4px}
+  .pills button{font-family:inherit;font-weight:600;font-size:12px;color:var(--muted);background:transparent;
+    border:none;cursor:pointer;padding:7px 13px;border-radius:10px;transition:.15s}
+  .pills button.active{color:#fff;background:var(--blue)}
+  .pills button[data-s="Sold"].active{background:var(--sold)}
+  .pills button[data-s="No-sale"].active{background:var(--nosale)}
+  .pills button[data-s="Pulled"].active{background:var(--pulled)}
+  .pills button[data-s="Listed"].active{background:var(--listed)}
+
+  .tablewrap{padding:6px 4px}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th,td{text-align:right;padding:11px 13px;border-bottom:1px solid var(--line)}
+  th:first-child,td:first-child{text-align:left}
+  th{font-size:10px;letter-spacing:.6px;text-transform:uppercase;color:var(--faint);font-weight:700;white-space:nowrap}
+  th.sortable{cursor:pointer;user-select:none}
+  th.sortable:hover{color:var(--blue)}
+  tbody tr{transition:background .12s}
+  tbody tr:hover{background:rgba(120,160,255,.10)}
+  td a{color:var(--blue);text-decoration:none}
+  td a:hover{text-decoration:underline}
+  .cat-link{color:var(--ink);cursor:pointer}
+  .cat-link:hover{color:var(--blue)}
+  .st{display:inline-block;padding:3px 10px;border-radius:999px;font-size:10.5px;font-weight:700;letter-spacing:.2px}
+  .st.Sold{background:rgba(0,178,122,.15);color:#018a5f}
+  .st.Listed{background:rgba(18,100,255,.13);color:var(--blue-d)}
+  .st.Nosale{background:rgba(123,138,165,.18);color:#566480}
+  .st.Pulled{background:rgba(255,90,77,.15);color:#c43326}
+  .bar{display:inline-block;height:7px;border-radius:3px;background:var(--sold);vertical-align:middle;margin-left:8px}
+  .rate-cell{font-weight:700}
+  .pager{display:flex;justify-content:space-between;align-items:center;padding:14px 13px 6px;color:var(--muted);font-size:12px}
+  .pager button{font-family:inherit;background:var(--glass-2);border:1px solid rgba(255,255,255,.8);
+    border-radius:11px;padding:8px 16px;cursor:pointer;color:var(--ink);font-weight:600}
+  .pager button:disabled{opacity:.4;cursor:default}
+  .count{color:var(--muted);font-size:12px;margin-left:auto}
+  .empty{text-align:center;color:var(--faint);padding:40px 0;font-size:13px}
+  .loading{text-align:center;color:var(--muted);padding:60px 0;font-size:14px}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
     <div>
-      <h1>GOVDEALS <span class="tag">DISPOSITION TRACKER</span></h1>
-      <div class="sub">Snapshots the active listing set every 2 hours per category. Items that vanish between
-      snapshots = auctions that closed. Each close is classified <b style="color:var(--sold)">SOLD</b> /
-      <b style="color:var(--dim)">NO-SALE</b> / <b style="color:var(--pulled)">PULLED</b> using last-seen bid count and scheduled end time.</div>
+      <h1>GOVDEALS <b>DISPOSITION</b></h1>
+      <div class="sub">Every 2 hours the full active marketplace is snapshotted. Listings that vanish = auctions
+        that closed — classified sold / no-sale / pulled from last-seen bids, reserve, and end time. History accrues over time.</div>
     </div>
-    <div class="meta">
-      <div><span class="pulse"></span>WINDOW <b id="m-window">—</b></div>
-      <div>UPDATED <b id="m-updated">—</b></div>
+    <div class="hmeta">
       <div id="m-badge"></div>
+      <div>active now <b id="m-active" class="num">—</b></div>
+      <div>updated <b id="m-updated">—</b></div>
     </div>
   </header>
 
-  <div class="kpis" id="kpis"></div>
+  <nav class="tabs glass" id="tabs">
+    <button data-tab="monitor" class="active">Monitor</button>
+    <button data-tab="overtime">Over Time</button>
+    <button data-tab="categories">Categories</button>
+    <button data-tab="items">Items</button>
+  </nav>
 
-  <div class="row">
-    <div class="card">
-      <h2>Closures per 2-hour window</h2>
-      <div class="hint">Stacked outcome of every auction that left the active set, by window (UTC).</div>
-      <div class="chart-box"><canvas id="stackChart"></canvas></div>
-      <div class="legend">
-        <span><i style="background:var(--sold)"></i>Sold</span>
-        <span><i style="background:var(--nosale)"></i>No-sale</span>
-        <span><i style="background:var(--pulled)"></i>Pulled / withdrawn</span>
-        <span><i style="background:var(--new)"></i>Newly listed</span>
+  <div id="boot" class="loading glass" style="padding:60px">Loading data…</div>
+
+  <section id="monitor">
+    <div class="kpis" id="kpis"></div>
+    <div class="grid2">
+      <div class="card glass">
+        <h2>Closures per 2-hour window</h2>
+        <div class="hint">Stacked outcome of every auction that left the active set.</div>
+        <div class="chart"><canvas id="cStack"></canvas></div>
+        <div class="legend">
+          <span><i style="background:var(--sold)"></i>Sold</span>
+          <span><i style="background:var(--nosale)"></i>No-sale</span>
+          <span><i style="background:var(--pulled)"></i>Pulled</span>
+          <span><i style="background:var(--new)"></i>Newly listed</span>
+        </div>
+      </div>
+      <div class="card glass">
+        <h2>Sell-through rate</h2>
+        <div class="hint">Sold &divide; total closed, per window.</div>
+        <div class="chart sm"><canvas id="cRate"></canvas></div>
       </div>
     </div>
-    <div class="card">
-      <h2>Sell-through rate</h2>
-      <div class="hint">Sold &divide; total closed, trailing per window.</div>
-      <div class="chart-box sm"><canvas id="rateChart"></canvas></div>
-    </div>
-  </div>
+  </section>
 
-  <div class="row">
-    <div class="card">
-      <h2>Latest window by category</h2>
-      <div class="hint" id="cat-window-hint">Most recent 2-hour window.</div>
-      <div class="table-scroll">
-        <table>
-          <thead><tr>
-            <th>Category</th><th>Sold</th><th>No-sale</th><th>Pulled</th><th>New</th><th>Active</th>
-          </tr></thead>
-          <tbody id="catTable"></tbody>
-        </table>
+  <section id="overtime">
+    <div class="grid2">
+      <div class="card glass">
+        <h2>Cumulative items sold</h2>
+        <div class="hint">Running total since tracking began.</div>
+        <div class="chart"><canvas id="cCum"></canvas></div>
+      </div>
+      <div class="card glass">
+        <h2>Outcomes over time</h2>
+        <div class="hint">Per-window sold / no-sale / pulled.</div>
+        <div class="chart sm"><canvas id="cTrend"></canvas></div>
       </div>
     </div>
-    <div class="card">
-      <h2>Single category trend</h2>
-      <div class="controls">
-        <label>CATEGORY</label>
-        <select id="catSelect"></select>
-      </div>
-      <div class="chart-box sm" style="margin-top:8px"><canvas id="catChart"></canvas></div>
+    <div class="card glass">
+      <h2>Window log</h2>
+      <div class="hint">Most recent windows first.</div>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Window end (UTC)</th><th>Sold</th><th>No-sale</th><th>Pulled</th><th>New</th><th>Active</th><th>Sell-through</th></tr></thead>
+        <tbody id="windowLog"></tbody>
+      </table></div>
     </div>
-  </div>
+  </section>
 
-  <div class="foot" id="foot"></div>
+  <section id="categories">
+    <div class="controls">
+      <div class="search glass">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="catSearch" placeholder="Search categories...">
+      </div>
+      <span class="count" id="catCount"></span>
+    </div>
+    <div class="card glass">
+      <div class="tablewrap"><table>
+        <thead><tr>
+          <th class="sortable" data-k="category">Category</th>
+          <th class="sortable" data-k="active">Active now</th>
+          <th class="sortable" data-k="sold">Sold</th>
+          <th class="sortable" data-k="no_sale">No-sale</th>
+          <th class="sortable" data-k="pulled">Pulled</th>
+          <th class="sortable" data-k="rate">Sell-through</th>
+        </tr></thead>
+        <tbody id="catTable"></tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <section id="items">
+    <div class="controls">
+      <div class="search glass">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="itemSearch" placeholder="Search items by title...">
+      </div>
+      <div class="pills glass" id="statusPills">
+        <button data-s="" class="active">All</button>
+        <button data-s="Listed">Listed</button>
+        <button data-s="Sold">Sold</button>
+        <button data-s="No-sale">No-sale</button>
+        <button data-s="Pulled">Pulled</button>
+      </div>
+      <select id="itemCat"><option value="">All categories</option></select>
+      <select id="itemSort">
+        <option value="date">Newest</option>
+        <option value="bidhigh">Highest bid</option>
+        <option value="bidlow">Lowest bid</option>
+        <option value="bids">Most bids</option>
+      </select>
+    </div>
+    <div class="card glass">
+      <div class="tablewrap"><table>
+        <thead><tr><th>Item</th><th>Category</th><th>Current bid</th><th>Bids</th><th>End / Closed</th><th>Status</th></tr></thead>
+        <tbody id="itemTable"></tbody>
+      </table></div>
+      <div class="pager">
+        <button id="prev">&lsaquo; Prev</button>
+        <span id="pageInfo" class="num"></span>
+        <button id="next">Next &rsaquo;</button>
+      </div>
+    </div>
+  </section>
 </div>
 
 <script>
-const SAMPLE_DATA = {"last_updated": "2026-06-05T22:00:00Z", "categories": ["Vehicles & Watercraft", "Heavy Equipment", "Computers & Electronics", "Office Furniture", "Industrial Machinery", "Tools & Shop Equipment", "Facility Support Equipment", "Lab & Medical", "Apparel & Lots", "Real Estate", "Agricultural", "Public Safety & Fire"], "window_hours": 2, "windows": [{"window_start": "2026-06-02T22:00:00Z", "window_end": "2026-06-03T00:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 6, "no_sale": 2, "pulled": 3, "new": 12, "active_end": 1447}, "Heavy Equipment": {"sold": 3, "no_sale": 1, "pulled": 1, "new": 4, "active_end": 736}, "Computers & Electronics": {"sold": 4, "no_sale": 3, "pulled": 2, "new": 7, "active_end": 1735}, "Office Furniture": {"sold": 15, "no_sale": 4, "pulled": 5, "new": 24, "active_end": 2786}, "Industrial Machinery": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 2, "active_end": 318}, "Tools & Shop Equipment": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 1, "active_end": 415}, "Facility Support Equipment": {"sold": 14, "no_sale": 6, "pulled": 3, "new": 25, "active_end": 2316}, "Lab & Medical": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 2, "active_end": 505}, "Apparel & Lots": {"sold": 7, "no_sale": 4, "pulled": 3, "new": 13, "active_end": 1616}, "Real Estate": {"sold": 10, "no_sale": 6, "pulled": 3, "new": 18, "active_end": 2506}, "Agricultural": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 3, "active_end": 358}, "Public Safety & Fire": {"sold": 7, "no_sale": 5, "pulled": 1, "new": 13, "active_end": 2198}}, "totals": {"sold": 69, "no_sale": 31, "pulled": 25, "new": 124, "active_end": 16936}}, {"window_start": "2026-06-03T00:00:00Z", "window_end": "2026-06-03T02:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 1, "no_sale": 2, "pulled": 1, "new": 6, "active_end": 1449}, "Heavy Equipment": {"sold": 3, "no_sale": 1, "pulled": 2, "new": 2, "active_end": 732}, "Computers & Electronics": {"sold": 2, "no_sale": 2, "pulled": 2, "new": 6, "active_end": 1735}, "Office Furniture": {"sold": 8, "no_sale": 8, "pulled": 3, "new": 22, "active_end": 2789}, "Industrial Machinery": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 4, "active_end": 320}, "Tools & Shop Equipment": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 413}, "Facility Support Equipment": {"sold": 7, "no_sale": 3, "pulled": 3, "new": 15, "active_end": 2318}, "Lab & Medical": {"sold": 1, "no_sale": 1, "pulled": 1, "new": 6, "active_end": 508}, "Apparel & Lots": {"sold": 5, "no_sale": 3, "pulled": 2, "new": 10, "active_end": 1616}, "Real Estate": {"sold": 13, "no_sale": 7, "pulled": 2, "new": 24, "active_end": 2508}, "Agricultural": {"sold": 1, "no_sale": 1, "pulled": 1, "new": 2, "active_end": 357}, "Public Safety & Fire": {"sold": 12, "no_sale": 3, "pulled": 3, "new": 18, "active_end": 2198}}, "totals": {"sold": 55, "no_sale": 31, "pulled": 22, "new": 115, "active_end": 16943}}, {"window_start": "2026-06-03T02:00:00Z", "window_end": "2026-06-03T04:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 2, "no_sale": 1, "pulled": 1, "new": 2, "active_end": 1447}, "Heavy Equipment": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 732}, "Computers & Electronics": {"sold": 5, "no_sale": 3, "pulled": 1, "new": 5, "active_end": 1731}, "Office Furniture": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 1, "active_end": 2790}, "Industrial Machinery": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 320}, "Tools & Shop Equipment": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 413}, "Facility Support Equipment": {"sold": 4, "no_sale": 4, "pulled": 2, "new": 11, "active_end": 2319}, "Lab & Medical": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 508}, "Apparel & Lots": {"sold": 2, "no_sale": 1, "pulled": 1, "new": 5, "active_end": 1617}, "Real Estate": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 2507}, "Agricultural": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 356}, "Public Safety & Fire": {"sold": 3, "no_sale": 1, "pulled": 1, "new": 1, "active_end": 2194}}, "totals": {"sold": 16, "no_sale": 10, "pulled": 8, "new": 25, "active_end": 16934}}, {"window_start": "2026-06-03T04:00:00Z", "window_end": "2026-06-03T06:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 1446}, "Heavy Equipment": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 732}, "Computers & Electronics": {"sold": 2, "no_sale": 0, "pulled": 1, "new": 2, "active_end": 1730}, "Office Furniture": {"sold": 5, "no_sale": 3, "pulled": 2, "new": 9, "active_end": 2789}, "Industrial Machinery": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 320}, "Tools & Shop Equipment": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 413}, "Facility Support Equipment": {"sold": 3, "no_sale": 2, "pulled": 1, "new": 4, "active_end": 2317}, "Lab & Medical": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 1, "active_end": 507}, "Apparel & Lots": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 1616}, "Real Estate": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 4, "active_end": 2511}, "Agricultural": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 356}, "Public Safety & Fire": {"sold": 3, "no_sale": 0, "pulled": 1, "new": 4, "active_end": 2194}}, "totals": {"sold": 14, "no_sale": 5, "pulled": 8, "new": 24, "active_end": 16931}}, {"window_start": "2026-06-03T06:00:00Z", "window_end": "2026-06-03T08:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 1446}, "Heavy Equipment": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 731}, "Computers & Electronics": {"sold": 2, "no_sale": 0, "pulled": 1, "new": 2, "active_end": 1729}, "Office Furniture": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 2789}, "Industrial Machinery": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 320}, "Tools & Shop Equipment": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 413}, "Facility Support Equipment": {"sold": 4, "no_sale": 1, "pulled": 2, "new": 6, "active_end": 2316}, "Lab & Medical": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 506}, "Apparel & Lots": {"sold": 4, "no_sale": 4, "pulled": 1, "new": 13, "active_end": 1620}, "Real Estate": {"sold": 5, "no_sale": 3, "pulled": 1, "new": 9, "active_end": 2511}, "Agricultural": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 2, "active_end": 358}, "Public Safety & Fire": {"sold": 2, "no_sale": 1, "pulled": 1, "new": 0, "active_end": 2190}}, "totals": {"sold": 17, "no_sale": 9, "pulled": 8, "new": 32, "active_end": 16929}}, {"window_start": "2026-06-03T08:00:00Z", "window_end": "2026-06-03T10:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 1446}, "Heavy Equipment": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 3, "active_end": 732}, "Computers & Electronics": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 1729}, "Office Furniture": {"sold": 1, "no_sale": 2, "pulled": 1, "new": 3, "active_end": 2788}, "Industrial Machinery": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 320}, "Tools & Shop Equipment": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 1, "active_end": 413}, "Facility Support Equipment": {"sold": 2, "no_sale": 1, "pulled": 1, "new": 4, "active_end": 2316}, "Lab & Medical": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 4, "active_end": 510}, "Apparel & Lots": {"sold": 2, "no_sale": 0, "pulled": 1, "new": 5, "active_end": 1622}, "Real Estate": {"sold": 3, "no_sale": 1, "pulled": 1, "new": 7, "active_end": 2513}, "Agricultural": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 356}, "Public Safety & Fire": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 2, "active_end": 2191}}, "totals": {"sold": 10, "no_sale": 4, "pulled": 8, "new": 29, "active_end": 16936}}, {"window_start": "2026-06-03T10:00:00Z", "window_end": "2026-06-03T12:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 1, "active_end": 1446}, "Heavy Equipment": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 730}, "Computers & Electronics": {"sold": 1, "no_sale": 1, "pulled": 1, "new": 4, "active_end": 1730}, "Office Furniture": {"sold": 8, "no_sale": 6, "pulled": 2, "new": 18, "active_end": 2790}, "Industrial Machinery": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 3, "active_end": 323}, "Tools & Shop Equipment": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 413}, "Facility Support Equipment": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 3, "active_end": 2317}, "Lab & Medical": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 510}, "Apparel & Lots": {"sold": 3, "no_sale": 1, "pulled": 1, "new": 4, "active_end": 1621}, "Real Estate": {"sold": 2, "no_sale": 1, "pulled": 1, "new": 8, "active_end": 2517}, "Agricultural": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 355}, "Public Safety & Fire": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 1, "active_end": 2192}}, "totals": {"sold": 16, "no_sale": 9, "pulled": 9, "new": 42, "active_end": 16944}}, {"window_start": "2026-06-03T12:00:00Z", "window_end": "2026-06-03T14:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 3, "active_end": 1447}, "Heavy Equipment": {"sold": 0, "no_sale": 1, "pulled": 1, "new": 1, "active_end": 729}, "Computers & Electronics": {"sold": 1, "no_sale": 1, "pulled": 1, "new": 5, "active_end": 1732}, "Office Furniture": {"sold": 5, "no_sale": 1, "pulled": 1, "new": 7, "active_end": 2790}, "Industrial Machinery": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 322}, "Tools & Shop Equipment": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 411}, "Facility Support Equipment": {"sold": 6, "no_sale": 2, "pulled": 3, "new": 10, "active_end": 2316}, "Lab & Medical": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 510}, "Apparel & Lots": {"sold": 1, "no_sale": 2, "pulled": 1, "new": 4, "active_end": 1621}, "Real Estate": {"sold": 5, "no_sale": 4, "pulled": 2, "new": 10, "active_end": 2516}, "Agricultural": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 355}, "Public Safety & Fire": {"sold": 7, "no_sale": 4, "pulled": 3, "new": 10, "active_end": 2188}}, "totals": {"sold": 27, "no_sale": 15, "pulled": 15, "new": 50, "active_end": 16937}}, {"window_start": "2026-06-03T14:00:00Z", "window_end": "2026-06-03T16:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 2, "no_sale": 0, "pulled": 1, "new": 4, "active_end": 1448}, "Heavy Equipment": {"sold": 3, "no_sale": 0, "pulled": 1, "new": 8, "active_end": 733}, "Computers & Electronics": {"sold": 5, "no_sale": 2, "pulled": 1, "new": 8, "active_end": 1732}, "Office Furniture": {"sold": 8, "no_sale": 4, "pulled": 2, "new": 15, "active_end": 2791}, "Industrial Machinery": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 321}, "Tools & Shop Equipment": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 2, "active_end": 412}, "Facility Support Equipment": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 5, "active_end": 2321}, "Lab & Medical": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 509}, "Apparel & Lots": {"sold": 3, "no_sale": 1, "pulled": 2, "new": 6, "active_end": 1621}, "Real Estate": {"sold": 4, "no_sale": 1, "pulled": 1, "new": 5, "active_end": 2515}, "Agricultural": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 355}, "Public Safety & Fire": {"sold": 10, "no_sale": 2, "pulled": 2, "new": 16, "active_end": 2190}}, "totals": {"sold": 35, "no_sale": 10, "pulled": 13, "new": 69, "active_end": 16948}}, {"window_start": "2026-06-03T16:00:00Z", "window_end": "2026-06-03T18:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 9, "no_sale": 4, "pulled": 1, "new": 12, "active_end": 1446}, "Heavy Equipment": {"sold": 2, "no_sale": 2, "pulled": 1, "new": 2, "active_end": 730}, "Computers & Electronics": {"sold": 10, "no_sale": 4, "pulled": 2, "new": 19, "active_end": 1735}, "Office Furniture": {"sold": 8, "no_sale": 4, "pulled": 1, "new": 14, "active_end": 2792}, "Industrial Machinery": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 319}, "Tools & Shop Equipment": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 410}, "Facility Support Equipment": {"sold": 7, "no_sale": 6, "pulled": 3, "new": 15, "active_end": 2320}, "Lab & Medical": {"sold": 2, "no_sale": 1, "pulled": 1, "new": 3, "active_end": 508}, "Apparel & Lots": {"sold": 8, "no_sale": 4, "pulled": 4, "new": 16, "active_end": 1621}, "Real Estate": {"sold": 12, "no_sale": 3, "pulled": 1, "new": 16, "active_end": 2515}, "Agricultural": {"sold": 2, "no_sale": 0, "pulled": 1, "new": 4, "active_end": 356}, "Public Safety & Fire": {"sold": 10, "no_sale": 7, "pulled": 2, "new": 15, "active_end": 2186}}, "totals": {"sold": 72, "no_sale": 35, "pulled": 19, "new": 116, "active_end": 16938}}, {"window_start": "2026-06-03T18:00:00Z", "window_end": "2026-06-03T20:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 6, "no_sale": 4, "pulled": 1, "new": 14, "active_end": 1449}, "Heavy Equipment": {"sold": 4, "no_sale": 2, "pulled": 2, "new": 10, "active_end": 732}, "Computers & Electronics": {"sold": 7, "no_sale": 2, "pulled": 2, "new": 10, "active_end": 1734}, "Office Furniture": {"sold": 9, "no_sale": 3, "pulled": 3, "new": 12, "active_end": 2789}, "Industrial Machinery": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 1, "active_end": 319}, "Tools & Shop Equipment": {"sold": 2, "no_sale": 0, "pulled": 1, "new": 5, "active_end": 412}, "Facility Support Equipment": {"sold": 7, "no_sale": 1, "pulled": 1, "new": 9, "active_end": 2320}, "Lab & Medical": {"sold": 1, "no_sale": 1, "pulled": 1, "new": 3, "active_end": 508}, "Apparel & Lots": {"sold": 11, "no_sale": 3, "pulled": 1, "new": 16, "active_end": 1622}, "Real Estate": {"sold": 7, "no_sale": 1, "pulled": 2, "new": 13, "active_end": 2518}, "Agricultural": {"sold": 1, "no_sale": 1, "pulled": 1, "new": 4, "active_end": 357}, "Public Safety & Fire": {"sold": 5, "no_sale": 3, "pulled": 3, "new": 9, "active_end": 2184}}, "totals": {"sold": 60, "no_sale": 21, "pulled": 19, "new": 106, "active_end": 16944}}, {"window_start": "2026-06-03T20:00:00Z", "window_end": "2026-06-03T22:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 5, "no_sale": 1, "pulled": 2, "new": 9, "active_end": 1450}, "Heavy Equipment": {"sold": 4, "no_sale": 1, "pulled": 2, "new": 11, "active_end": 736}, "Computers & Electronics": {"sold": 6, "no_sale": 3, "pulled": 3, "new": 10, "active_end": 1732}, "Office Furniture": {"sold": 10, "no_sale": 5, "pulled": 3, "new": 19, "active_end": 2790}, "Industrial Machinery": {"sold": 0, "no_sale": 1, "pulled": 1, "new": 1, "active_end": 318}, "Tools & Shop Equipment": {"sold": 1, "no_sale": 1, "pulled": 1, "new": 3, "active_end": 412}, "Facility Support Equipment": {"sold": 18, "no_sale": 6, "pulled": 2, "new": 28, "active_end": 2322}, "Lab & Medical": {"sold": 2, "no_sale": 0, "pulled": 1, "new": 3, "active_end": 508}, "Apparel & Lots": {"sold": 10, "no_sale": 4, "pulled": 3, "new": 21, "active_end": 1626}, "Real Estate": {"sold": 11, "no_sale": 4, "pulled": 5, "new": 16, "active_end": 2514}, "Agricultural": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 355}, "Public Safety & Fire": {"sold": 12, "no_sale": 2, "pulled": 2, "new": 17, "active_end": 2185}}, "totals": {"sold": 80, "no_sale": 28, "pulled": 26, "new": 138, "active_end": 16948}}, {"window_start": "2026-06-03T22:00:00Z", "window_end": "2026-06-04T00:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 6, "no_sale": 2, "pulled": 1, "new": 8, "active_end": 1449}, "Heavy Equipment": {"sold": 3, "no_sale": 2, "pulled": 2, "new": 5, "active_end": 734}, "Computers & Electronics": {"sold": 8, "no_sale": 3, "pulled": 1, "new": 13, "active_end": 1733}, "Office Furniture": {"sold": 10, "no_sale": 5, "pulled": 2, "new": 18, "active_end": 2791}, "Industrial Machinery": {"sold": 1, "no_sale": 1, "pulled": 1, "new": 5, "active_end": 320}, "Tools & Shop Equipment": {"sold": 1, "no_sale": 1, "pulled": 1, "new": 0, "active_end": 409}, "Facility Support Equipment": {"sold": 10, "no_sale": 4, "pulled": 3, "new": 15, "active_end": 2320}, "Lab & Medical": {"sold": 2, "no_sale": 1, "pulled": 1, "new": 6, "active_end": 510}, "Apparel & Lots": {"sold": 5, "no_sale": 5, "pulled": 2, "new": 10, "active_end": 1624}, "Real Estate": {"sold": 6, "no_sale": 3, "pulled": 3, "new": 14, "active_end": 2516}, "Agricultural": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 353}, "Public Safety & Fire": {"sold": 9, "no_sale": 4, "pulled": 1, "new": 12, "active_end": 2183}}, "totals": {"sold": 62, "no_sale": 31, "pulled": 19, "new": 106, "active_end": 16942}}, {"window_start": "2026-06-04T00:00:00Z", "window_end": "2026-06-04T02:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 8, "no_sale": 5, "pulled": 2, "new": 17, "active_end": 1451}, "Heavy Equipment": {"sold": 2, "no_sale": 1, "pulled": 1, "new": 4, "active_end": 734}, "Computers & Electronics": {"sold": 10, "no_sale": 4, "pulled": 1, "new": 16, "active_end": 1734}, "Office Furniture": {"sold": 12, "no_sale": 13, "pulled": 2, "new": 27, "active_end": 2791}, "Industrial Machinery": {"sold": 1, "no_sale": 1, "pulled": 1, "new": 1, "active_end": 318}, "Tools & Shop Equipment": {"sold": 1, "no_sale": 1, "pulled": 1, "new": 1, "active_end": 407}, "Facility Support Equipment": {"sold": 16, "no_sale": 6, "pulled": 2, "new": 26, "active_end": 2322}, "Lab & Medical": {"sold": 2, "no_sale": 1, "pulled": 1, "new": 3, "active_end": 509}, "Apparel & Lots": {"sold": 6, "no_sale": 7, "pulled": 2, "new": 17, "active_end": 1626}, "Real Estate": {"sold": 15, "no_sale": 6, "pulled": 4, "new": 24, "active_end": 2515}, "Agricultural": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 1, "active_end": 352}, "Public Safety & Fire": {"sold": 12, "no_sale": 2, "pulled": 3, "new": 18, "active_end": 2184}}, "totals": {"sold": 86, "no_sale": 47, "pulled": 21, "new": 155, "active_end": 16943}}, {"window_start": "2026-06-04T02:00:00Z", "window_end": "2026-06-04T04:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 1451}, "Heavy Equipment": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 732}, "Computers & Electronics": {"sold": 4, "no_sale": 1, "pulled": 2, "new": 7, "active_end": 1734}, "Office Furniture": {"sold": 6, "no_sale": 2, "pulled": 2, "new": 14, "active_end": 2795}, "Industrial Machinery": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 2, "active_end": 320}, "Tools & Shop Equipment": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 407}, "Facility Support Equipment": {"sold": 6, "no_sale": 1, "pulled": 2, "new": 9, "active_end": 2322}, "Lab & Medical": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 509}, "Apparel & Lots": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 1, "active_end": 1626}, "Real Estate": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 2515}, "Agricultural": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 351}, "Public Safety & Fire": {"sold": 3, "no_sale": 1, "pulled": 1, "new": 5, "active_end": 2184}}, "totals": {"sold": 20, "no_sale": 5, "pulled": 10, "new": 38, "active_end": 16946}}, {"window_start": "2026-06-04T04:00:00Z", "window_end": "2026-06-04T06:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 1449}, "Heavy Equipment": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 1, "active_end": 732}, "Computers & Electronics": {"sold": 3, "no_sale": 1, "pulled": 1, "new": 7, "active_end": 1736}, "Office Furniture": {"sold": 2, "no_sale": 0, "pulled": 1, "new": 6, "active_end": 2798}, "Industrial Machinery": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 320}, "Tools & Shop Equipment": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 2, "active_end": 409}, "Facility Support Equipment": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 2, "active_end": 2324}, "Lab & Medical": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 3, "active_end": 510}, "Apparel & Lots": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 1, "active_end": 1626}, "Real Estate": {"sold": 1, "no_sale": 1, "pulled": 1, "new": 1, "active_end": 2513}, "Agricultural": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 1, "active_end": 352}, "Public Safety & Fire": {"sold": 3, "no_sale": 1, "pulled": 1, "new": 5, "active_end": 2184}}, "totals": {"sold": 11, "no_sale": 3, "pulled": 8, "new": 29, "active_end": 16953}}, {"window_start": "2026-06-04T06:00:00Z", "window_end": "2026-06-04T08:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 4, "active_end": 1453}, "Heavy Equipment": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 732}, "Computers & Electronics": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 1736}, "Office Furniture": {"sold": 4, "no_sale": 2, "pulled": 1, "new": 6, "active_end": 2797}, "Industrial Machinery": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 320}, "Tools & Shop Equipment": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 2, "active_end": 410}, "Facility Support Equipment": {"sold": 1, "no_sale": 1, "pulled": 1, "new": 5, "active_end": 2326}, "Lab & Medical": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 509}, "Apparel & Lots": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 1626}, "Real Estate": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 2511}, "Agricultural": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 352}, "Public Safety & Fire": {"sold": 4, "no_sale": 1, "pulled": 1, "new": 8, "active_end": 2186}}, "totals": {"sold": 10, "no_sale": 4, "pulled": 6, "new": 25, "active_end": 16958}}, {"window_start": "2026-06-04T08:00:00Z", "window_end": "2026-06-04T10:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 2, "no_sale": 1, "pulled": 1, "new": 5, "active_end": 1454}, "Heavy Equipment": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 3, "active_end": 734}, "Computers & Electronics": {"sold": 2, "no_sale": 1, "pulled": 1, "new": 2, "active_end": 1734}, "Office Furniture": {"sold": 3, "no_sale": 1, "pulled": 2, "new": 7, "active_end": 2798}, "Industrial Machinery": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 1, "active_end": 321}, "Tools & Shop Equipment": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 1, "active_end": 410}, "Facility Support Equipment": {"sold": 2, "no_sale": 1, "pulled": 1, "new": 3, "active_end": 2325}, "Lab & Medical": {"sold": 1, "no_sale": 1, "pulled": 1, "new": 3, "active_end": 509}, "Apparel & Lots": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 2, "active_end": 1628}, "Real Estate": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 2511}, "Agricultural": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 352}, "Public Safety & Fire": {"sold": 2, "no_sale": 1, "pulled": 1, "new": 3, "active_end": 2185}}, "totals": {"sold": 12, "no_sale": 6, "pulled": 9, "new": 30, "active_end": 16961}}, {"window_start": "2026-06-04T10:00:00Z", "window_end": "2026-06-04T12:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 2, "active_end": 1454}, "Heavy Equipment": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 2, "active_end": 734}, "Computers & Electronics": {"sold": 3, "no_sale": 1, "pulled": 2, "new": 2, "active_end": 1730}, "Office Furniture": {"sold": 1, "no_sale": 2, "pulled": 1, "new": 3, "active_end": 2797}, "Industrial Machinery": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 321}, "Tools & Shop Equipment": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 3, "active_end": 412}, "Facility Support Equipment": {"sold": 2, "no_sale": 0, "pulled": 1, "new": 8, "active_end": 2330}, "Lab & Medical": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 3, "active_end": 510}, "Apparel & Lots": {"sold": 6, "no_sale": 2, "pulled": 1, "new": 9, "active_end": 1628}, "Real Estate": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 2, "active_end": 2512}, "Agricultural": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 1, "active_end": 352}, "Public Safety & Fire": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 2, "active_end": 2187}}, "totals": {"sold": 15, "no_sale": 5, "pulled": 11, "new": 37, "active_end": 16967}}, {"window_start": "2026-06-04T12:00:00Z", "window_end": "2026-06-04T14:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 3, "no_sale": 2, "pulled": 1, "new": 8, "active_end": 1456}, "Heavy Equipment": {"sold": 1, "no_sale": 1, "pulled": 1, "new": 1, "active_end": 732}, "Computers & Electronics": {"sold": 2, "no_sale": 1, "pulled": 2, "new": 6, "active_end": 1731}, "Office Furniture": {"sold": 4, "no_sale": 1, "pulled": 1, "new": 2, "active_end": 2793}, "Industrial Machinery": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 321}, "Tools & Shop Equipment": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 412}, "Facility Support Equipment": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 2329}, "Lab & Medical": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 510}, "Apparel & Lots": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 1, "active_end": 1627}, "Real Estate": {"sold": 3, "no_sale": 0, "pulled": 1, "new": 4, "active_end": 2512}, "Agricultural": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 4, "active_end": 355}, "Public Safety & Fire": {"sold": 1, "no_sale": 1, "pulled": 1, "new": 1, "active_end": 2185}}, "totals": {"sold": 15, "no_sale": 6, "pulled": 10, "new": 27, "active_end": 16963}}, {"window_start": "2026-06-04T14:00:00Z", "window_end": "2026-06-04T16:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 3, "no_sale": 1, "pulled": 2, "new": 3, "active_end": 1453}, "Heavy Equipment": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 3, "active_end": 734}, "Computers & Electronics": {"sold": 3, "no_sale": 0, "pulled": 1, "new": 4, "active_end": 1731}, "Office Furniture": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 2793}, "Industrial Machinery": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 321}, "Tools & Shop Equipment": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 2, "active_end": 414}, "Facility Support Equipment": {"sold": 5, "no_sale": 1, "pulled": 1, "new": 7, "active_end": 2329}, "Lab & Medical": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 509}, "Apparel & Lots": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 1627}, "Real Estate": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 2512}, "Agricultural": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 354}, "Public Safety & Fire": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 2183}}, "totals": {"sold": 12, "no_sale": 2, "pulled": 8, "new": 19, "active_end": 16960}}, {"window_start": "2026-06-04T16:00:00Z", "window_end": "2026-06-04T18:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 5, "no_sale": 2, "pulled": 2, "new": 8, "active_end": 1452}, "Heavy Equipment": {"sold": 3, "no_sale": 2, "pulled": 1, "new": 4, "active_end": 732}, "Computers & Electronics": {"sold": 5, "no_sale": 1, "pulled": 2, "new": 8, "active_end": 1731}, "Office Furniture": {"sold": 10, "no_sale": 6, "pulled": 2, "new": 19, "active_end": 2794}, "Industrial Machinery": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 3, "active_end": 322}, "Tools & Shop Equipment": {"sold": 0, "no_sale": 1, "pulled": 1, "new": 5, "active_end": 417}, "Facility Support Equipment": {"sold": 13, "no_sale": 6, "pulled": 3, "new": 21, "active_end": 2328}, "Lab & Medical": {"sold": 2, "no_sale": 1, "pulled": 1, "new": 3, "active_end": 508}, "Apparel & Lots": {"sold": 6, "no_sale": 3, "pulled": 2, "new": 9, "active_end": 1625}, "Real Estate": {"sold": 10, "no_sale": 6, "pulled": 5, "new": 22, "active_end": 2513}, "Agricultural": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 353}, "Public Safety & Fire": {"sold": 8, "no_sale": 3, "pulled": 1, "new": 17, "active_end": 2188}}, "totals": {"sold": 63, "no_sale": 31, "pulled": 22, "new": 119, "active_end": 16963}}, {"window_start": "2026-06-04T18:00:00Z", "window_end": "2026-06-04T20:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 9, "no_sale": 2, "pulled": 3, "new": 12, "active_end": 1450}, "Heavy Equipment": {"sold": 2, "no_sale": 1, "pulled": 1, "new": 6, "active_end": 734}, "Computers & Electronics": {"sold": 10, "no_sale": 3, "pulled": 3, "new": 17, "active_end": 1732}, "Office Furniture": {"sold": 14, "no_sale": 9, "pulled": 4, "new": 28, "active_end": 2795}, "Industrial Machinery": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 321}, "Tools & Shop Equipment": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 4, "active_end": 419}, "Facility Support Equipment": {"sold": 11, "no_sale": 4, "pulled": 4, "new": 16, "active_end": 2325}, "Lab & Medical": {"sold": 2, "no_sale": 1, "pulled": 1, "new": 6, "active_end": 510}, "Apparel & Lots": {"sold": 9, "no_sale": 3, "pulled": 1, "new": 13, "active_end": 1625}, "Real Estate": {"sold": 8, "no_sale": 3, "pulled": 2, "new": 11, "active_end": 2511}, "Agricultural": {"sold": 0, "no_sale": 1, "pulled": 1, "new": 2, "active_end": 353}, "Public Safety & Fire": {"sold": 9, "no_sale": 8, "pulled": 2, "new": 19, "active_end": 2188}}, "totals": {"sold": 75, "no_sale": 35, "pulled": 24, "new": 134, "active_end": 16963}}, {"window_start": "2026-06-04T20:00:00Z", "window_end": "2026-06-04T22:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 8, "no_sale": 2, "pulled": 3, "new": 14, "active_end": 1451}, "Heavy Equipment": {"sold": 1, "no_sale": 1, "pulled": 1, "new": 4, "active_end": 735}, "Computers & Electronics": {"sold": 4, "no_sale": 2, "pulled": 2, "new": 9, "active_end": 1733}, "Office Furniture": {"sold": 5, "no_sale": 2, "pulled": 1, "new": 3, "active_end": 2790}, "Industrial Machinery": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 320}, "Tools & Shop Equipment": {"sold": 2, "no_sale": 1, "pulled": 1, "new": 5, "active_end": 420}, "Facility Support Equipment": {"sold": 7, "no_sale": 7, "pulled": 2, "new": 19, "active_end": 2328}, "Lab & Medical": {"sold": 2, "no_sale": 1, "pulled": 2, "new": 2, "active_end": 507}, "Apparel & Lots": {"sold": 5, "no_sale": 2, "pulled": 1, "new": 5, "active_end": 1622}, "Real Estate": {"sold": 16, "no_sale": 5, "pulled": 1, "new": 22, "active_end": 2511}, "Agricultural": {"sold": 1, "no_sale": 1, "pulled": 1, "new": 4, "active_end": 354}, "Public Safety & Fire": {"sold": 8, "no_sale": 7, "pulled": 2, "new": 16, "active_end": 2187}}, "totals": {"sold": 59, "no_sale": 31, "pulled": 18, "new": 103, "active_end": 16958}}, {"window_start": "2026-06-04T22:00:00Z", "window_end": "2026-06-05T00:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 7, "no_sale": 2, "pulled": 2, "new": 13, "active_end": 1453}, "Heavy Equipment": {"sold": 5, "no_sale": 1, "pulled": 1, "new": 3, "active_end": 731}, "Computers & Electronics": {"sold": 5, "no_sale": 2, "pulled": 2, "new": 8, "active_end": 1732}, "Office Furniture": {"sold": 17, "no_sale": 14, "pulled": 3, "new": 35, "active_end": 2791}, "Industrial Machinery": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 318}, "Tools & Shop Equipment": {"sold": 1, "no_sale": 1, "pulled": 1, "new": 3, "active_end": 420}, "Facility Support Equipment": {"sold": 16, "no_sale": 4, "pulled": 4, "new": 29, "active_end": 2333}, "Lab & Medical": {"sold": 1, "no_sale": 1, "pulled": 2, "new": 6, "active_end": 509}, "Apparel & Lots": {"sold": 12, "no_sale": 3, "pulled": 3, "new": 19, "active_end": 1623}, "Real Estate": {"sold": 16, "no_sale": 6, "pulled": 2, "new": 23, "active_end": 2510}, "Agricultural": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 352}, "Public Safety & Fire": {"sold": 12, "no_sale": 3, "pulled": 1, "new": 16, "active_end": 2187}}, "totals": {"sold": 94, "no_sale": 37, "pulled": 23, "new": 155, "active_end": 16959}}, {"window_start": "2026-06-05T00:00:00Z", "window_end": "2026-06-05T02:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 6, "no_sale": 3, "pulled": 1, "new": 9, "active_end": 1452}, "Heavy Equipment": {"sold": 2, "no_sale": 1, "pulled": 1, "new": 4, "active_end": 731}, "Computers & Electronics": {"sold": 6, "no_sale": 3, "pulled": 3, "new": 13, "active_end": 1733}, "Office Furniture": {"sold": 15, "no_sale": 6, "pulled": 1, "new": 22, "active_end": 2791}, "Industrial Machinery": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 316}, "Tools & Shop Equipment": {"sold": 1, "no_sale": 1, "pulled": 1, "new": 0, "active_end": 417}, "Facility Support Equipment": {"sold": 9, "no_sale": 8, "pulled": 4, "new": 22, "active_end": 2334}, "Lab & Medical": {"sold": 1, "no_sale": 1, "pulled": 1, "new": 0, "active_end": 506}, "Apparel & Lots": {"sold": 4, "no_sale": 3, "pulled": 1, "new": 9, "active_end": 1624}, "Real Estate": {"sold": 11, "no_sale": 9, "pulled": 3, "new": 24, "active_end": 2511}, "Agricultural": {"sold": 1, "no_sale": 1, "pulled": 1, "new": 0, "active_end": 349}, "Public Safety & Fire": {"sold": 5, "no_sale": 4, "pulled": 1, "new": 9, "active_end": 2186}}, "totals": {"sold": 62, "no_sale": 40, "pulled": 19, "new": 112, "active_end": 16950}}, {"window_start": "2026-06-05T02:00:00Z", "window_end": "2026-06-05T04:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 2, "no_sale": 2, "pulled": 1, "new": 4, "active_end": 1451}, "Heavy Equipment": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 730}, "Computers & Electronics": {"sold": 2, "no_sale": 3, "pulled": 1, "new": 7, "active_end": 1734}, "Office Furniture": {"sold": 7, "no_sale": 4, "pulled": 2, "new": 11, "active_end": 2789}, "Industrial Machinery": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 1, "active_end": 317}, "Tools & Shop Equipment": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 7, "active_end": 422}, "Facility Support Equipment": {"sold": 6, "no_sale": 2, "pulled": 1, "new": 11, "active_end": 2336}, "Lab & Medical": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 2, "active_end": 506}, "Apparel & Lots": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 1624}, "Real Estate": {"sold": 2, "no_sale": 1, "pulled": 1, "new": 2, "active_end": 2509}, "Agricultural": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 349}, "Public Safety & Fire": {"sold": 3, "no_sale": 1, "pulled": 1, "new": 1, "active_end": 2182}}, "totals": {"sold": 24, "no_sale": 13, "pulled": 10, "new": 46, "active_end": 16949}}, {"window_start": "2026-06-05T04:00:00Z", "window_end": "2026-06-05T06:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 4, "no_sale": 1, "pulled": 2, "new": 6, "active_end": 1450}, "Heavy Equipment": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 7, "active_end": 735}, "Computers & Electronics": {"sold": 4, "no_sale": 1, "pulled": 1, "new": 6, "active_end": 1734}, "Office Furniture": {"sold": 4, "no_sale": 2, "pulled": 2, "new": 9, "active_end": 2790}, "Industrial Machinery": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 317}, "Tools & Shop Equipment": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 421}, "Facility Support Equipment": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 2, "active_end": 2336}, "Lab & Medical": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 1, "active_end": 506}, "Apparel & Lots": {"sold": 2, "no_sale": 1, "pulled": 1, "new": 7, "active_end": 1627}, "Real Estate": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 2509}, "Agricultural": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 348}, "Public Safety & Fire": {"sold": 3, "no_sale": 1, "pulled": 2, "new": 7, "active_end": 2183}}, "totals": {"sold": 19, "no_sale": 6, "pulled": 13, "new": 45, "active_end": 16956}}, {"window_start": "2026-06-05T06:00:00Z", "window_end": "2026-06-05T08:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 1449}, "Heavy Equipment": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 734}, "Computers & Electronics": {"sold": 6, "no_sale": 3, "pulled": 1, "new": 10, "active_end": 1734}, "Office Furniture": {"sold": 7, "no_sale": 3, "pulled": 4, "new": 11, "active_end": 2787}, "Industrial Machinery": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 316}, "Tools & Shop Equipment": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 4, "active_end": 424}, "Facility Support Equipment": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 3, "active_end": 2339}, "Lab & Medical": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 1, "active_end": 506}, "Apparel & Lots": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 2, "active_end": 1629}, "Real Estate": {"sold": 6, "no_sale": 1, "pulled": 1, "new": 10, "active_end": 2511}, "Agricultural": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 348}, "Public Safety & Fire": {"sold": 4, "no_sale": 1, "pulled": 1, "new": 6, "active_end": 2183}}, "totals": {"sold": 23, "no_sale": 8, "pulled": 12, "new": 47, "active_end": 16960}}, {"window_start": "2026-06-05T08:00:00Z", "window_end": "2026-06-05T10:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 1448}, "Heavy Equipment": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 2, "active_end": 736}, "Computers & Electronics": {"sold": 3, "no_sale": 3, "pulled": 1, "new": 6, "active_end": 1733}, "Office Furniture": {"sold": 7, "no_sale": 6, "pulled": 2, "new": 16, "active_end": 2788}, "Industrial Machinery": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 316}, "Tools & Shop Equipment": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 423}, "Facility Support Equipment": {"sold": 3, "no_sale": 1, "pulled": 1, "new": 2, "active_end": 2336}, "Lab & Medical": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 505}, "Apparel & Lots": {"sold": 4, "no_sale": 3, "pulled": 1, "new": 7, "active_end": 1628}, "Real Estate": {"sold": 4, "no_sale": 1, "pulled": 2, "new": 5, "active_end": 2509}, "Agricultural": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 348}, "Public Safety & Fire": {"sold": 4, "no_sale": 1, "pulled": 2, "new": 8, "active_end": 2184}}, "totals": {"sold": 25, "no_sale": 15, "pulled": 12, "new": 46, "active_end": 16954}}, {"window_start": "2026-06-05T10:00:00Z", "window_end": "2026-06-05T12:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 1447}, "Heavy Equipment": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 2, "active_end": 738}, "Computers & Electronics": {"sold": 3, "no_sale": 2, "pulled": 1, "new": 6, "active_end": 1733}, "Office Furniture": {"sold": 4, "no_sale": 3, "pulled": 1, "new": 7, "active_end": 2787}, "Industrial Machinery": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 1, "active_end": 317}, "Tools & Shop Equipment": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 423}, "Facility Support Equipment": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 2336}, "Lab & Medical": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 1, "active_end": 505}, "Apparel & Lots": {"sold": 2, "no_sale": 2, "pulled": 1, "new": 5, "active_end": 1628}, "Real Estate": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 2509}, "Agricultural": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 348}, "Public Safety & Fire": {"sold": 2, "no_sale": 1, "pulled": 1, "new": 2, "active_end": 2182}}, "totals": {"sold": 11, "no_sale": 8, "pulled": 6, "new": 24, "active_end": 16953}}, {"window_start": "2026-06-05T12:00:00Z", "window_end": "2026-06-05T14:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 1447}, "Heavy Equipment": {"sold": 1, "no_sale": 1, "pulled": 1, "new": 3, "active_end": 738}, "Computers & Electronics": {"sold": 1, "no_sale": 1, "pulled": 1, "new": 2, "active_end": 1732}, "Office Furniture": {"sold": 7, "no_sale": 6, "pulled": 3, "new": 16, "active_end": 2787}, "Industrial Machinery": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 317}, "Tools & Shop Equipment": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 1, "active_end": 423}, "Facility Support Equipment": {"sold": 4, "no_sale": 1, "pulled": 1, "new": 3, "active_end": 2333}, "Lab & Medical": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 1, "active_end": 506}, "Apparel & Lots": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 2, "active_end": 1629}, "Real Estate": {"sold": 4, "no_sale": 3, "pulled": 2, "new": 7, "active_end": 2507}, "Agricultural": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 1, "active_end": 348}, "Public Safety & Fire": {"sold": 4, "no_sale": 1, "pulled": 1, "new": 5, "active_end": 2181}}, "totals": {"sold": 21, "no_sale": 13, "pulled": 12, "new": 41, "active_end": 16948}}, {"window_start": "2026-06-05T14:00:00Z", "window_end": "2026-06-05T16:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 1447}, "Heavy Equipment": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 2, "active_end": 738}, "Computers & Electronics": {"sold": 2, "no_sale": 1, "pulled": 1, "new": 3, "active_end": 1731}, "Office Furniture": {"sold": 2, "no_sale": 1, "pulled": 1, "new": 4, "active_end": 2787}, "Industrial Machinery": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 317}, "Tools & Shop Equipment": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 423}, "Facility Support Equipment": {"sold": 2, "no_sale": 0, "pulled": 1, "new": 3, "active_end": 2333}, "Lab & Medical": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 505}, "Apparel & Lots": {"sold": 2, "no_sale": 1, "pulled": 2, "new": 4, "active_end": 1628}, "Real Estate": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 2507}, "Agricultural": {"sold": 0, "no_sale": 0, "pulled": 0, "new": 0, "active_end": 348}, "Public Safety & Fire": {"sold": 1, "no_sale": 1, "pulled": 1, "new": 1, "active_end": 2179}}, "totals": {"sold": 10, "no_sale": 4, "pulled": 8, "new": 17, "active_end": 16943}}, {"window_start": "2026-06-05T16:00:00Z", "window_end": "2026-06-05T18:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 2, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 1444}, "Heavy Equipment": {"sold": 2, "no_sale": 2, "pulled": 1, "new": 2, "active_end": 735}, "Computers & Electronics": {"sold": 9, "no_sale": 3, "pulled": 4, "new": 14, "active_end": 1729}, "Office Furniture": {"sold": 8, "no_sale": 2, "pulled": 2, "new": 7, "active_end": 2782}, "Industrial Machinery": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 3, "active_end": 318}, "Tools & Shop Equipment": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 2, "active_end": 424}, "Facility Support Equipment": {"sold": 8, "no_sale": 7, "pulled": 2, "new": 14, "active_end": 2330}, "Lab & Medical": {"sold": 1, "no_sale": 1, "pulled": 1, "new": 5, "active_end": 507}, "Apparel & Lots": {"sold": 7, "no_sale": 5, "pulled": 5, "new": 14, "active_end": 1625}, "Real Estate": {"sold": 18, "no_sale": 7, "pulled": 3, "new": 30, "active_end": 2509}, "Agricultural": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 3, "active_end": 349}, "Public Safety & Fire": {"sold": 10, "no_sale": 7, "pulled": 2, "new": 17, "active_end": 2177}}, "totals": {"sold": 67, "no_sale": 34, "pulled": 24, "new": 111, "active_end": 16929}}, {"window_start": "2026-06-05T18:00:00Z", "window_end": "2026-06-05T20:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 5, "no_sale": 4, "pulled": 1, "new": 7, "active_end": 1441}, "Heavy Equipment": {"sold": 4, "no_sale": 3, "pulled": 1, "new": 11, "active_end": 738}, "Computers & Electronics": {"sold": 3, "no_sale": 1, "pulled": 2, "new": 6, "active_end": 1729}, "Office Furniture": {"sold": 10, "no_sale": 7, "pulled": 3, "new": 18, "active_end": 2780}, "Industrial Machinery": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 317}, "Tools & Shop Equipment": {"sold": 1, "no_sale": 1, "pulled": 1, "new": 2, "active_end": 423}, "Facility Support Equipment": {"sold": 3, "no_sale": 1, "pulled": 2, "new": 3, "active_end": 2327}, "Lab & Medical": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 4, "active_end": 509}, "Apparel & Lots": {"sold": 5, "no_sale": 3, "pulled": 3, "new": 9, "active_end": 1623}, "Real Estate": {"sold": 18, "no_sale": 4, "pulled": 4, "new": 24, "active_end": 2507}, "Agricultural": {"sold": 2, "no_sale": 0, "pulled": 1, "new": 6, "active_end": 352}, "Public Safety & Fire": {"sold": 14, "no_sale": 7, "pulled": 2, "new": 22, "active_end": 2176}}, "totals": {"sold": 66, "no_sale": 31, "pulled": 22, "new": 112, "active_end": 16922}}, {"window_start": "2026-06-05T20:00:00Z", "window_end": "2026-06-05T22:00:00Z", "by_category": {"Vehicles & Watercraft": {"sold": 4, "no_sale": 2, "pulled": 1, "new": 7, "active_end": 1441}, "Heavy Equipment": {"sold": 2, "no_sale": 0, "pulled": 1, "new": 5, "active_end": 740}, "Computers & Electronics": {"sold": 6, "no_sale": 4, "pulled": 2, "new": 12, "active_end": 1729}, "Office Furniture": {"sold": 12, "no_sale": 9, "pulled": 6, "new": 26, "active_end": 2779}, "Industrial Machinery": {"sold": 0, "no_sale": 0, "pulled": 1, "new": 0, "active_end": 316}, "Tools & Shop Equipment": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 3, "active_end": 424}, "Facility Support Equipment": {"sold": 7, "no_sale": 4, "pulled": 3, "new": 16, "active_end": 2329}, "Lab & Medical": {"sold": 2, "no_sale": 2, "pulled": 1, "new": 7, "active_end": 511}, "Apparel & Lots": {"sold": 5, "no_sale": 1, "pulled": 2, "new": 10, "active_end": 1625}, "Real Estate": {"sold": 16, "no_sale": 4, "pulled": 3, "new": 22, "active_end": 2506}, "Agricultural": {"sold": 1, "no_sale": 0, "pulled": 1, "new": 2, "active_end": 352}, "Public Safety & Fire": {"sold": 7, "no_sale": 4, "pulled": 4, "new": 17, "active_end": 2178}}, "totals": {"sold": 63, "no_sale": 30, "pulled": 26, "new": 127, "active_end": 16930}}], "_note": "SAMPLE DATA for layout preview. Replaced by live data on first GitHub Actions run."};
-</script>
-<script>
-(async function(){
-  let DATA = SAMPLE_DATA, isLive = false;
-  try{
-    const r = await fetch('history.json', {cache:'no-store'});
-    if(r.ok){ const j = await r.json(); if(j && j.windows && j.windows.length){ DATA = j; isLive = true; } }
-  }catch(e){ /* offline / artifact preview -> use embedded sample */ }
+/* ---------- compact embedded SAMPLE (preview only; real files override) ---------- */
+const SAMPLE_HISTORY = (function(){ const cats=["Excavators","Cars & Trucks","Office Furniture","Computers","Lab Equipment","Real Estate"];
+  const w=[]; let act=300; const now=Date.UTC(2026,5,8,2);
+  for(let i=12;i>0;i--){const e=new Date(now-2*3600e3*(i-1));const by={};let s=0,n=0,p=0,nw=0;
+    cats.forEach(c=>{const so=Math.floor(Math.random()*6)+1,ns=Math.floor(Math.random()*4),pu=Math.floor(Math.random()*2),ne=Math.floor(Math.random()*7);
+      by[c]={sold:so,no_sale:ns,pulled:pu,new:ne,active_end:50+Math.floor(Math.random()*40)};s+=so;n+=ns;p+=pu;nw+=ne;});
+    act+=nw-(s+n+p);
+    w.push({window_start:new Date(e-2*3600e3).toISOString(),window_end:e.toISOString(),by_category:by,totals:{sold:s,no_sale:n,pulled:p,new:nw,active_end:act}});}
+  return {categories:cats,window_hours:2,windows:w,last_updated:new Date(now).toISOString(),_note:"SAMPLE DATA"};})();
+const SAMPLE_SNAPSHOT=(function(){const cats=SAMPLE_HISTORY.categories;const items={};const titles=["John Deere Excavator","Ford F-150","Herman Miller Chair","Dell OptiPlex Lot","Microscope Set","2-Acre Parcel","Utility Trailer","HP Laptop Cart","Steel Shelving","Toyota Forklift"];
+  for(let i=0;i<28;i++){const id=(1000+i)+"-"+(200+i);items[id]={id,title:titles[i%titles.length]+" #"+i,category:cats[i%cats.length],current_bid:Math.floor(Math.random()*9000),bid_count:Math.floor(Math.random()*15),end_date:new Date(Date.UTC(2026,5,10+i%5,14)).toISOString(),has_reserve:i%3===0,reserve_not_met:i%4===0};}
+  return {captured_at:SAMPLE_HISTORY.last_updated,items};})();
+const SAMPLE_CLOSURES=(function(){const cats=SAMPLE_HISTORY.categories;const sts=["sold","no_sale","pulled"];const titles=["Surplus Generator","Police Sedan","Conference Table","Server Rack","Centrifuge","Storage Unit"];const cl=[];
+  for(let i=0;i<46;i++){const st=sts[i%3];cl.push({id:(3000+i)+"-"+(400+i),title:titles[i%titles.length]+" #"+i,category:cats[i%cats.length],current_bid:st==="sold"?Math.floor(Math.random()*12000)+200:0,bid_count:st==="sold"?Math.floor(Math.random()*20)+1:0,end_date:new Date(Date.UTC(2026,5,7,(i%12)*2)).toISOString(),status:st,closed_at:new Date(Date.UTC(2026,5,7+(i%2),(i%12)*2)).toISOString()});}
+  return {last_updated:SAMPLE_HISTORY.last_updated,closures:cl};})();
 
-  const fmt = n => (n==null?'—':n.toLocaleString('en-US'));
-  const cats = DATA.categories;
-  const W = DATA.windows;
-  const last = W[W.length-1], prev = W[W.length-2] || last;
-  const tEnd = new Date(last.window_end);
-  const hhmm = d => d.toISOString().slice(5,16).replace('T',' ')+'Z';
+/* ---------- state ---------- */
+const S={hist:null,snap:null,clo:null,live:false,items:[],cats:[],
+  itemFilter:{q:"",status:"",cat:"",sort:"date",page:0},catSort:{k:"sold",dir:-1},catQ:""};
+const PAGE=50;
+const fmt=n=>n==null?"\u2014":Number(n).toLocaleString("en-US");
+const money=n=>n?"$"+Number(n).toLocaleString("en-US"):"\u2014";
+const titleCase=s=>s==="no_sale"?"No-sale":s.charAt(0).toUpperCase()+s.slice(1);
+const dshort=s=>{if(!s)return"\u2014";const d=new Date(s);return isNaN(d)?"\u2014":d.toISOString().slice(0,16).replace("T"," ");};
+const assetUrl=id=>{const parts=String(id).split("-");const a=parts[0],b=parts[1];return b&&a?"https://www.govdeals.com/asset/"+b+"/"+a:"#";};
 
-  document.getElementById('m-window').textContent = hhmm(new Date(last.window_start))+' → '+tEnd.toISOString().slice(11,16)+'Z';
-  document.getElementById('m-updated').textContent = new Date(DATA.last_updated).toISOString().replace('T',' ').slice(0,16)+'Z';
-  document.getElementById('m-badge').innerHTML = isLive
-    ? '<span class="badge live">● LIVE DATA</span>'
-    : '<span class="badge">SAMPLE — deploy to populate</span>';
+async function getJSON(f){try{const r=await fetch(f,{cache:"no-store"});if(r.ok)return await r.json();}catch(e){}return null;}
 
-  // KPIs
-  const k = last.totals, kp = prev.totals;
-  const delta = (a,b)=>{const d=a-b; const s=d>0?'+':''; return s+d;};
-  const kpis = [
-    ['sold','Sold (last window)', k.sold, delta(k.sold,kp.sold)],
-    ['nosale','No-sale', k.no_sale, delta(k.no_sale,kp.no_sale)],
-    ['pulled','Pulled', k.pulled, delta(k.pulled,kp.pulled)],
-    ['new','Newly listed', k.new, delta(k.new,kp.new)],
-    ['active','Active total', k.active_end, delta(k.active_end,kp.active_end)],
+async function boot(){
+  const res=await Promise.all([getJSON("history.json"),getJSON("snapshot.json"),getJSON("closures.json")]);
+  const h=res[0],s=res[1],c=res[2];
+  const sampleH=!h||!h.windows||!h.windows.length||(h._note&&/sample/i.test(h._note));
+  S.hist=sampleH?SAMPLE_HISTORY:h;
+  S.snap=(s&&s.items)?s:SAMPLE_SNAPSHOT;
+  S.clo=(c&&c.closures)?c:SAMPLE_CLOSURES;
+  S.live=!sampleH;
+
+  const active=Object.values(S.snap.items||{}).map(it=>({...it,status:"Listed",when:it.end_date}));
+  const closed=(S.clo.closures||[]).map(it=>({...it,status:titleCase(it.status),when:it.closed_at}));
+  S.items=active.concat(closed);
+  S.cats=(S.hist.categories&&S.hist.categories.length)?S.hist.categories.slice()
+        :[...new Set(S.items.map(i=>i.category))].sort();
+
+  document.getElementById("boot").style.display="none";
+  document.getElementById("monitor").classList.add("show");
+  renderHeader();renderMonitor();renderCategories();initItems();
+}
+
+function renderHeader(){
+  const last=S.hist.windows[S.hist.windows.length-1];
+  const active=last?last.totals.active_end:Object.keys(S.snap.items||{}).length;
+  document.getElementById("m-active").textContent=fmt(active);
+  document.getElementById("m-updated").textContent=dshort(S.hist.last_updated)+"Z";
+  document.getElementById("m-badge").innerHTML=S.live
+    ?'<span class="badge live"><span class="dot"></span>LIVE DATA</span>'
+    :'<span class="badge sample"><span class="dot"></span>SAMPLE \u2014 deploy to populate</span>';
+}
+
+const baseScales=()=>({x:{grid:{color:"rgba(120,150,200,.16)"},ticks:{color:"#5a6b88",maxRotation:0,autoSkip:true,maxTicksLimit:8,font:{family:"Plus Jakarta Sans",size:10}}},
+  y:{grid:{color:"rgba(120,150,200,.16)"},ticks:{color:"#5a6b88",font:{family:"Plus Jakarta Sans",size:10}}}});
+const chartOpts=(yover)=>{const sc=baseScales();if(yover)sc.y=Object.assign(sc.y,yover);
+  return{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{padding:10,backgroundColor:"rgba(12,27,51,.92)",cornerRadius:10}},scales:sc};};
+let charts={};
+function mkChart(id,cfg){if(charts[id])charts[id].destroy();charts[id]=new Chart(document.getElementById(id),cfg);}
+
+function renderMonitor(){
+  const W=S.hist.windows,last=W[W.length-1],prev=W[W.length-2]||last;
+  const k=last.totals,kp=prev.totals;
+  const dd=(a,b)=>{const d=a-b;return(d>=0?"+":"")+d;};
+  const closed=k.sold+k.no_sale+k.pulled;const rate=closed?Math.round(100*k.sold/closed):0;
+  const cards=[
+    ["c-active","Active total",fmt(k.active_end),dd(k.active_end,kp.active_end)+" vs prev"],
+    ["c-sold","Sold (last window)",fmt(k.sold),dd(k.sold,kp.sold)+" vs prev"],
+    ["c-nosale","No-sale",fmt(k.no_sale),dd(k.no_sale,kp.no_sale)+" vs prev"],
+    ["c-pulled","Pulled",fmt(k.pulled),dd(k.pulled,kp.pulled)+" vs prev"],
+    ["c-new","Newly listed",fmt(k.new),dd(k.new,kp.new)+" vs prev"],
+    ["c-rate","Sell-through",rate+"%","this window"]
   ];
-  document.getElementById('kpis').innerHTML = kpis.map(([c,l,v,d])=>
-    `<div class="kpi ${c}"><div class="lab">${l}</div><div class="val num">${fmt(v)}</div>
-     <div class="delta">${d} vs prev window</div></div>`).join('');
+  document.getElementById("kpis").innerHTML=cards.map(a=>
+    '<div class="kpi glass '+a[0]+'"><div class="strip"></div><div class="lab">'+a[1]+'</div><div class="val num">'+a[2]+'</div><div class="d">'+a[3]+'</div></div>').join("");
 
-  const labels = W.map(w=>new Date(w.window_end).toISOString().slice(5,16).replace('T',' '));
-  const series = key => W.map(w=>w.totals[key]);
-  const gridc = '#1a212b', tickc = '#8a97a6';
-  const baseOpts = {responsive:true,maintainAspectRatio:false,
-    plugins:{legend:{display:false}},
-    scales:{x:{grid:{color:gridc},ticks:{color:tickc,maxRotation:0,autoSkip:true,maxTicksLimit:8,font:{family:'JetBrains Mono',size:9}}},
-            y:{grid:{color:gridc},ticks:{color:tickc,font:{family:'JetBrains Mono',size:9}}}}};
+  const labels=W.map(w=>new Date(w.window_end).toISOString().slice(5,16).replace("T"," "));
+  const ser=key=>W.map(w=>w.totals[key]);
+  mkChart("cStack",{type:"bar",data:{labels,datasets:[
+    {label:"Sold",data:ser("sold"),backgroundColor:"#00b27a",stack:"x",borderRadius:3},
+    {label:"No-sale",data:ser("no_sale"),backgroundColor:"#7b8aa5",stack:"x",borderRadius:3},
+    {label:"Pulled",data:ser("pulled"),backgroundColor:"#ff5a4d",stack:"x",borderRadius:3},
+    {label:"New",data:ser("new"),type:"line",borderColor:"#13b0c9",backgroundColor:"transparent",borderWidth:2,pointRadius:0,tension:.35}]},
+    options:(function(){const o=chartOpts();o.scales.x.stacked=true;o.scales.y.stacked=true;return o;})()});
+  const rate2=W.map(w=>{const c=w.totals.sold+w.totals.no_sale+w.totals.pulled;return c?+(100*w.totals.sold/c).toFixed(1):0;});
+  mkChart("cRate",{type:"line",data:{labels,datasets:[{data:rate2,borderColor:"#1264ff",
+    backgroundColor:"rgba(18,100,255,.12)",fill:true,borderWidth:2.5,pointRadius:0,tension:.35}]},
+    options:chartOpts({suggestedMin:0,suggestedMax:100,ticks:{callback:v=>v+"%",color:"#5a6b88",font:{family:"Plus Jakarta Sans",size:10}}})});
+}
 
-  new Chart(document.getElementById('stackChart'),{type:'bar',
-    data:{labels,datasets:[
-      {label:'Sold',data:series('sold'),backgroundColor:'#22d39a',stack:'c'},
-      {label:'No-sale',data:series('no_sale'),backgroundColor:'#5a6675',stack:'c'},
-      {label:'Pulled',data:series('pulled'),backgroundColor:'#ff6b5e',stack:'c'},
-      {label:'New',data:series('new'),type:'line',borderColor:'#4aa8ff',backgroundColor:'transparent',
-        borderWidth:1.5,pointRadius:0,tension:.3,yAxisID:'y'},
-    ]},
-    options:{...baseOpts,scales:{x:{...baseOpts.scales.x,stacked:true},y:{...baseOpts.scales.y,stacked:true}}}});
+function renderOverTime(){
+  const W=S.hist.windows;
+  const labels=W.map(w=>new Date(w.window_end).toISOString().slice(5,16).replace("T"," "));
+  let run=0;const cum=W.map(w=>{run+=w.totals.sold;return run;});
+  mkChart("cCum",{type:"line",data:{labels,datasets:[{data:cum,borderColor:"#00b27a",
+    backgroundColor:"rgba(0,178,122,.13)",fill:true,borderWidth:2.5,pointRadius:0,tension:.3}]},options:chartOpts()});
+  const ser=key=>W.map(w=>w.totals[key]);
+  mkChart("cTrend",{type:"line",data:{labels,datasets:[
+    {label:"Sold",data:ser("sold"),borderColor:"#00b27a",borderWidth:2,pointRadius:0,tension:.3,backgroundColor:"transparent"},
+    {label:"No-sale",data:ser("no_sale"),borderColor:"#7b8aa5",borderWidth:2,pointRadius:0,tension:.3,backgroundColor:"transparent"},
+    {label:"Pulled",data:ser("pulled"),borderColor:"#ff5a4d",borderWidth:2,pointRadius:0,tension:.3,backgroundColor:"transparent"}]},options:chartOpts()});
+  const rows=W.slice().reverse().map(w=>{const c=w.totals.sold+w.totals.no_sale+w.totals.pulled;const r=c?Math.round(100*w.totals.sold/c):0;
+    return '<tr><td>'+dshort(w.window_end)+'</td><td class="num" style="color:var(--sold)">'+w.totals.sold+'</td>'+
+      '<td class="num">'+w.totals.no_sale+'</td><td class="num" style="color:var(--pulled)">'+w.totals.pulled+'</td>'+
+      '<td class="num" style="color:var(--new)">'+w.totals.new+'</td><td class="num">'+fmt(w.totals.active_end)+'</td>'+
+      '<td class="num rate-cell">'+r+'%</td></tr>';}).join("");
+  document.getElementById("windowLog").innerHTML=rows||'<tr><td colspan="7" class="empty">No windows yet \u2014 first one appears after two runs.</td></tr>';
+}
 
-  const rate = W.map(w=>{const c=w.totals.sold+w.totals.no_sale+w.totals.pulled; return c?+(100*w.totals.sold/c).toFixed(1):0;});
-  new Chart(document.getElementById('rateChart'),{type:'line',
-    data:{labels,datasets:[{data:rate,borderColor:'#ffb020',backgroundColor:'rgba(255,176,32,.10)',
-      fill:true,borderWidth:2,pointRadius:0,tension:.35}]},
-    options:{...baseOpts,scales:{...baseOpts.scales,y:{...baseOpts.scales.y,suggestedMin:0,suggestedMax:100,
-      ticks:{...baseOpts.scales.y.ticks,callback:v=>v+'%'}}}}});
+function categoryRows(){
+  const map={};
+  S.cats.forEach(c=>map[c]={category:c,active:0,sold:0,no_sale:0,pulled:0});
+  Object.values(S.snap.items||{}).forEach(it=>{const c=it.category;(map[c]=map[c]||{category:c,active:0,sold:0,no_sale:0,pulled:0}).active++;});
+  (S.clo.closures||[]).forEach(it=>{const c=it.category;const m=(map[c]=map[c]||{category:c,active:0,sold:0,no_sale:0,pulled:0});
+    if(it.status==="sold")m.sold++;else if(it.status==="pulled")m.pulled++;else m.no_sale++;});
+  return Object.values(map).map(m=>{const cl=m.sold+m.no_sale+m.pulled;m.rate=cl?m.sold/cl:0;return m;});
+}
+function renderCategories(){
+  let rows=categoryRows();
+  if(S.catQ)rows=rows.filter(r=>r.category.toLowerCase().includes(S.catQ));
+  const k=S.catSort.k,dir=S.catSort.dir;
+  rows.sort((a,b)=>k==="category"?a.category.localeCompare(b.category)*dir:(a[k]-b[k])*dir);
+  const maxSold=Math.max(1,...rows.map(r=>r.sold));
+  document.getElementById("catCount").textContent=rows.length+" categories";
+  document.getElementById("catTable").innerHTML=rows.length?rows.map(r=>
+    '<tr><td><span class="cat-link" data-cat="'+r.category.replace(/"/g,"&quot;")+'">'+r.category+'</span>'+
+      '<span class="bar" style="width:'+Math.round(r.sold/maxSold*48)+'px"></span></td>'+
+      '<td class="num">'+fmt(r.active)+'</td><td class="num" style="color:var(--sold)">'+r.sold+'</td>'+
+      '<td class="num">'+r.no_sale+'</td><td class="num" style="color:var(--pulled)">'+r.pulled+'</td>'+
+      '<td class="num rate-cell">'+Math.round(r.rate*100)+'%</td></tr>').join("")
+    :'<tr><td colspan="6" class="empty">No categories match.</td></tr>';
+  document.querySelectorAll(".cat-link").forEach(el=>el.onclick=()=>{
+    S.itemFilter.cat=el.dataset.cat;S.itemFilter.page=0;document.getElementById("itemCat").value=el.dataset.cat;
+    switchTab("items");renderItems();});
+}
 
-  // category table (latest window) sorted by sold
-  const rows = cats.map(c=>({c,...last.by_category[c]})).sort((a,b)=>b.sold-a.sold);
-  const maxSold = Math.max(1,...rows.map(r=>r.sold));
-  document.getElementById('catTable').innerHTML = rows.map(r=>
-    `<tr><td class="cat-name">${r.c}<span class="bar" style="width:${(r.sold/maxSold*46)|0}px"></span></td>
-     <td class="num s-sold">${r.sold}</td><td class="num s-dim">${r.no_sale}</td>
-     <td class="num s-pull">${r.pulled}</td><td class="num s-new">${r.new}</td>
-     <td class="num">${fmt(r.active_end)}</td></tr>`).join('');
+function initItems(){
+  const sel=document.getElementById("itemCat");
+  sel.innerHTML='<option value="">All categories</option>'+S.cats.map(c=>'<option>'+c+'</option>').join("");
+  renderItems();
+}
+function filteredItems(){
+  const f=S.itemFilter;let r=S.items;
+  if(f.status)r=r.filter(i=>i.status===f.status);
+  if(f.cat)r=r.filter(i=>i.category===f.cat);
+  if(f.q){const q=f.q.toLowerCase();r=r.filter(i=>(i.title||"").toLowerCase().includes(q)||(i.category||"").toLowerCase().includes(q));}
+  if(f.sort==="date")r=r.slice().sort((a,b)=>new Date(b.when||0)-new Date(a.when||0));
+  else if(f.sort==="bidhigh")r=r.slice().sort((a,b)=>(b.current_bid||0)-(a.current_bid||0));
+  else if(f.sort==="bidlow")r=r.slice().sort((a,b)=>(a.current_bid||0)-(b.current_bid||0));
+  else if(f.sort==="bids")r=r.slice().sort((a,b)=>(b.bid_count||0)-(a.bid_count||0));
+  return r;
+}
+function renderItems(){
+  const r=filteredItems();const f=S.itemFilter;
+  const pages=Math.max(1,Math.ceil(r.length/PAGE));
+  if(f.page>=pages)f.page=pages-1;if(f.page<0)f.page=0;
+  const slice=r.slice(f.page*PAGE,f.page*PAGE+PAGE);
+  document.getElementById("itemTable").innerHTML=slice.length?slice.map(i=>{
+    const cls=i.status==="No-sale"?"Nosale":i.status;
+    const link=i.status==="Listed"?'<a href="'+assetUrl(i.id)+'" target="_blank" rel="noopener">'+(i.title||"(untitled)")+'</a>':(i.title||"(untitled)");
+    return '<tr><td>'+link+'</td><td>'+i.category+'</td><td class="num">'+money(i.current_bid)+'</td>'+
+      '<td class="num">'+(i.bid_count||0)+'</td><td class="num">'+dshort(i.when)+'</td>'+
+      '<td><span class="st '+cls+'">'+i.status+'</span></td></tr>';}).join("")
+    :'<tr><td colspan="6" class="empty">No items match your filters.</td></tr>';
+  document.getElementById("pageInfo").textContent=(r.length?f.page*PAGE+1:0)+"\u2013"+Math.min((f.page+1)*PAGE,r.length)+" of "+fmt(r.length);
+  document.getElementById("prev").disabled=f.page<=0;
+  document.getElementById("next").disabled=f.page>=pages-1;
+}
 
-  // single category trend
-  const sel = document.getElementById('catSelect');
-  sel.innerHTML = cats.map(c=>`<option>${c}</option>`).join('');
-  let catChart;
-  function drawCat(cat){
-    const sold = W.map(w=>w.by_category[cat].sold);
-    const closed = W.map(w=>{const b=w.by_category[cat]; return b.sold+b.no_sale+b.pulled;});
-    if(catChart) catChart.destroy();
-    catChart = new Chart(document.getElementById('catChart'),{type:'bar',
-      data:{labels,datasets:[
-        {label:'Sold',data:sold,backgroundColor:'#22d39a'},
-        {label:'Total closed',data:closed,type:'line',borderColor:'#ffb020',borderWidth:1.5,
-          pointRadius:0,tension:.3,backgroundColor:'transparent'},
-      ]},options:baseOpts});
-  }
-  sel.value = rows[0].c; drawCat(rows[0].c);
-  sel.addEventListener('change',e=>drawCat(e.target.value));
+function switchTab(name){
+  document.querySelectorAll("nav.tabs button").forEach(b=>b.classList.toggle("active",b.dataset.tab===name));
+  document.querySelectorAll("section").forEach(s=>s.classList.toggle("show",s.id===name));
+  if(name==="overtime")renderOverTime();
+  if(name==="monitor")renderMonitor();
+}
+document.querySelectorAll("nav.tabs button").forEach(b=>b.onclick=()=>switchTab(b.dataset.tab));
 
-  const grand = W.reduce((s,w)=>s+w.totals.sold,0);
-  document.getElementById('foot').innerHTML =
-    `Tracking <b>${cats.length}</b> categories across <b>${W.length}</b> windows · ${grand.toLocaleString()} sold items recorded.
-     Refresh cadence <code>0 */2 * * *</code> via GitHub Actions. ` +
-    (isLive?'Live feed active.':'Showing embedded sample — push the repo and the first scheduled run overwrites <code>history.json</code>.') +
-    `<br>Classification: vanished + last-seen bids &gt; 0 → <span class="s-sold">SOLD</span>; bids = 0 &amp; past end time → NO-SALE;
-     vanished before end time → <span class="s-pull">PULLED</span>. "Sold" is the close count, not cleared payment.`;
-})();
+let t1;document.getElementById("catSearch").addEventListener("input",e=>{clearTimeout(t1);
+  t1=setTimeout(()=>{S.catQ=e.target.value.trim().toLowerCase();renderCategories();},120);});
+document.querySelectorAll("#categories th.sortable").forEach(th=>th.onclick=()=>{
+  const k=th.dataset.k;S.catSort.dir=S.catSort.k===k?-S.catSort.dir:-1;S.catSort.k=k;renderCategories();});
+
+let t2;document.getElementById("itemSearch").addEventListener("input",e=>{clearTimeout(t2);
+  t2=setTimeout(()=>{S.itemFilter.q=e.target.value.trim();S.itemFilter.page=0;renderItems();},140);});
+document.getElementById("statusPills").querySelectorAll("button").forEach(b=>b.onclick=()=>{
+  document.getElementById("statusPills").querySelectorAll("button").forEach(x=>x.classList.remove("active"));
+  b.classList.add("active");S.itemFilter.status=b.dataset.s;S.itemFilter.page=0;renderItems();});
+document.getElementById("itemCat").onchange=e=>{S.itemFilter.cat=e.target.value;S.itemFilter.page=0;renderItems();};
+document.getElementById("itemSort").onchange=e=>{S.itemFilter.sort=e.target.value;S.itemFilter.page=0;renderItems();};
+document.getElementById("prev").onclick=()=>{S.itemFilter.page--;renderItems();};
+document.getElementById("next").onclick=()=>{S.itemFilter.page++;renderItems();};
+
+boot();
 </script>
 </body>
 </html>
