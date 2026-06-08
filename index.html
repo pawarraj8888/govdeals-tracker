@@ -30,13 +30,13 @@
       linear-gradient(160deg,#eaf1ff 0%, #f5f9ff 40%, #eef4ff 100%);
     background-attachment:fixed; min-height:100vh;
   }
-  .wrap{max-width:1280px;margin:0 auto;padding:26px 22px 80px}
+  .wrap{max-width:1280px;margin:0 auto;padding:clamp(16px,3vw,26px) clamp(12px,3vw,22px) 80px}
   .num{font-variant-numeric:tabular-nums}
   .glass{background:var(--glass);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);
     border:1px solid rgba(255,255,255,.75);box-shadow:0 8px 30px rgba(18,60,140,.10), inset 0 1px 0 rgba(255,255,255,.6);border-radius:var(--radius)}
 
   header{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:18px}
-  h1{font-family:'Outfit',sans-serif;font-weight:800;font-size:30px;letter-spacing:-.6px;line-height:1.02}
+  h1{font-family:'Outfit',sans-serif;font-weight:800;font-size:clamp(22px,4.6vw,30px);letter-spacing:-.6px;line-height:1.02}
   h1 b{color:var(--blue);font-weight:900}
   .sub{color:var(--muted);font-size:12.5px;margin-top:7px;max-width:560px}
   .hmeta{text-align:right;font-size:11.5px;color:var(--muted);line-height:1.7}
@@ -47,10 +47,14 @@
   .dot{width:7px;height:7px;border-radius:50%;background:#00b27a}
   .badge.sample .dot{background:#e7920a}
 
-  nav.tabs{display:inline-flex;gap:4px;padding:5px;margin-bottom:20px}
-  nav.tabs button{font-family:'Outfit',sans-serif;font-weight:700;font-size:13px;color:var(--muted);background:transparent;border:none;cursor:pointer;padding:9px 18px;border-radius:14px;transition:.18s}
+  .navrow{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+  nav.tabs{display:inline-flex;gap:4px;padding:5px;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  nav.tabs button{font-family:'Outfit',sans-serif;font-weight:700;font-size:13px;color:var(--muted);background:transparent;border:none;cursor:pointer;padding:9px 18px;border-radius:14px;transition:.18s;white-space:nowrap}
   nav.tabs button:hover{color:var(--ink)}
   nav.tabs button.active{color:#fff;background:linear-gradient(180deg,var(--blue),var(--blue-d));box-shadow:0 4px 14px rgba(18,100,255,.4)}
+  .rangebar{display:inline-flex;gap:3px;padding:4px}
+  .rangebar button{font-family:'Outfit',sans-serif;font-weight:700;font-size:11.5px;color:var(--muted);background:transparent;border:none;cursor:pointer;padding:8px 13px;border-radius:11px;transition:.15s;white-space:nowrap}
+  .rangebar button.active{color:#fff;background:var(--blue)}
 
   section{display:none;animation:rise .4s ease both}
   section.show{display:block}
@@ -129,6 +133,14 @@
   .count{color:var(--muted);font-size:12px;margin-left:auto}
   .empty{text-align:center;color:var(--faint);padding:40px 0;font-size:13px}
   .loading{text-align:center;color:var(--muted);padding:60px 0;font-size:14px}
+  @media(max-width:600px){
+    .chart{height:240px}.chart.sm{height:220px}
+    .card{padding:14px}.kpi{padding:12px 13px}
+    nav.tabs button{padding:8px 13px;font-size:12px}
+    header{align-items:flex-start}.hmeta{text-align:left}
+    h2{font-size:12px}
+    .summary{gap:14px;padding:12px 14px}
+  }
 </style>
 </head>
 <body>
@@ -146,12 +158,20 @@
     </div>
   </header>
 
-  <nav class="tabs glass" id="tabs">
-    <button data-tab="monitor" class="active">Monitor</button>
-    <button data-tab="overtime">Over Time</button>
-    <button data-tab="categories">Categories</button>
-    <button data-tab="items">Items</button>
-  </nav>
+  <div class="navrow">
+    <nav class="tabs glass" id="tabs">
+      <button data-tab="monitor" class="active">Monitor</button>
+      <button data-tab="overtime">Over Time</button>
+      <button data-tab="categories">Categories</button>
+      <button data-tab="items">Items</button>
+    </nav>
+    <div class="rangebar glass" id="rangebar">
+      <button data-h="24">24h</button>
+      <button data-h="168">7d</button>
+      <button data-h="720">30d</button>
+      <button data-h="0" class="active">All</button>
+    </div>
+  </div>
 
   <div id="boot" class="loading glass" style="padding:60px">Loading data…</div>
 
@@ -308,7 +328,7 @@ const SAMPLE_CLOSURES=(function(){const cats=SAMPLE_HISTORY.categories;const sts
   return{last_updated:SAMPLE_HISTORY.last_updated,closures:cl};})();
 
 /* ---------- state + helpers ---------- */
-const S={hist:null,snap:null,clo:null,live:false,items:[],cats:[],met:null,
+const S={hist:null,snap:null,clo:null,live:false,items:[],active:[],closed:[],cats:[],met:null,range:0,lastTs:0,
   itemFilter:{q:"",status:"",cat:"",sort:"date",page:0},catSort:{k:"gmv",dir:-1},catQ:""};
 const PAGE=50;
 const fmt=n=>n==null?"\u2014":Number(n).toLocaleString("en-US");
@@ -330,20 +350,28 @@ async function boot(){
   S.clo=(c&&c.closures)?c:SAMPLE_CLOSURES;
   S.live=!sampleH;
 
-  const active=Object.values(S.snap.items||{}).map(it=>({...it,status:"Listed",when:it.end_date}));
-  const closed=(S.clo.closures||[]).map(it=>({...it,status:titleCase(it.status),when:it.closed_at}));
-  S.items=active.concat(closed);
+  S.active=Object.values(S.snap.items||{}).map(it=>({...it,status:"Listed",when:it.end_date}));
+  S.closed=(S.clo.closures||[]).map(it=>({...it,status:titleCase(it.status),when:it.closed_at}));
   S.cats=(S.hist.categories&&S.hist.categories.length)?S.hist.categories.slice()
-        :[...new Set(S.items.map(i=>i.category))].sort();
-  S.met=computeMetrics();
+        :[...new Set(S.active.concat(S.closed).map(i=>i.category))].sort();
+  S.lastTs=new Date(S.hist.last_updated||Date.now()).getTime();
+  applyRange();
 
   document.getElementById("boot").style.display="none";
   document.getElementById("monitor").classList.add("show");
   renderHeader();renderMonitor();renderCategories();initItems();
 }
 
-function computeMetrics(){
-  const cl=S.clo.closures||[];
+function inRange(ts){if(!S.range)return true;const d=new Date(ts).getTime();return !isNaN(d)&&d>=S.lastTs-S.range*3600e3;}
+function W(){return S.hist.windows.filter(w=>inRange(w.window_end));}
+function cloRaw(){return (S.clo.closures||[]).filter(c=>inRange(c.closed_at));}
+function applyRange(){
+  S.items=S.active.concat(S.closed.filter(c=>inRange(c.when)));
+  S.met=computeMetrics(cloRaw());
+}
+
+function computeMetrics(cl){
+  cl=cl||(S.clo.closures||[]);
   const sold=cl.filter(c=>c.status==="sold");
   const closed=cl.length;
   const soldPrices=sold.map(c=>Number(c.current_bid)||0);
@@ -389,8 +417,8 @@ function mkChart(id,cfg){if(charts[id])charts[id].destroy();charts[id]=new Chart
 const labelsOf=W=>W.map(w=>new Date(w.window_end).toISOString().slice(5,16).replace("T"," "));
 
 function renderMonitor(){
-  const W=S.hist.windows,last=W[W.length-1],prev=W[W.length-2]||last;
-  const k=last.totals,kp=prev.totals,m=S.met;
+  const all=S.hist.windows,last=all[all.length-1],prev=all[all.length-2]||last;
+  const Wc=W();const k=last.totals,kp=prev.totals,m=S.met;
   const dd=(a,b)=>{const d=a-b;return(d>=0?"+":"")+d;};
   const closed=k.sold+k.no_sale+k.pulled;const rate=closed?Math.round(100*k.sold/closed):0;
   const avgWin=k.sold?k.sold_value/k.sold:m.avgPrice;
@@ -411,14 +439,14 @@ function renderMonitor(){
   document.getElementById("kpis").innerHTML=cards.map(a=>
     '<div class="kpi glass '+a[0]+'"><div class="strip"></div><div class="lab">'+a[1]+'</div><div class="val num">'+a[2]+'</div><div class="d">'+a[3]+'</div></div>').join("");
 
-  const labels=labelsOf(W),ser=key=>W.map(w=>w.totals[key]);
+  const labels=labelsOf(Wc),ser=key=>Wc.map(w=>w.totals[key]);
   mkChart("cStack",{type:"bar",data:{labels,datasets:[
     {label:"Sold",data:ser("sold"),backgroundColor:"#00b27a",stack:"x",borderRadius:3},
     {label:"No-sale",data:ser("no_sale"),backgroundColor:"#7b8aa5",stack:"x",borderRadius:3},
     {label:"Pulled",data:ser("pulled"),backgroundColor:"#ff5a4d",stack:"x",borderRadius:3},
     {label:"New",data:ser("new"),type:"line",borderColor:"#13b0c9",backgroundColor:"transparent",borderWidth:2,pointRadius:0,tension:.35}]},
     options:(function(){const o=chartOpts();o.scales.x.stacked=true;o.scales.y.stacked=true;return o;})()});
-  const r2=W.map(w=>{const c=w.totals.sold+w.totals.no_sale+w.totals.pulled;return c?+(100*w.totals.sold/c).toFixed(1):0;});
+  const r2=Wc.map(w=>{const c=w.totals.sold+w.totals.no_sale+w.totals.pulled;return c?+(100*w.totals.sold/c).toFixed(1):0;});
   mkChart("cRate",{type:"line",data:{labels,datasets:[{data:r2,borderColor:"#1264ff",backgroundColor:"rgba(18,100,255,.12)",fill:true,borderWidth:2.5,pointRadius:0,tension:.35}]},
     options:chartOpts({suggestedMin:0,suggestedMax:100,ticks:{callback:v=>v+"%",color:"#5a6b88",font:{family:"Plus Jakarta Sans",size:10}}})});
   mkChart("cGMV",{type:"bar",data:{labels,datasets:[{data:ser("sold_value"),backgroundColor:"#6a45e6",borderRadius:4}]},options:moneyAxis()});
@@ -432,18 +460,18 @@ function renderMonitor(){
 }
 
 function renderOverTime(){
-  const W=S.hist.windows,labels=labelsOf(W),ser=key=>W.map(w=>w.totals[key]);
-  let g=0;const gcum=W.map(w=>{g+=w.totals.sold_value||0;return g;});
+  const Wc=W(),labels=labelsOf(Wc),ser=key=>Wc.map(w=>w.totals[key]);
+  let g=0;const gcum=Wc.map(w=>{g+=w.totals.sold_value||0;return g;});
   mkChart("cGMVcum",{type:"line",data:{labels,datasets:[{data:gcum,borderColor:"#6a45e6",backgroundColor:"rgba(106,69,230,.13)",fill:true,borderWidth:2.5,pointRadius:0,tension:.3}]},options:moneyAxis()});
-  const avg=W.map(w=>w.totals.sold?Math.round(w.totals.sold_value/w.totals.sold):0);
+  const avg=Wc.map(w=>w.totals.sold?Math.round(w.totals.sold_value/w.totals.sold):0);
   mkChart("cAvg",{type:"line",data:{labels,datasets:[{data:avg,borderColor:"#0a9c8c",backgroundColor:"rgba(10,156,140,.12)",fill:true,borderWidth:2.5,pointRadius:0,tension:.3}]},options:moneyAxis()});
   mkChart("cTrend",{type:"line",data:{labels,datasets:[
     {label:"Sold",data:ser("sold"),borderColor:"#00b27a",borderWidth:2,pointRadius:0,tension:.3,backgroundColor:"transparent"},
     {label:"No-sale",data:ser("no_sale"),borderColor:"#7b8aa5",borderWidth:2,pointRadius:0,tension:.3,backgroundColor:"transparent"},
     {label:"Pulled",data:ser("pulled"),borderColor:"#ff5a4d",borderWidth:2,pointRadius:0,tension:.3,backgroundColor:"transparent"}]},options:chartOpts()});
-  let run=0;const cum=W.map(w=>{run+=w.totals.sold;return run;});
+  let run=0;const cum=Wc.map(w=>{run+=w.totals.sold;return run;});
   mkChart("cCum",{type:"line",data:{labels,datasets:[{data:cum,borderColor:"#00b27a",backgroundColor:"rgba(0,178,122,.13)",fill:true,borderWidth:2.5,pointRadius:0,tension:.3}]},options:chartOpts()});
-  const rows=W.slice().reverse().map(w=>{const c=w.totals.sold+w.totals.no_sale+w.totals.pulled;const r=c?Math.round(100*w.totals.sold/c):0;
+  const rows=Wc.slice().reverse().map(w=>{const c=w.totals.sold+w.totals.no_sale+w.totals.pulled;const r=c?Math.round(100*w.totals.sold/c):0;
     return '<tr><td>'+dshort(w.window_end)+'</td><td class="num" style="color:var(--sold)">'+w.totals.sold+'</td>'+
       '<td class="num" style="color:var(--gmv)">'+moneyShort(w.totals.sold_value||0)+'</td>'+
       '<td class="num">'+w.totals.no_sale+'</td><td class="num" style="color:var(--pulled)">'+w.totals.pulled+'</td>'+
@@ -457,7 +485,7 @@ function categoryRows(){
   const ensure=c=>(map[c]=map[c]||{category:c,active:0,active_value:0,sold:0,no_sale:0,pulled:0,gmv:0});
   S.cats.forEach(ensure);
   Object.values(S.snap.items||{}).forEach(it=>{const m=ensure(it.category);m.active++;m.active_value+=Number(it.current_bid)||0;});
-  (S.clo.closures||[]).forEach(it=>{const m=ensure(it.category);
+  cloRaw().forEach(it=>{const m=ensure(it.category);
     if(it.status==="sold"){m.sold++;m.gmv+=Number(it.current_bid)||0;}
     else if(it.status==="pulled")m.pulled++;else m.no_sale++;});
   return Object.values(map).map(m=>{const cl=m.sold+m.no_sale+m.pulled;m.rate=cl?m.sold/cl:0;m.avg=m.sold?m.gmv/m.sold:0;return m;});
@@ -540,6 +568,12 @@ document.getElementById("itemCat").onchange=e=>{S.itemFilter.cat=e.target.value;
 document.getElementById("itemSort").onchange=e=>{S.itemFilter.sort=e.target.value;S.itemFilter.page=0;renderItems();};
 document.getElementById("prev").onclick=()=>{S.itemFilter.page--;renderItems();};
 document.getElementById("next").onclick=()=>{S.itemFilter.page++;renderItems();};
+document.getElementById("rangebar").querySelectorAll("button").forEach(b=>b.onclick=()=>{
+  document.getElementById("rangebar").querySelectorAll("button").forEach(x=>x.classList.remove("active"));
+  b.classList.add("active");S.range=+b.dataset.h;S.itemFilter.page=0;applyRange();
+  renderMonitor();renderCategories();renderItems();
+  if(document.getElementById("overtime").classList.contains("show"))renderOverTime();
+});
 boot();
 </script>
 </body>
