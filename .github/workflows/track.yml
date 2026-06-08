@@ -2,7 +2,7 @@ name: govdeals-tracker
 
 on:
   schedule:
-    - cron: '0 */2 * * *'      # every 2 hours, on the hour (UTC)
+    - cron: '0 * * * *'         # every hour, on the hour (UTC)
   workflow_dispatch:            # manual run button
 
 permissions:

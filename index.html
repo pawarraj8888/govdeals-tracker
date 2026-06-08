@@ -148,8 +148,9 @@
   <header>
     <div>
       <h1>GOVDEALS <b>DISPOSITION</b></h1>
-      <div class="sub">Every 2 hours the full active marketplace is snapshotted. Listings that vanish = auctions
-        that closed, classified sold / no-sale / pulled. Dollar figures use last-seen bid (a slight under-estimate of final hammer).</div>
+      <div class="sub">The full active marketplace is snapshotted every <span id="cad">hour</span>. Listings that vanish = auctions
+        that closed. Sold is inferred — reserve auctions by whether the reserve was met, others by visible bidding;
+        the source hides bid counts, so single-bid sales at the opening price are undercounted. Figures are a conservative floor.</div>
     </div>
     <div class="hmeta">
       <div id="m-badge"></div>
@@ -179,7 +180,7 @@
     <div class="kpis" id="kpis"></div>
     <div class="grid2">
       <div class="card glass">
-        <h2>Closures per 2-hour window</h2>
+        <h2>Closures per window</h2>
         <div class="hint">Stacked outcome of every auction that left the active set.</div>
         <div class="chart"><canvas id="cStack"></canvas></div>
         <div class="legend">
@@ -198,7 +199,7 @@
     <div class="grid2 even">
       <div class="card glass">
         <h2>GMV sold per window</h2>
-        <div class="hint">Dollar value of items sold each 2-hour window.</div>
+        <div class="hint">Dollar value of items sold each window.</div>
         <div class="chart sm"><canvas id="cGMV"></canvas></div>
       </div>
       <div class="card glass">
@@ -308,27 +309,8 @@
 </div>
 
 <script>
-/* ---------- compact embedded SAMPLE (preview only; real files override) ---------- */
-const SAMPLE_HISTORY=(function(){const cats=["Excavators","Cars & Trucks","Office Furniture","Computers","Lab Equipment","Real Estate"];
-  const w=[];let act=300;const now=Date.UTC(2026,5,8,2);
-  for(let i=12;i>0;i--){const e=new Date(now-2*3600e3*(i-1));const by={};let s=0,n=0,p=0,nw=0,sv=0,av=0;
-    cats.forEach(c=>{const so=Math.floor(Math.random()*6)+1,ns=Math.floor(Math.random()*4),pu=Math.floor(Math.random()*2),ne=Math.floor(Math.random()*7);
-      const svc=so*(800+Math.floor(Math.random()*4000)),avc=40*(600+Math.floor(Math.random()*3000));
-      by[c]={sold:so,no_sale:ns,pulled:pu,new:ne,active_end:50+Math.floor(Math.random()*40),sold_value:svc,active_value:avc};
-      s+=so;n+=ns;p+=pu;nw+=ne;sv+=svc;av+=avc;});
-    act+=nw-(s+n+p);
-    w.push({window_start:new Date(e-2*3600e3).toISOString(),window_end:e.toISOString(),by_category:by,
-      totals:{sold:s,no_sale:n,pulled:p,new:nw,active_end:act,sold_value:sv,active_value:av}});}
-  return{categories:cats,window_hours:2,windows:w,last_updated:new Date(now).toISOString(),_note:"SAMPLE DATA"};})();
-const SAMPLE_SNAPSHOT=(function(){const cats=SAMPLE_HISTORY.categories;const items={};const titles=["John Deere Excavator","Ford F-150","Herman Miller Chair","Dell OptiPlex Lot","Microscope Set","2-Acre Parcel","Utility Trailer","HP Laptop Cart","Steel Shelving","Toyota Forklift"];
-  for(let i=0;i<28;i++){const id=(1000+i)+"-"+(200+i);const cb=Math.floor(Math.random()*9000);items[id]={id,title:titles[i%titles.length]+" #"+i,category:cats[i%cats.length],current_bid:cb,bid_count:0,start_bid:Math.floor(cb*0.6),peak_bid:cb,high_bidder:i%4===0,end_date:new Date(Date.UTC(2026,5,8+i%5,14)).toISOString(),has_reserve:i%3===0,reserve_not_met:i%4===0};}
-  return{captured_at:SAMPLE_HISTORY.last_updated,items};})();
-const SAMPLE_CLOSURES=(function(){const cats=SAMPLE_HISTORY.categories;const sts=["sold","no_sale","pulled"];const titles=["Surplus Generator","Police Sedan","Conference Table","Server Rack","Centrifuge","Storage Unit"];const cl=[];
-  for(let i=0;i<60;i++){const st=sts[i%3];const sold=st==="sold";cl.push({id:(3000+i)+"-"+(400+i),title:titles[i%titles.length]+" #"+i,category:cats[i%cats.length],current_bid:sold?Math.floor(Math.random()*14000)+50:0,bid_count:0,had_bids:sold,end_date:new Date(Date.UTC(2026,5,7,(i%12)*2)).toISOString(),has_reserve:i%3===0,reserve_not_met:i%5===0,status:st,closed_at:new Date(Date.UTC(2026,5,7+(i%2),(i%12)*2)).toISOString()});}
-  return{last_updated:SAMPLE_HISTORY.last_updated,closures:cl};})();
-
 /* ---------- state + helpers ---------- */
-const S={hist:null,snap:null,clo:null,live:false,items:[],active:[],closed:[],cats:[],met:null,range:0,lastTs:0,
+const S={hist:null,snap:null,clo:null,live:false,items:[],active:[],closed:[],cats:[],met:null,range:0,lastTs:0,wh:1,
   itemFilter:{q:"",status:"",cat:"",sort:"date",page:0},catSort:{k:"gmv",dir:-1},catQ:""};
 const PAGE=50;
 const fmt=n=>n==null?"\u2014":Number(n).toLocaleString("en-US");
@@ -338,24 +320,38 @@ const titleCase=s=>s==="no_sale"?"No-sale":s.charAt(0).toUpperCase()+s.slice(1);
 const dshort=s=>{if(!s)return"\u2014";const d=new Date(s);return isNaN(d)?"\u2014":d.toISOString().slice(0,16).replace("T"," ");};
 const assetUrl=id=>{const p=String(id).split("-");return p[1]&&p[0]?"https://www.govdeals.com/asset/"+p[1]+"/"+p[0]:"#";};
 function median(arr){if(!arr.length)return 0;const a=arr.slice().sort((x,y)=>x-y);const m=a.length>>1;return a.length%2?a[m]:(a[m-1]+a[m])/2;}
+const snapItems=()=>Object.values((S.snap&&S.snap.items)||{});
+const activeNow=()=>{const W2=S.hist.windows;return W2.length?W2[W2.length-1].totals.active_end:snapItems().length;};
+const invNow=()=>{const W2=S.hist.windows;return W2.length?W2[W2.length-1].totals.active_value:snapItems().reduce((a,i)=>a+(Number(i.current_bid)||0),0);};
 
 async function getJSON(f){try{const r=await fetch(f,{cache:"no-store"});if(r.ok)return await r.json();}catch(e){}return null;}
 
 async function boot(){
   const res=await Promise.all([getJSON("history.json"),getJSON("snapshot.json"),getJSON("closures.json")]);
   const h=res[0],s=res[1],c=res[2];
-  const sampleH=!h||!h.windows||!h.windows.length||(h._note&&/sample/i.test(h._note));
-  S.hist=sampleH?SAMPLE_HISTORY:h;
-  S.snap=(s&&s.items)?s:SAMPLE_SNAPSHOT;
-  S.clo=(c&&c.closures)?c:SAMPLE_CLOSURES;
-  S.live=!sampleH;
+  S.hist=(h&&Array.isArray(h.windows))?h:{categories:[],window_hours:1,windows:[],last_updated:(h&&h.last_updated)||null};
+  S.snap=(s&&s.items)?s:{items:{}};
+  S.clo=(c&&c.closures)?c:{closures:[]};
+  S.wh=S.hist.window_hours||1;
 
-  S.active=Object.values(S.snap.items||{}).map(it=>({...it,status:"Listed",when:it.end_date}));
+  const haveData=snapItems().length>0||S.hist.windows.length>0;
+  if(!haveData){
+    document.getElementById("boot").innerHTML=
+      "<div style='font-size:18px;font-weight:700;color:var(--ink);margin-bottom:8px'>Waiting for the first tracker run</div>"+
+      "<div>No data has been collected yet. Once the scraper runs, real listings and sales appear here \u2014 nothing is shown until then.</div>";
+    return;
+  }
+
+  S.live=S.hist.windows.length>0;
+  S.active=snapItems().map(it=>({...it,status:"Listed",when:it.end_date}));
   S.closed=(S.clo.closures||[]).map(it=>({...it,status:titleCase(it.status),when:it.closed_at}));
   S.cats=(S.hist.categories&&S.hist.categories.length)?S.hist.categories.slice()
         :[...new Set(S.active.concat(S.closed).map(i=>i.category))].sort();
   S.lastTs=new Date(S.hist.last_updated||Date.now()).getTime();
   applyRange();
+
+  // cadence label
+  const cad=document.getElementById("cad");if(cad)cad.textContent=S.wh===1?"hour":S.wh+" hours";
 
   document.getElementById("boot").style.display="none";
   document.getElementById("monitor").classList.add("show");
@@ -379,7 +375,7 @@ function computeMetrics(cl){
   const resSold=withRes.filter(c=>c.status==="sold").length;
   return {
     gmvTrailing:soldPrices.reduce((a,b)=>a+b,0),
-    bidUpRate:closed?cl.filter(c=>c.had_bids).length/closed:0,
+    sellThrough:closed?sold.length/closed:0,
     reserveClear:withRes.length?resSold/withRes.length:null,
     median:median(soldPrices),
     avgPrice:sold.length?soldPrices.reduce((a,b)=>a+b,0)/sold.length:0,
@@ -391,20 +387,18 @@ function computeMetrics(cl){
     ]
   };
 }
-function bidFlag(i){return (i.had_bids||((i.peak_bid||i.current_bid||0)>(i.start_bid||i.current_bid||0))||i.high_bidder)?1:0;}
+function bidFlag(i){const rm=i.has_reserve&&!i.reserve_not_met;return (i.had_bids||rm||((i.peak_bid||i.current_bid||0)>(i.start_bid||i.current_bid||0))||i.high_bidder)?1:0;}
 function endingSoon(hours){
   const ref=new Date(S.hist.last_updated||Date.now()).getTime();
   return Object.values(S.snap.items||{}).filter(it=>{const e=new Date(it.end_date).getTime();return e>=ref&&e<=ref+hours*3600e3;}).length;
 }
 
 function renderHeader(){
-  const last=S.hist.windows[S.hist.windows.length-1];
-  const active=last?last.totals.active_end:Object.keys(S.snap.items||{}).length;
-  document.getElementById("m-active").textContent=fmt(active);
+  document.getElementById("m-active").textContent=fmt(activeNow());
   document.getElementById("m-updated").textContent=dshort(S.hist.last_updated)+"Z";
   document.getElementById("m-badge").innerHTML=S.live
     ?'<span class="badge live"><span class="dot"></span>LIVE DATA</span>'
-    :'<span class="badge sample"><span class="dot"></span>SAMPLE \u2014 deploy to populate</span>';
+    :'<span class="badge sample"><span class="dot"></span>COLLECTING \u2014 first window pending</span>';
 }
 
 const baseScales=()=>({x:{grid:{color:"rgba(120,150,200,.16)"},ticks:{color:"#5a6b88",maxRotation:0,autoSkip:true,maxTicksLimit:8,font:{family:"Plus Jakarta Sans",size:10}}},
@@ -417,22 +411,26 @@ function mkChart(id,cfg){if(charts[id])charts[id].destroy();charts[id]=new Chart
 const labelsOf=W=>W.map(w=>new Date(w.window_end).toISOString().slice(5,16).replace("T"," "));
 
 function renderMonitor(){
-  const all=S.hist.windows,last=all[all.length-1],prev=all[all.length-2]||last;
-  const Wc=W();const k=last.totals,kp=prev.totals,m=S.met;
+  const all=S.hist.windows; const has=all.length>0;
+  const last=has?all[all.length-1]:null, prev=has?(all[all.length-2]||last):null;
+  const Wc=W(); const m=S.met;
+  const k=has?last.totals:{sold:0,no_sale:0,pulled:0,new:0,active_end:activeNow(),sold_value:0,active_value:invNow()};
+  const kp=(has&&prev)?prev.totals:k;
   const dd=(a,b)=>{const d=a-b;return(d>=0?"+":"")+d;};
   const closed=k.sold+k.no_sale+k.pulled;const rate=closed?Math.round(100*k.sold/closed):0;
   const avgWin=k.sold?k.sold_value/k.sold:m.avgPrice;
+  const wnote=has?"this window":"awaiting first window";
   const cards=[
-    ["c-active","Active total",fmt(k.active_end),dd(k.active_end,kp.active_end)+" vs prev"],
-    ["c-sold","Sold (last window)",fmt(k.sold),dd(k.sold,kp.sold)+" vs prev"],
-    ["c-nosale","No-sale",fmt(k.no_sale),dd(k.no_sale,kp.no_sale)+" vs prev"],
-    ["c-pulled","Pulled",fmt(k.pulled),dd(k.pulled,kp.pulled)+" vs prev"],
-    ["c-new","Newly listed",fmt(k.new),dd(k.new,kp.new)+" vs prev"],
-    ["c-rate","Sell-through",rate+"%","this window"],
-    ["c-gmv","GMV sold (window)",moneyShort(k.sold_value),"this window"],
-    ["c-cash","Avg sale price",moneyShort(avgWin),"this window"],
+    ["c-active","Active total",fmt(k.active_end),has?dd(k.active_end,kp.active_end)+" vs prev":"on platform now"],
+    ["c-sold","Sold (last window)",fmt(k.sold),wnote],
+    ["c-nosale","No-sale",fmt(k.no_sale),wnote],
+    ["c-pulled","Pulled",fmt(k.pulled),wnote],
+    ["c-new","Newly listed",fmt(k.new),wnote],
+    ["c-rate","Sell-through",rate+"%",wnote],
+    ["c-gmv","GMV sold (window)",moneyShort(k.sold_value),wnote],
+    ["c-cash","Avg sale price",moneyShort(avgWin),wnote],
     ["c-cash","Active inv. value",moneyShort(k.active_value||0),"on platform now"],
-    ["c-new","Bid-up rate",Math.round(m.bidUpRate*100)+"%","trailing closed"],
+    ["c-new","Sell-through (trail)",Math.round(m.sellThrough*100)+"%","closed lots"],
     ["c-rate","Reserve clears",(m.reserveClear==null?"\u2014":Math.round(m.reserveClear*100)+"%"),"reserved lots"],
     ["c-active","Ending \u226424h",fmt(endingSoon(24)),"active auctions"]
   ];
