@@ -28,12 +28,18 @@ SEARCH_URL    = "https://maestro.lqdt1.com/search/list"
 SNAPSHOT_FILE = Path("snapshot.json")
 HISTORY_FILE  = Path("history.json")
 CLOSURES_FILE = Path("closures.json")     # item-level log of every auction that closed
-WINDOW_HOURS  = 1
+WINDOW_MINUTES = 15      # tracking-window length; cron should match (every 15 min)
 MAX_WINDOWS   = 1000
 MAX_CLOSURES  = 80000                       # rolling cap so the file stays loadable
 ROWS          = 200      # rows per page requested
 MAX_PAGES     = 1000     # safety cap
 SLEEP         = 0.20     # politeness delay between pages
+
+# Per-asset detail (bid box) endpoint — confirms true outcome of a closed lot.
+# Path: .../bids/bidbox/GD/{assetId}/{accountId}/1  (id we store is "account-asset")
+BIDBOX_URL    = "https://maestro.lqdt1.com/bids/bidbox/GD/{asset}/{account}/1"
+SLEEP_DETAIL  = 0.05     # delay between detail confirmations
+CONFIRM_CAP   = 4000     # max lots to confirm per window (protects catch-up runs)
 
 # Public client keys baked into the GovDeals frontend (same for every visitor).
 # If the API starts returning 401/403, re-grab these from DevTools.
@@ -64,8 +70,8 @@ def _search_page(session, page):
     body = {
         "categoryIds": "", "businessId": "GD", "searchText": "*", "isQAL": False,
         "locationId": None, "model": "", "makebrand": "", "auctionTypeId": None,
-        "page": page, "displayRows": ROWS, "sortField": "timeremaining",
-        "sortOrder": "asc", "sessionId": str(uuid.uuid4()), "requestType": "search",
+        "page": page, "displayRows": ROWS, "sortField": "bestfit",
+        "sortOrder": "desc", "sessionId": str(uuid.uuid4()), "requestType": "search",
         "responseStyle": "fullResponse", "facets": [], "facetsFilter": [],
         "timeType": "", "sellerTypeId": None, "accountIds": [],
     }
@@ -150,18 +156,113 @@ def classify(item, when):
     end = parse_end(item.get("end_date"))
     if end and end.tzinfo is None:
         end = end.replace(tzinfo=dt.timezone.utc)
-    if end and end > when + dt.timedelta(hours=WINDOW_HOURS):
+    if end and end > when + dt.timedelta(minutes=WINDOW_MINUTES):
         return "pulled"
     if item.get("has_reserve"):
         return "no_sale" if item.get("reserve_not_met") else "sold"
     return "sold" if has_bids(item) else "no_sale"
 
 
-def diff(prev, curr):
+def fetch_bid_detail(session, asset_id, account_id):
+    """Hit the per-asset bid-box endpoint for ground-truth outcome.
+    Returns the JSON dict, {"_removed": True} on 404, or None on failure."""
+    url = BIDBOX_URL.format(asset=asset_id, account=account_id)
+    headers = dict(BASE_HEADERS)
+    headers["x-api-correlation-id"] = str(uuid.uuid4())
+    for attempt in range(2):
+        try:
+            r = session.get(url, headers=headers, timeout=30)
+            if r.status_code == 404:
+                return {"_removed": True}
+            r.raise_for_status()
+            return r.json()
+        except Exception:
+            if attempt == 0:
+                time.sleep(1)
+                continue
+            return None
+
+
+def _ended_from_detail(detail, when):
+    """True if the auction has actually ended, per its detail record."""
+    end = parse_end(detail.get("assetAuctionEndDateUTC") or detail.get("assetAuctionEndDate"))
+    if end is not None:
+        if end.tzinfo is None:
+            end = end.replace(tzinfo=dt.timezone.utc)
+        return end <= when
+    # fallback: timeRemaining like "0:0:-3:-30" — any negative field means ended
+    tr = detail.get("timeRemaining") or ""
+    try:
+        return any(int(p) < 0 for p in tr.split(":") if p.strip())
+    except Exception:
+        return False
+
+
+def confirm_outcome(detail, item, when):
+    """Turn a detail record into a true outcome. Falls back to inference when
+    the detail call failed (detail is None).
+    Returns {status, price, bid_count, confirmed, still_active}."""
+    if detail is None:                                  # call failed -> infer
+        st = classify(item, when)
+        return {"status": st, "price": item.get("current_bid", 0) if st == "sold" else 0,
+                "bid_count": item.get("bid_count", 0), "confirmed": False, "still_active": False}
+    if detail.get("_removed"):                          # 404 -> withdrawn
+        return {"status": "pulled", "price": 0, "bid_count": item.get("bid_count", 0),
+                "confirmed": True, "still_active": False}
+    if not _ended_from_detail(detail, when):            # still live -> pagination miss
+        return {"status": "active", "price": float(detail.get("currentBid") or item.get("current_bid", 0)),
+                "bid_count": detail.get("bidCount") or 0, "confirmed": True, "still_active": True}
+    bids = detail.get("bidCount") or 0
+    has_bidder = detail.get("highBidder") is not None
+    reserve = bool(detail.get("hasReservePrice"))
+    reserve_not_met = bool(detail.get("isReserveNotMet"))
+    sold = bids >= 1 and has_bidder and (not reserve or not reserve_not_met)
+    price = float(detail.get("currentBid") or 0)
+    return {"status": "sold" if sold else "no_sale", "price": price if sold else 0,
+            "bid_count": bids, "confirmed": True, "still_active": False}
+
+
+def confirm_closures(prev_items, curr, when):
+    """For every lot that left the active set, confirm its real outcome via the
+    detail endpoint. Items still live are re-added to the active snapshot
+    (they were just pagination misses). Returns (confirmed, reactivated, n_conf)."""
+    gone = list(set(prev_items) - set(curr["items"]))
+    confirmed, reactivated, n_conf = {}, 0, 0
+    if not gone:
+        return confirmed, reactivated, n_conf
+    session = requests.Session()
+    print(f"  confirming {len(gone)} closed candidates via detail API ...")
+    for n, pid in enumerate(gone[:CONFIRM_CAP], 1):
+        item = prev_items[pid]
+        parts = str(pid).split("-")           # id == "account-asset"
+        if len(parts) != 2:
+            confirmed[pid] = confirm_outcome(None, item, when)
+            continue
+        account_id, asset_id = parts[0], parts[1]
+        detail = fetch_bid_detail(session, asset_id, account_id)
+        out = confirm_outcome(detail, item, when)
+        if out["still_active"]:               # not really closed — restore to active
+            restored = dict(item)
+            restored["current_bid"] = out["price"]
+            curr["items"][pid] = restored
+            reactivated += 1
+        else:
+            confirmed[pid] = out
+            if out["confirmed"]:
+                n_conf += 1
+        if n % 100 == 0:
+            print(f"    {n}/{min(len(gone), CONFIRM_CAP)} confirmed")
+        time.sleep(SLEEP_DETAIL)
+    for pid in gone[CONFIRM_CAP:]:            # overflow -> infer (rare)
+        item = prev_items[pid]
+        confirmed[pid] = confirm_outcome(None, item, when)
+    return confirmed, reactivated, n_conf
+
+
+def diff(prev, curr, confirmed):
     when = now_utc()
     p_items = prev.get("items", {}) if prev else {}
     c_items = curr["items"]
-    p_ids, c_ids = set(p_items), set(c_items)
 
     cats = {i["category"] for i in c_items.values()} | {i["category"] for i in p_items.values()}
     keys = ["sold", "no_sale", "pulled", "new", "active_end", "sold_value", "active_value"]
@@ -171,39 +272,45 @@ def diff(prev, curr):
         b = by_cat[it["category"]]
         b["active_end"] += 1
         b["active_value"] += int(it.get("current_bid") or 0)
-        if cid not in p_ids:
+        if cid not in p_items:
             b["new"] += 1
 
-    for pid in (p_ids - c_ids):
-        it = p_items[pid]
+    for pid, out in confirmed.items():
+        it = p_items.get(pid)
+        if it is None:
+            continue
         b = by_cat[it["category"]]
-        st = classify(it, when)
+        st = out["status"]
+        if st not in ("sold", "no_sale", "pulled"):
+            continue
         b[st] += 1
         if st == "sold":
-            b["sold_value"] += int(it.get("current_bid") or 0)
+            b["sold_value"] += int(out.get("price") or 0)
 
     totals = {k: sum(by_cat[c][k] for c in by_cat) for k in keys}
     return by_cat, totals, sorted(cats)
 
 
-def build_closures(prev, curr, when):
-    """Item-level records for every listing that left the active set this window."""
+def build_closures(prev, curr, when, confirmed):
+    """Item-level records for every confirmed close this window."""
     p_items = prev.get("items", {}) if prev else {}
-    gone = set(p_items) - set(curr["items"])
     recs = []
-    for pid in gone:
-        it = p_items[pid]
+    for pid, out in confirmed.items():
+        it = p_items.get(pid)
+        if it is None or out["status"] not in ("sold", "no_sale", "pulled"):
+            continue
         recs.append({
             "id": pid,
             "title": it.get("title", ""),
             "category": it.get("category", "Uncategorized"),
-            "current_bid": it.get("current_bid", 0),
-            "bid_count": it.get("bid_count", 0),
-            "had_bids": has_bids(it),
+            "current_bid": out["price"] if out["status"] == "sold" else it.get("current_bid", 0),
+            "bid_count": out.get("bid_count", 0),
+            "had_bids": (out.get("bid_count", 0) or 0) > 0,
             "end_date": it.get("end_date"),
             "has_reserve": it.get("has_reserve", False),
             "reserve_not_met": it.get("reserve_not_met", False),
-            "status": classify(it, when),
+            "status": out["status"],
+            "confirmed": out.get("confirmed", False),
             "closed_at": when.isoformat(),
         })
     return recs
@@ -242,7 +349,8 @@ def main():
         it["start_bid"] = pit.get("start_bid", pit.get("current_bid", it["current_bid"])) if pit else it["current_bid"]
         it["peak_bid"] = max(it["current_bid"], pit.get("peak_bid", pit.get("current_bid", 0))) if pit else it["current_bid"]
 
-    hist = load(HISTORY_FILE, {"categories": [], "window_hours": WINDOW_HOURS, "windows": []})
+    hist = load(HISTORY_FILE, {"categories": [], "window_hours": WINDOW_MINUTES / 60,
+                               "window_minutes": WINDOW_MINUTES, "windows": []})
     hist.pop("_note", None)                      # drop the sample marker
     hist["windows"] = [w for w in hist.get("windows", []) if "by_category" in w]
 
@@ -252,7 +360,8 @@ def main():
         print("First run — baseline snapshot saved, no window emitted yet.")
     else:
         when = now_utc()
-        by_cat, totals, cats = diff(prev, curr)
+        confirmed, reactivated, n_conf = confirm_closures(prev_items, curr, when)
+        by_cat, totals, cats = diff(prev, curr, confirmed)
         hist["windows"].append({
             "window_start": prev["captured_at"],
             "window_end":   when.isoformat(),
@@ -260,15 +369,19 @@ def main():
             "totals":       totals,
         })
         hist["windows"] = hist["windows"][-MAX_WINDOWS:]
-        recs = build_closures(prev, curr, when)
+        recs = build_closures(prev, curr, when, confirmed)
         closures["closures"].extend(recs)
         closures["closures"] = closures["closures"][-MAX_CLOSURES:]
+        if reactivated:
+            print(f"  re-activated {reactivated} items still live (pagination misses)")
         print(f"Window closed: {totals['sold']} sold / {totals['no_sale']} no-sale "
-              f"/ {totals['pulled']} pulled / {totals['new']} new")
+              f"/ {totals['pulled']} pulled / {totals['new']} new "
+              f"({n_conf} confirmed via detail, GMV ${totals['sold_value']:,})")
 
     # union of categories ever seen, so the dashboard keeps a stable list
     hist["categories"] = sorted(set(hist.get("categories", [])) | set(cats))
-    hist["window_hours"] = WINDOW_HOURS
+    hist["window_hours"] = WINDOW_MINUTES / 60
+    hist["window_minutes"] = WINDOW_MINUTES
     hist["last_updated"] = now_utc().isoformat()
 
     HISTORY_FILE.write_text(json.dumps(hist, indent=2))

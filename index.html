@@ -351,6 +351,7 @@ async function boot(){
   S.snap=(s&&s.items)?s:{items:{}};
   S.clo=(c&&c.closures)?c:{closures:[]};
   S.wh=S.hist.window_hours||1;
+  S.wmin=S.hist.window_minutes||Math.round((S.hist.window_hours||1)*60);
 
   const haveData=snapItems().length>0||S.hist.windows.length>0;
   if(!haveData){
@@ -369,7 +370,7 @@ async function boot(){
   applyRange();
 
   // cadence label
-  const cad=document.getElementById("cad");if(cad)cad.textContent=S.wh===1?"hour":S.wh+" hours";
+  const cad=document.getElementById("cad");if(cad)cad.textContent=S.wmin&&S.wmin<60?S.wmin+" minutes":(S.wh===1?"hour":S.wh+" hours");
 
   document.getElementById("boot").style.display="none";
   document.getElementById("monitor").classList.add("show");
