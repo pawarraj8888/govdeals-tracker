@@ -503042,8 +503042,4964 @@
         "sold_value": 529521,
         "active_value": 37301328
       }
+    },
+    {
+      "window_start": "2026-06-20T16:09:39.364449+00:00",
+      "window_end": "2026-06-20T17:50:11.319046+00:00",
+      "by_category": {
+        "Electronic Components": {
+          "sold": 0,
+          "no_sale": 6,
+          "pulled": 6,
+          "new": 17,
+          "active_end": 49,
+          "sold_value": 0,
+          "active_value": 10843
+        },
+        "Static Plant": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0,
+          "sold_value": 0,
+          "active_value": 0
+        },
+        "Spot Welders": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 500
+        },
+        "Sheet Metal Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 85
+        },
+        "Archery and Crossbows": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 112
+        },
+        "Parts Only & Salvage Vehicles": {
+          "sold": 0,
+          "no_sale": 2,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 7,
+          "sold_value": 0,
+          "active_value": 690
+        },
+        "Toner & Ink Cartridge": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 8,
+          "sold_value": 0,
+          "active_value": 614
+        },
+        "Water Treatment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 3,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 330
+        },
+        "Compression Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 1400
+        },
+        "Specialized Equipment": {
+          "sold": 0,
+          "no_sale": 2,
+          "pulled": 4,
+          "new": 2,
+          "active_end": 32,
+          "sold_value": 0,
+          "active_value": 273297
+        },
+        "Bucket Trucks": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 2,
+          "new": 3,
+          "active_end": 21,
+          "sold_value": 0,
+          "active_value": 125260
+        },
+        "Lowboy Trailers": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 9,
+          "active_end": 14,
+          "sold_value": 0,
+          "active_value": 107070
+        },
+        "Vacant Land - Agricultural": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 2,
+          "new": 1,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 20795
+        },
+        "Tables, Counters, Serving Bars": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 7,
+          "sold_value": 0,
+          "active_value": 300
+        },
+        "Power Supply, Test & Measurement": {
+          "sold": 0,
+          "no_sale": 4,
+          "pulled": 0,
+          "new": 7,
+          "active_end": 11,
+          "sold_value": 0,
+          "active_value": 11504
+        },
+        "Paratransit Bus": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 7,
+          "sold_value": 0,
+          "active_value": 7175
+        },
+        "Displays & Exhibit Stands": {
+          "sold": 0,
+          "no_sale": 2,
+          "pulled": 2,
+          "new": 8,
+          "active_end": 17,
+          "sold_value": 0,
+          "active_value": 1712
+        },
+        "Tanker Trailers": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 4500
+        },
+        "Scanners": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 13,
+          "sold_value": 0,
+          "active_value": 1988
+        },
+        "Surface Planers, Jointers": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 240
+        },
+        "Tools, All Types": {
+          "sold": 1,
+          "no_sale": 14,
+          "pulled": 31,
+          "new": 28,
+          "active_end": 196,
+          "sold_value": 94,
+          "active_value": 11319
+        },
+        "Heat Exchanger, Energy": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 1201
+        },
+        "Home and Garden": {
+          "sold": 2,
+          "no_sale": 149,
+          "pulled": 78,
+          "new": 334,
+          "active_end": 992,
+          "sold_value": 2635,
+          "active_value": 28311
+        },
+        "Refrigerated Trailer": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 3000
+        },
+        "Baby Products, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 4,
+          "sold_value": 0,
+          "active_value": 109
+        },
+        "Material Handling Equipment": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 6,
+          "active_end": 39,
+          "sold_value": 0,
+          "active_value": 31526
+        },
+        "Household Cleaners & Chemicals": {
+          "sold": 0,
+          "no_sale": 2,
+          "pulled": 0,
+          "new": 9,
+          "active_end": 16,
+          "sold_value": 0,
+          "active_value": 542
+        },
+        "Musical Equipment & Accessories": {
+          "sold": 1,
+          "no_sale": 3,
+          "pulled": 5,
+          "new": 11,
+          "active_end": 51,
+          "sold_value": 410,
+          "active_value": 2575
+        },
+        "Oils, Waste": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 0,
+          "sold_value": 0,
+          "active_value": 0
+        },
+        "Chip Trailers": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 18000
+        },
+        "Marine Equipment": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 2,
+          "new": 0,
+          "active_end": 5,
+          "sold_value": 825,
+          "active_value": 1212
+        },
+        "Milling": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 2700
+        },
+        "Blasting - Shot, Sand, Etc.": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 250
+        },
+        "Aviation and Marine GPS": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 140
+        },
+        "Drill Pipe": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 26000
+        },
+        "Cartoners": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0,
+          "sold_value": 0,
+          "active_value": 0
+        },
+        "Mining Equipment": {
+          "sold": 0,
+          "no_sale": 2,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 6,
+          "sold_value": 0,
+          "active_value": 302172
+        },
+        "Body Protection": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 195
+        },
+        "Food Processing Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 4,
+          "sold_value": 0,
+          "active_value": 2035
+        },
+        "Plasma Cutters": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 160
+        },
+        "Security Equipment": {
+          "sold": 0,
+          "no_sale": 4,
+          "pulled": 3,
+          "new": 8,
+          "active_end": 38,
+          "sold_value": 0,
+          "active_value": 4994
+        },
+        "Insulation Kits": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 10
+        },
+        "Other Scrap": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 5,
+          "sold_value": 0,
+          "active_value": 201
+        },
+        "Car Carrier Trailers": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 14250
+        },
+        "Tax Lien": {
+          "sold": 1,
+          "no_sale": 28,
+          "pulled": 11,
+          "new": 16,
+          "active_end": 156,
+          "sold_value": 6700,
+          "active_value": 1293978
+        },
+        "Other Consumer Electronics": {
+          "sold": 0,
+          "no_sale": 6,
+          "pulled": 5,
+          "new": 8,
+          "active_end": 56,
+          "sold_value": 0,
+          "active_value": 14312
+        },
+        "Automobiles/Cars": {
+          "sold": 20,
+          "no_sale": 39,
+          "pulled": 41,
+          "new": 110,
+          "active_end": 666,
+          "sold_value": 65525,
+          "active_value": 1540265
+        },
+        "Golf Carts & Utility Vehicles": {
+          "sold": 2,
+          "no_sale": 2,
+          "pulled": 8,
+          "new": 11,
+          "active_end": 80,
+          "sold_value": 2003,
+          "active_value": 48435
+        },
+        "Commercial Audio Visual Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 2,
+          "new": 5,
+          "active_end": 19,
+          "sold_value": 0,
+          "active_value": 2439
+        },
+        "Consumer Kitchen": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 4,
+          "new": 5,
+          "active_end": 35,
+          "sold_value": 0,
+          "active_value": 3054
+        },
+        "Scissor & Boom Lifts": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 7,
+          "sold_value": 36163,
+          "active_value": 37130
+        },
+        "Labelers": {
+          "sold": 0,
+          "no_sale": 3,
+          "pulled": 2,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 337
+        },
+        "Intercity Bus": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 5100
+        },
+        "Pallet Jacks & Trucks": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 3,
+          "active_end": 16,
+          "sold_value": 0,
+          "active_value": 17507
+        },
+        "Microwaves": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 59
+        },
+        "Video Games": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 20
+        },
+        "Coin Collections": {
+          "sold": 0,
+          "no_sale": 11,
+          "pulled": 14,
+          "new": 55,
+          "active_end": 258,
+          "sold_value": 0,
+          "active_value": 53514
+        },
+        "3D Printers, Consumer": {
+          "sold": 0,
+          "no_sale": 2,
+          "pulled": 0,
+          "new": 5,
+          "active_end": 14,
+          "sold_value": 0,
+          "active_value": 16333
+        },
+        "Gift Cards": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 4802
+        },
+        "Energy Process and Production Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 33,
+          "sold_value": 0,
+          "active_value": 155716
+        },
+        "Heavy Equipment and Construction": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 9,
+          "sold_value": 0,
+          "active_value": 46535
+        },
+        "Parks and Grounds Maintenance": {
+          "sold": 1,
+          "no_sale": 3,
+          "pulled": 6,
+          "new": 8,
+          "active_end": 67,
+          "sold_value": 2400,
+          "active_value": 32148
+        },
+        "Vehicle Parts and Equipment, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 6,
+          "pulled": 6,
+          "new": 9,
+          "active_end": 86,
+          "sold_value": 0,
+          "active_value": 15881
+        },
+        "Batteries, UPS & Electricity Storage": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 5,
+          "active_end": 12,
+          "sold_value": 0,
+          "active_value": 1712
+        },
+        "HVAC Equipment": {
+          "sold": 0,
+          "no_sale": 2,
+          "pulled": 2,
+          "new": 6,
+          "active_end": 34,
+          "sold_value": 0,
+          "active_value": 288838
+        },
+        "Internal Transport": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 4,
+          "sold_value": 0,
+          "active_value": 470
+        },
+        "Marine": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 9,
+          "sold_value": 0,
+          "active_value": 27854
+        },
+        "Animal Equipment, Cages, Feed": {
+          "sold": 0,
+          "no_sale": 4,
+          "pulled": 2,
+          "new": 5,
+          "active_end": 26,
+          "sold_value": 0,
+          "active_value": 1091
+        },
+        "Boats, Marine Vessels and Supplies": {
+          "sold": 1,
+          "no_sale": 3,
+          "pulled": 5,
+          "new": 5,
+          "active_end": 55,
+          "sold_value": 2250,
+          "active_value": 1052690
+        },
+        "Cooling Tower, Energy": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 51000
+        },
+        "Laboratory Equipment": {
+          "sold": 1,
+          "no_sale": 13,
+          "pulled": 33,
+          "new": 110,
+          "active_end": 404,
+          "sold_value": 2625,
+          "active_value": 259020
+        },
+        "Test & Measurement": {
+          "sold": 5,
+          "no_sale": 0,
+          "pulled": 4,
+          "new": 70,
+          "active_end": 97,
+          "sold_value": 4860,
+          "active_value": 76639
+        },
+        "Forming Presses": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 3,
+          "new": 0,
+          "active_end": 26,
+          "sold_value": 0,
+          "active_value": 25500
+        },
+        "Gear Machinery, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0,
+          "sold_value": 0,
+          "active_value": 0
+        },
+        "Electronics Manufacturing Equipment, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 3,
+          "new": 4,
+          "active_end": 11,
+          "sold_value": 0,
+          "active_value": 492
+        },
+        "Industrial Balers": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 625
+        },
+        "Van/Enclosed Trailers": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 3,
+          "new": 5,
+          "active_end": 34,
+          "sold_value": 0,
+          "active_value": 21017
+        },
+        "Mixed Metals": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 0,
+          "sold_value": 0,
+          "active_value": 0
+        },
+        "Binding & Finishing": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 350
+        },
+        "Laundry Equipment": {
+          "sold": 1,
+          "no_sale": 4,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 19,
+          "sold_value": 176,
+          "active_value": 6460
+        },
+        "Construction Equipment, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 3,
+          "pulled": 1,
+          "new": 6,
+          "active_end": 52,
+          "sold_value": 0,
+          "active_value": 246006
+        },
+        "Furniture and Furnishings": {
+          "sold": 1,
+          "no_sale": 38,
+          "pulled": 36,
+          "new": 38,
+          "active_end": 356,
+          "sold_value": 50,
+          "active_value": 10178
+        },
+        "Other Recyclables": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 1360
+        },
+        "Single Family Property - Residential": {
+          "sold": 0,
+          "no_sale": 3,
+          "pulled": 0,
+          "new": 12,
+          "active_end": 31,
+          "sold_value": 0,
+          "active_value": 591012
+        },
+        "Tube, Pipe, Wire Benders": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 180
+        },
+        "Non-Destructive Testing": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 60
+        },
+        "General Merchandise": {
+          "sold": 1,
+          "no_sale": 50,
+          "pulled": 47,
+          "new": 100,
+          "active_end": 547,
+          "sold_value": 31,
+          "active_value": 59741
+        },
+        "Highway Equipment": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 9500
+        },
+        "AV Production Lighting": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 2837
+        },
+        "Woodworking Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 12,
+          "sold_value": 0,
+          "active_value": 2853
+        },
+        "Hacksaws": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 42
+        },
+        "Sawing Machines": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 70
+        },
+        "School Bus": {
+          "sold": 3,
+          "no_sale": 5,
+          "pulled": 13,
+          "new": 11,
+          "active_end": 125,
+          "sold_value": 6475,
+          "active_value": 183510
+        },
+        "SUV": {
+          "sold": 6,
+          "no_sale": 29,
+          "pulled": 64,
+          "new": 101,
+          "active_end": 593,
+          "sold_value": 36825,
+          "active_value": 1907938
+        },
+        "Laboratory Pumps and Tubing": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 10
+        },
+        "Test & Measurement, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 15,
+          "sold_value": 0,
+          "active_value": 40025
+        },
+        "Electronic Components, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 6,
+          "pulled": 5,
+          "new": 1,
+          "active_end": 17,
+          "sold_value": 0,
+          "active_value": 2000
+        },
+        "Meter, Energy": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 200
+        },
+        "High Visibility Clothing": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 10
+        },
+        "Lighting & Fixtures": {
+          "sold": 1,
+          "no_sale": 30,
+          "pulled": 20,
+          "new": 149,
+          "active_end": 358,
+          "sold_value": 5,
+          "active_value": 30121
+        },
+        "Cell Phones": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 9,
+          "new": 10,
+          "active_end": 60,
+          "sold_value": 0,
+          "active_value": 12255
+        },
+        "Trailers, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 16,
+          "sold_value": 0,
+          "active_value": 3306
+        },
+        "Prepared & Ready Meals": {
+          "sold": 0,
+          "no_sale": 4,
+          "pulled": 2,
+          "new": 16,
+          "active_end": 38,
+          "sold_value": 0,
+          "active_value": 60018
+        },
+        "Fittings, Flanges and Fasteners": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 6,
+          "sold_value": 0,
+          "active_value": 5410
+        },
+        "Firearms and Live Ammunition": {
+          "sold": 0,
+          "no_sale": 3,
+          "pulled": 3,
+          "new": 3,
+          "active_end": 18,
+          "sold_value": 0,
+          "active_value": 4129
+        },
+        "Heavy Equipment Components and Accessories": {
+          "sold": 0,
+          "no_sale": 3,
+          "pulled": 6,
+          "new": 19,
+          "active_end": 151,
+          "sold_value": 0,
+          "active_value": 297060
+        },
+        "Real Estate - Bid & Assume": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 480
+        },
+        "Aircraft Parts and Components": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 7,
+          "new": 2,
+          "active_end": 31,
+          "sold_value": 0,
+          "active_value": 40388
+        },
+        "Printer Supplies": {
+          "sold": 0,
+          "no_sale": 7,
+          "pulled": 2,
+          "new": 3,
+          "active_end": 16,
+          "sold_value": 0,
+          "active_value": 8994
+        },
+        "Gasket": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 2750
+        },
+        "Electric/Hybrid Vehicle": {
+          "sold": 1,
+          "no_sale": 2,
+          "pulled": 8,
+          "new": 13,
+          "active_end": 56,
+          "sold_value": 35000,
+          "active_value": 264969
+        },
+        "Outdoor Living": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 5,
+          "active_end": 30,
+          "sold_value": 0,
+          "active_value": 2714
+        },
+        "Head Protection": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 25
+        },
+        "Comic Books & Magazines": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 770
+        },
+        "Box Trucks": {
+          "sold": 0,
+          "no_sale": 4,
+          "pulled": 5,
+          "new": 11,
+          "active_end": 52,
+          "sold_value": 0,
+          "active_value": 198065
+        },
+        "Buildings": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 3,
+          "active_end": 9,
+          "sold_value": 0,
+          "active_value": 2488
+        },
+        "Mixer Trucks": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 20000
+        },
+        "Overhead & Gantry Cranes": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 15000
+        },
+        "Fasteners": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 1450
+        },
+        "Real Estate Tax Deed and Lien Sales": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 290
+        },
+        "Currency & Financial Products": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 6,
+          "sold_value": 0,
+          "active_value": 500
+        },
+        "Firearm Accessories": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 6,
+          "active_end": 35,
+          "sold_value": 0,
+          "active_value": 7635
+        },
+        "Tubing": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 500
+        },
+        "Chairs": {
+          "sold": 5,
+          "no_sale": 10,
+          "pulled": 23,
+          "new": 22,
+          "active_end": 147,
+          "sold_value": 912,
+          "active_value": 4946
+        },
+        "Telecom Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 25
+        },
+        "Electrical Supplies": {
+          "sold": 1,
+          "no_sale": 3,
+          "pulled": 2,
+          "new": 10,
+          "active_end": 58,
+          "sold_value": 50,
+          "active_value": 86726
+        },
+        "Meter, Water": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 6,
+          "sold_value": 0,
+          "active_value": 72
+        },
+        "Education and Library Equipment": {
+          "sold": 0,
+          "no_sale": 7,
+          "pulled": 10,
+          "new": 19,
+          "active_end": 146,
+          "sold_value": 0,
+          "active_value": 13514
+        },
+        "Stick Welders": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 1300
+        },
+        "Brewery Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 4,
+          "sold_value": 0,
+          "active_value": 2900
+        },
+        "Fire Trucks": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 3,
+          "new": 5,
+          "active_end": 38,
+          "sold_value": 0,
+          "active_value": 307200
+        },
+        "Storage Tank & Atmospheric Vessel, Energy": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 5,
+          "sold_value": 0,
+          "active_value": 4540
+        },
+        "Construction Materials": {
+          "sold": 0,
+          "no_sale": 3,
+          "pulled": 2,
+          "new": 10,
+          "active_end": 37,
+          "sold_value": 0,
+          "active_value": 3690
+        },
+        "Thermoforming Machines": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 9,
+          "sold_value": 0,
+          "active_value": 18750
+        },
+        "Cabinet Furniture Production": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 90
+        },
+        "Passenger Vehicles": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 6,
+          "sold_value": 0,
+          "active_value": 36100
+        },
+        "Storage & Shelving": {
+          "sold": 0,
+          "no_sale": 5,
+          "pulled": 6,
+          "new": 10,
+          "active_end": 44,
+          "sold_value": 0,
+          "active_value": 3116
+        },
+        "Water & Effluent Treatment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 650
+        },
+        "Dental Equipment and Supplies": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 3,
+          "active_end": 10,
+          "sold_value": 0,
+          "active_value": 2142
+        },
+        "First Aid": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 5,
+          "sold_value": 0,
+          "active_value": 312
+        },
+        "DVDs, CDs, Albums": {
+          "sold": 0,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 13,
+          "sold_value": 0,
+          "active_value": 1625
+        },
+        "Drilling & Boring": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 125
+        },
+        "Cookers, Ovens, Retorts": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 6,
+          "active_end": 20,
+          "sold_value": 0,
+          "active_value": 11025
+        },
+        "Printing and Binding Equipment": {
+          "sold": 0,
+          "no_sale": 3,
+          "pulled": 9,
+          "new": 6,
+          "active_end": 27,
+          "sold_value": 0,
+          "active_value": 94088
+        },
+        "Centrifuge, Energy": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 29
+        },
+        "Shuttle Bus - Mini Bus": {
+          "sold": 1,
+          "no_sale": 2,
+          "pulled": 4,
+          "new": 10,
+          "active_end": 56,
+          "sold_value": 3100,
+          "active_value": 79257
+        },
+        "AV Production Cameras & Lenses": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 3,
+          "new": 4,
+          "active_end": 17,
+          "sold_value": 0,
+          "active_value": 2734
+        },
+        "Snow Plow Trucks": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 4,
+          "new": 9,
+          "active_end": 33,
+          "sold_value": 0,
+          "active_value": 197119
+        },
+        "Confectionery & Snacks Packaging Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 2465
+        },
+        "Silos": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 7500
+        },
+        "Holiday & Seasonal Items": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 6,
+          "sold_value": 0,
+          "active_value": 205
+        },
+        "Tires & Wheels": {
+          "sold": 0,
+          "no_sale": 5,
+          "pulled": 5,
+          "new": 15,
+          "active_end": 58,
+          "sold_value": 0,
+          "active_value": 6542
+        },
+        "Drilling and Well Service Equipment": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0,
+          "sold_value": 2105,
+          "active_value": 0
+        },
+        "Fine Art": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 16,
+          "new": 11,
+          "active_end": 154,
+          "sold_value": 0,
+          "active_value": 145041
+        },
+        "Kitchen Equipment": {
+          "sold": 3,
+          "no_sale": 7,
+          "pulled": 20,
+          "new": 23,
+          "active_end": 167,
+          "sold_value": 126,
+          "active_value": 32129
+        },
+        "Military Clothing & Field Gear": {
+          "sold": 0,
+          "no_sale": 5,
+          "pulled": 1,
+          "new": 5,
+          "active_end": 11,
+          "sold_value": 0,
+          "active_value": 1084
+        },
+        "Baby Products": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 25
+        },
+        "Tools (Non-Industrial)": {
+          "sold": 0,
+          "no_sale": 4,
+          "pulled": 2,
+          "new": 5,
+          "active_end": 58,
+          "sold_value": 0,
+          "active_value": 3743
+        },
+        "Utility Poles": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 45
+        },
+        "Packaging Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 38
+        },
+        "Vehicle Suspension & Brakes Systems": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 5,
+          "sold_value": 0,
+          "active_value": 140
+        },
+        "Laser Cutters": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 52
+        },
+        "Vehicle Equipment and Parts": {
+          "sold": 1,
+          "no_sale": 18,
+          "pulled": 19,
+          "new": 31,
+          "active_end": 214,
+          "sold_value": 1925,
+          "active_value": 75133
+        },
+        "Pumps, Industrial": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 5,
+          "new": 5,
+          "active_end": 30,
+          "sold_value": 0,
+          "active_value": 12234
+        },
+        "Agriculture Equip/Commodities": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 28,
+          "sold_value": 0,
+          "active_value": 10654
+        },
+        "Vehicle Interior Components": {
+          "sold": 0,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 5,
+          "sold_value": 0,
+          "active_value": 230
+        },
+        "Simulators": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 4,
+          "sold_value": 0,
+          "active_value": 209
+        },
+        "Specialized Vehicles": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 9,
+          "sold_value": 0,
+          "active_value": 22842
+        },
+        "Clothing": {
+          "sold": 0,
+          "no_sale": 5,
+          "pulled": 7,
+          "new": 18,
+          "active_end": 178,
+          "sold_value": 0,
+          "active_value": 45799
+        },
+        "Disc Grinders": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 1500
+        },
+        "Warehouse, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 13,
+          "sold_value": 0,
+          "active_value": 1148
+        },
+        "AV Post Speakers, Monitors": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 5,
+          "sold_value": 0,
+          "active_value": 77
+        },
+        "Mailing Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 9,
+          "sold_value": 0,
+          "active_value": 512
+        },
+        "Utility Trailers": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 2,
+          "new": 1,
+          "active_end": 12,
+          "sold_value": 825,
+          "active_value": 7935
+        },
+        "Multi Family Property - Residential": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 8500
+        },
+        "Commercial Food Service and Cafeteria Equipment": {
+          "sold": 6,
+          "no_sale": 39,
+          "pulled": 27,
+          "new": 83,
+          "active_end": 341,
+          "sold_value": 300,
+          "active_value": 162541
+        },
+        "Educational": {
+          "sold": 0,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 23,
+          "sold_value": 0,
+          "active_value": 3359
+        },
+        "Coins, Currency, Precious Metals": {
+          "sold": 1,
+          "no_sale": 23,
+          "pulled": 17,
+          "new": 42,
+          "active_end": 342,
+          "sold_value": 100,
+          "active_value": 33643
+        },
+        "Collectibles": {
+          "sold": 0,
+          "no_sale": 8,
+          "pulled": 9,
+          "new": 9,
+          "active_end": 64,
+          "sold_value": 0,
+          "active_value": 5521
+        },
+        "Industrial Equipment": {
+          "sold": 0,
+          "no_sale": 14,
+          "pulled": 15,
+          "new": 23,
+          "active_end": 165,
+          "sold_value": 0,
+          "active_value": 163717
+        },
+        "Flooring": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 2,
+          "new": 2,
+          "active_end": 19,
+          "sold_value": 0,
+          "active_value": 8304
+        },
+        "Public Utility Equipment": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 5,
+          "new": 1,
+          "active_end": 25,
+          "sold_value": 0,
+          "active_value": 2626
+        },
+        "Sanding Machines": {
+          "sold": 0,
+          "no_sale": 2,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 8,
+          "sold_value": 0,
+          "active_value": 3110
+        },
+        "Vanities & Cabinets": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 0,
+          "sold_value": 0,
+          "active_value": 0
+        },
+        "Printers": {
+          "sold": 0,
+          "no_sale": 5,
+          "pulled": 3,
+          "new": 21,
+          "active_end": 63,
+          "sold_value": 0,
+          "active_value": 23969
+        },
+        "Fueling Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 5,
+          "sold_value": 0,
+          "active_value": 4045
+        },
+        "Industrial Equipment, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 10,
+          "pulled": 11,
+          "new": 22,
+          "active_end": 157,
+          "sold_value": 0,
+          "active_value": 324848
+        },
+        "Asphalt Equipment": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 6,
+          "new": 2,
+          "active_end": 47,
+          "sold_value": 0,
+          "active_value": 185823
+        },
+        "Complete Plants and Lines, Industrial": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 250
+        },
+        "Gambling Machines and Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 72
+        },
+        "Cable & Wire Equipment": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 11,
+          "sold_value": 0,
+          "active_value": 836
+        },
+        "Bicycles": {
+          "sold": 0,
+          "no_sale": 7,
+          "pulled": 13,
+          "new": 7,
+          "active_end": 78,
+          "sold_value": 0,
+          "active_value": 16652
+        },
+        "Streetlights": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 102
+        },
+        "Processing Equipment": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 11,
+          "new": 14,
+          "active_end": 84,
+          "sold_value": 0,
+          "active_value": 80263
+        },
+        "Cutting & Consumables": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 250
+        },
+        "Scales & Weighing Equipment, Industrial": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 1,
+          "active_end": 11,
+          "sold_value": 0,
+          "active_value": 1775
+        },
+        "Cross Cut Saws, Woodworking": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 100
+        },
+        "Traffic Signals, Signs, Controls": {
+          "sold": 0,
+          "no_sale": 14,
+          "pulled": 9,
+          "new": 16,
+          "active_end": 91,
+          "sold_value": 0,
+          "active_value": 16464
+        },
+        "Motor Graders": {
+          "sold": 1,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 12,
+          "sold_value": 44500,
+          "active_value": 76500
+        },
+        "Grandstands and bleachers": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 100
+        },
+        "Trucks, Miscellaneous": {
+          "sold": 2,
+          "no_sale": 3,
+          "pulled": 4,
+          "new": 6,
+          "active_end": 33,
+          "sold_value": 8605,
+          "active_value": 201429
+        },
+        "Water Treatment, Wastewater": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 116000
+        },
+        "Cut Off Saws": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 10
+        },
+        "Compressor Parts": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 10
+        },
+        "Network Analyzers": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 1600
+        },
+        "Drones, Recreational": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 335
+        },
+        "Valves, Energy": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 3,
+          "active_end": 13,
+          "sold_value": 0,
+          "active_value": 10980
+        },
+        "Automatic Guided Vehicles (AGV)": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 100000
+        },
+        "Dishwashers": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 25
+        },
+        "Heat Exchangers": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 800
+        },
+        "Computers, Parts, and Supplies": {
+          "sold": 4,
+          "no_sale": 19,
+          "pulled": 28,
+          "new": 52,
+          "active_end": 369,
+          "sold_value": 5083,
+          "active_value": 122770
+        },
+        "Articulated Dump Trucks": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 10,
+          "sold_value": 0,
+          "active_value": 716300
+        },
+        "GPS and Navigation Devices": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 1
+        },
+        "Vehicle & Automotive Lifts": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 12,
+          "sold_value": 0,
+          "active_value": 11347
+        },
+        "Battery Manufacturing": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 15
+        },
+        "Painting": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 55
+        },
+        "Handbags, Purses, Totes": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 4,
+          "new": 0,
+          "active_end": 36,
+          "sold_value": 95,
+          "active_value": 9916
+        },
+        "Televisions": {
+          "sold": 0,
+          "no_sale": 15,
+          "pulled": 4,
+          "new": 7,
+          "active_end": 58,
+          "sold_value": 0,
+          "active_value": 24917
+        },
+        "Barrels & Drums": {
+          "sold": 0,
+          "no_sale": 2,
+          "pulled": 3,
+          "new": 4,
+          "active_end": 21,
+          "sold_value": 0,
+          "active_value": 3440
+        },
+        "Compactors": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 2,
+          "new": 3,
+          "active_end": 18,
+          "sold_value": 0,
+          "active_value": 204356
+        },
+        "Rail Equipment and Accessories": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 4,
+          "sold_value": 0,
+          "active_value": 2950
+        },
+        "Motorcycles": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 4,
+          "new": 6,
+          "active_end": 48,
+          "sold_value": 3500,
+          "active_value": 111089
+        },
+        "Electrical Panels & Breakers": {
+          "sold": 0,
+          "no_sale": 4,
+          "pulled": 6,
+          "new": 1,
+          "active_end": 36,
+          "sold_value": 0,
+          "active_value": 8951
+        },
+        "Cab Chassis": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 20,
+          "sold_value": 0,
+          "active_value": 149525
+        },
+        "Grinders, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 25
+        },
+        "Vending Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 4,
+          "active_end": 25,
+          "sold_value": 0,
+          "active_value": 1650
+        },
+        "Eye & Face Protection": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 7,
+          "sold_value": 0,
+          "active_value": 520
+        },
+        "Multi-Tools": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 17,
+          "sold_value": 0,
+          "active_value": 1341
+        },
+        "Bandsaws, Woodworking": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 100
+        },
+        "Buses": {
+          "sold": 0,
+          "no_sale": 2,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 1675
+        },
+        "Agricultural and Forestry Equipment": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 11,
+          "new": 10,
+          "active_end": 86,
+          "sold_value": 0,
+          "active_value": 213533
+        },
+        "Table Saws": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 7,
+          "sold_value": 0,
+          "active_value": 440
+        },
+        "MRO & Spare Parts": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 2,
+          "new": 3,
+          "active_end": 27,
+          "sold_value": 0,
+          "active_value": 4957
+        },
+        "Real Estate / Land Parcels": {
+          "sold": 1,
+          "no_sale": 5,
+          "pulled": 9,
+          "new": 13,
+          "active_end": 64,
+          "sold_value": 4950,
+          "active_value": 829503
+        },
+        "Household Paper Products": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 4,
+          "sold_value": 0,
+          "active_value": 500
+        },
+        "Blower, Energy": {
+          "sold": 0,
+          "no_sale": 2,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 137
+        },
+        "Printing Presses & Digital Printers": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 502
+        },
+        "Vintage & Antique Assets": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 8,
+          "sold_value": 0,
+          "active_value": 4529
+        },
+        "Highway / Road Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 4,
+          "new": 4,
+          "active_end": 23,
+          "sold_value": 0,
+          "active_value": 59156
+        },
+        "Dozers": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 1,
+          "active_end": 18,
+          "sold_value": 0,
+          "active_value": 775850
+        },
+        "Pumping Units": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 25
+        },
+        "Bending & Forming": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 20
+        },
+        "AV Production Sound Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 5,
+          "sold_value": 0,
+          "active_value": 117
+        },
+        "Watches": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 7,
+          "active_end": 30,
+          "sold_value": 0,
+          "active_value": 4153
+        },
+        "Pipe & Sewer Cameras": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 56
+        },
+        "Glass Production, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 2,
+          "new": 0,
+          "active_end": 0,
+          "sold_value": 0,
+          "active_value": 0
+        },
+        "Material Handling, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 4,
+          "active_end": 13,
+          "sold_value": 0,
+          "active_value": 4262
+        },
+        "Small Home Appliances": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 20
+        },
+        "Tank Trucks": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 20500
+        },
+        "iPads, Tablets, and eReaders": {
+          "sold": 2,
+          "no_sale": 3,
+          "pulled": 8,
+          "new": 8,
+          "active_end": 71,
+          "sold_value": 3710,
+          "active_value": 22478
+        },
+        "Blowout Preventer Control System": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 50000
+        },
+        "Arts & Crafts": {
+          "sold": 0,
+          "no_sale": 2,
+          "pulled": 2,
+          "new": 4,
+          "active_end": 22,
+          "sold_value": 0,
+          "active_value": 1401
+        },
+        "Lathes, CNC & Turning Centers": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 525
+        },
+        "Health & Beauty": {
+          "sold": 0,
+          "no_sale": 8,
+          "pulled": 4,
+          "new": 3,
+          "active_end": 15,
+          "sold_value": 0,
+          "active_value": 1247
+        },
+        "Woodworking Tools, Power & Hand": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 168
+        },
+        "Backhoes": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 5,
+          "new": 5,
+          "active_end": 29,
+          "sold_value": 0,
+          "active_value": 211614
+        },
+        "Power Unit, Drilling": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 7,
+          "sold_value": 0,
+          "active_value": 3500
+        },
+        "Vehicle Powertrain, Engine, Transmission": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 6,
+          "sold_value": 0,
+          "active_value": 11800
+        },
+        "Knives / Multi-Tools": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 12,
+          "active_end": 112,
+          "sold_value": 0,
+          "active_value": 10370
+        },
+        "Facility Support Equipment": {
+          "sold": 0,
+          "no_sale": 3,
+          "pulled": 3,
+          "new": 2,
+          "active_end": 27,
+          "sold_value": 0,
+          "active_value": 2392
+        },
+        "Actuator, Energy": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 100
+        },
+        "Sub Arc Welders": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 500
+        },
+        "Grinding": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 2525
+        },
+        "Woodworking Fittings & Supplies": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 64
+        },
+        "Press Tooling": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 200
+        },
+        "Restricted Vehicles": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 2,
+          "new": 0,
+          "active_end": 4,
+          "sold_value": 0,
+          "active_value": 27500
+        },
+        "Commercial Property": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 7,
+          "sold_value": 0,
+          "active_value": 1194988
+        },
+        "Instrumentation, Energy": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 7,
+          "sold_value": 0,
+          "active_value": 25275
+        },
+        "Office Phones & Phone Systems": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 7,
+          "sold_value": 0,
+          "active_value": 244
+        },
+        "Hoists & Lifting Gear": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 4,
+          "new": 5,
+          "active_end": 13,
+          "sold_value": 0,
+          "active_value": 6419
+        },
+        "Tooling, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 5108
+        },
+        "Chemicals, All Types": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 7,
+          "sold_value": 0,
+          "active_value": 50
+        },
+        "Clocks": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 25
+        },
+        "Other Consumer Goods": {
+          "sold": 2,
+          "no_sale": 5,
+          "pulled": 44,
+          "new": 34,
+          "active_end": 382,
+          "sold_value": 132,
+          "active_value": 134865
+        },
+        "Medical Equipment and Supplies": {
+          "sold": 1,
+          "no_sale": 57,
+          "pulled": 52,
+          "new": 114,
+          "active_end": 375,
+          "sold_value": 145,
+          "active_value": 184139
+        },
+        "Laboratory Equipment, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 17,
+          "pulled": 15,
+          "new": 79,
+          "active_end": 209,
+          "sold_value": 0,
+          "active_value": 150431
+        },
+        "Food & Beverage Vending Machines": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 10,
+          "sold_value": 0,
+          "active_value": 3984
+        },
+        "Fan, Energy": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 1312
+        },
+        "Water Trucks": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 7,
+          "sold_value": 0,
+          "active_value": 100350
+        },
+        "Textiles & Apparel Manufacturing": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 102
+        },
+        "Welding": {
+          "sold": 1,
+          "no_sale": 2,
+          "pulled": 3,
+          "new": 7,
+          "active_end": 25,
+          "sold_value": 57,
+          "active_value": 40906
+        },
+        "Drill Presses, Woodworking": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 7,
+          "sold_value": 0,
+          "active_value": 921
+        },
+        "Storage & Holding Tanks": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 29,
+          "sold_value": 0,
+          "active_value": 66977
+        },
+        "Metering Equipment, Energy": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 9,
+          "sold_value": 0,
+          "active_value": 36675
+        },
+        "Planer Mills": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 850
+        },
+        "Service & Utility Trucks": {
+          "sold": 2,
+          "no_sale": 2,
+          "pulled": 7,
+          "new": 8,
+          "active_end": 90,
+          "sold_value": 6200,
+          "active_value": 319970
+        },
+        "Filter, Energy": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 7,
+          "sold_value": 0,
+          "active_value": 2245
+        },
+        "Printers, Scanners, Copiers": {
+          "sold": 0,
+          "no_sale": 15,
+          "pulled": 15,
+          "new": 34,
+          "active_end": 150,
+          "sold_value": 0,
+          "active_value": 232431
+        },
+        "Bakery & Baked Goods": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 20
+        },
+        "Sweeper - Parking Lot/Warehouse": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 7,
+          "sold_value": 1850,
+          "active_value": 5079
+        },
+        "Security Surveillance and Detection": {
+          "sold": 0,
+          "no_sale": 3,
+          "pulled": 3,
+          "new": 6,
+          "active_end": 31,
+          "sold_value": 0,
+          "active_value": 21160
+        },
+        "Excavators": {
+          "sold": 1,
+          "no_sale": 9,
+          "pulled": 7,
+          "new": 6,
+          "active_end": 41,
+          "sold_value": 4020,
+          "active_value": 801114
+        },
+        "Meat, Poultry, Seafood Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 699
+        },
+        "Waste Processing Equipment": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0,
+          "sold_value": 18400,
+          "active_value": 0
+        },
+        "Clothing, Jewelry, and Accessories": {
+          "sold": 3,
+          "no_sale": 11,
+          "pulled": 9,
+          "new": 16,
+          "active_end": 64,
+          "sold_value": 845,
+          "active_value": 5750
+        },
+        "Processing Equipment, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 22
+        },
+        "Power Cable & Wire": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 1932
+        },
+        "Plastics Equipment, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 4,
+          "sold_value": 0,
+          "active_value": 171
+        },
+        "Packaging, Bottling, Converting": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 11
+        },
+        "Survey Equipment, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 100
+        },
+        "Drones": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 1,
+          "active_end": 9,
+          "sold_value": 0,
+          "active_value": 13310
+        },
+        "Welding Supplies": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 1252
+        },
+        "Eyewear": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 557
+        },
+        "Communication and Electronic Equipment": {
+          "sold": 0,
+          "no_sale": 3,
+          "pulled": 5,
+          "new": 4,
+          "active_end": 56,
+          "sold_value": 0,
+          "active_value": 15589
+        },
+        "Garbage & Refuse Containers": {
+          "sold": 0,
+          "no_sale": 4,
+          "pulled": 3,
+          "new": 2,
+          "active_end": 27,
+          "sold_value": 0,
+          "active_value": 8206
+        },
+        "Grapple Trucks": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 5,
+          "sold_value": 0,
+          "active_value": 99560
+        },
+        "TIG Welders": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 500
+        },
+        "Metal Detectors, Food": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 2570
+        },
+        "Aircraft": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 10,
+          "sold_value": 0,
+          "active_value": 273550
+        },
+        "Linens & Bedding": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 176
+        },
+        "Presses": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 165
+        },
+        "Inspection, Test & Measurement": {
+          "sold": 0,
+          "no_sale": 2,
+          "pulled": 0,
+          "new": 3,
+          "active_end": 6,
+          "sold_value": 0,
+          "active_value": 685
+        },
+        "Separators, Screeners, Sifters": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 5,
+          "sold_value": 0,
+          "active_value": 2750
+        },
+        "Jewelry": {
+          "sold": 2,
+          "no_sale": 186,
+          "pulled": 132,
+          "new": 296,
+          "active_end": 1300,
+          "sold_value": 99,
+          "active_value": 260729
+        },
+        "Storage Cabinets & Lockers": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 7,
+          "new": 14,
+          "active_end": 56,
+          "sold_value": 0,
+          "active_value": 3188
+        },
+        "Electronics Manufacturing, Miscellaneous": {
+          "sold": 2,
+          "no_sale": 3,
+          "pulled": 3,
+          "new": 3,
+          "active_end": 16,
+          "sold_value": 31,
+          "active_value": 7307
+        },
+        "Personal Protection Equipment": {
+          "sold": 0,
+          "no_sale": 3,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 25,
+          "sold_value": 0,
+          "active_value": 6925
+        },
+        "Phones": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 10,
+          "new": 7,
+          "active_end": 60,
+          "sold_value": 0,
+          "active_value": 5834
+        },
+        "Step Vans": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 5500
+        },
+        "Metalworking, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 3,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 18,
+          "sold_value": 0,
+          "active_value": 12793
+        },
+        "Trucks": {
+          "sold": 0,
+          "no_sale": 2,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 10,
+          "sold_value": 0,
+          "active_value": 112775
+        },
+        "Mowing Equipment": {
+          "sold": 2,
+          "no_sale": 1,
+          "pulled": 14,
+          "new": 18,
+          "active_end": 151,
+          "sold_value": 2075,
+          "active_value": 115402
+        },
+        "Food Prep": {
+          "sold": 2,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 22,
+          "sold_value": 102,
+          "active_value": 6586
+        },
+        "Printing & Binding, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 7,
+          "sold_value": 0,
+          "active_value": 2975
+        },
+        "Networking and Wireless Devices": {
+          "sold": 0,
+          "no_sale": 12,
+          "pulled": 7,
+          "new": 16,
+          "active_end": 98,
+          "sold_value": 0,
+          "active_value": 34384
+        },
+        "AV Production Signal Control Equipment": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0,
+          "sold_value": 0,
+          "active_value": 0
+        },
+        "Scrapers": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 4,
+          "sold_value": 0,
+          "active_value": 229034
+        },
+        "Sewer Jetters": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 21680
+        },
+        "Transformers & Power Distribution": {
+          "sold": 0,
+          "no_sale": 4,
+          "pulled": 1,
+          "new": 7,
+          "active_end": 23,
+          "sold_value": 0,
+          "active_value": 370640
+        },
+        "Fryers": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 150
+        },
+        "Generators & Components": {
+          "sold": 1,
+          "no_sale": 3,
+          "pulled": 9,
+          "new": 5,
+          "active_end": 46,
+          "sold_value": 52,
+          "active_value": 135687
+        },
+        "Drones, Commercial": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 4360
+        },
+        "Presses, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 8,
+          "sold_value": 0,
+          "active_value": 5220
+        },
+        "BB Guns and Air Rifles": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 20
+        },
+        "Roll Off Trucks": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 11,
+          "sold_value": 0,
+          "active_value": 128575
+        },
+        "Digger Derrick Trucks": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 18500
+        },
+        "Doors & Windows": {
+          "sold": 0,
+          "no_sale": 2,
+          "pulled": 2,
+          "new": 5,
+          "active_end": 26,
+          "sold_value": 0,
+          "active_value": 1568
+        },
+        "Vans": {
+          "sold": 4,
+          "no_sale": 6,
+          "pulled": 32,
+          "new": 37,
+          "active_end": 228,
+          "sold_value": 4760,
+          "active_value": 725891
+        },
+        "Ambulance/Rescue": {
+          "sold": 1,
+          "no_sale": 2,
+          "pulled": 3,
+          "new": 6,
+          "active_end": 57,
+          "sold_value": 4500,
+          "active_value": 362673
+        },
+        "Food": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 22,
+          "sold_value": 0,
+          "active_value": 2056
+        },
+        "Knives": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 16,
+          "new": 12,
+          "active_end": 85,
+          "sold_value": 0,
+          "active_value": 7719
+        },
+        "Livestock Trailers": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 466
+        },
+        "Metering Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 2025
+        },
+        "Agricultural Trailers": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 4592
+        },
+        "Conveyors & Accumulation Tables": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 750
+        },
+        "Exercise Equipment": {
+          "sold": 0,
+          "no_sale": 6,
+          "pulled": 11,
+          "new": 12,
+          "active_end": 109,
+          "sold_value": 0,
+          "active_value": 23158
+        },
+        "Communication & Electronic Equipment, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 2,
+          "pulled": 8,
+          "new": 18,
+          "active_end": 74,
+          "sold_value": 0,
+          "active_value": 30448
+        },
+        "Air Cooler": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 3,
+          "active_end": 10,
+          "sold_value": 0,
+          "active_value": 10642
+        },
+        "Luggage": {
+          "sold": 0,
+          "no_sale": 3,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 7,
+          "sold_value": 0,
+          "active_value": 197
+        },
+        "Books & Manuals": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 4,
+          "new": 8,
+          "active_end": 92,
+          "sold_value": 0,
+          "active_value": 14414
+        },
+        "Motorcoach": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 9000
+        },
+        "Air Compressors & Accessories": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 7,
+          "active_end": 42,
+          "sold_value": 1100,
+          "active_value": 111397
+        },
+        "Cable & Wire Reel": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 11,
+          "sold_value": 0,
+          "active_value": 54112
+        },
+        "Vehicles, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 4,
+          "pulled": 4,
+          "new": 5,
+          "active_end": 39,
+          "sold_value": 0,
+          "active_value": 52568
+        },
+        "Cleaning & Degreasing": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 3,
+          "new": 2,
+          "active_end": 7,
+          "sold_value": 0,
+          "active_value": 2707
+        },
+        "Warehouse and Storage": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 12,
+          "sold_value": 0,
+          "active_value": 4522
+        },
+        "Mezzanines, Platforms, Stairs": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 5100
+        },
+        "Packaging Equipment, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 2,
+          "new": 0,
+          "active_end": 6,
+          "sold_value": 0,
+          "active_value": 15928
+        },
+        "Truck Tractors": {
+          "sold": 0,
+          "no_sale": 4,
+          "pulled": 2,
+          "new": 8,
+          "active_end": 40,
+          "sold_value": 0,
+          "active_value": 333628
+        },
+        "Arcade and Video Game Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 5760
+        },
+        "Power Generation & Distribution Equipment": {
+          "sold": 0,
+          "no_sale": 3,
+          "pulled": 5,
+          "new": 6,
+          "active_end": 39,
+          "sold_value": 0,
+          "active_value": 3056649
+        },
+        "Separators, Energy": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 4,
+          "sold_value": 0,
+          "active_value": 1100
+        },
+        "Alarm and Fire Protection Systems": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 6,
+          "sold_value": 0,
+          "active_value": 130
+        },
+        "Toys, Games, Figurines": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 12,
+          "sold_value": 0,
+          "active_value": 291
+        },
+        "Inspection, Test & Measurement, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 13,
+          "sold_value": 0,
+          "active_value": 4992
+        },
+        "Portable Buildings and structures": {
+          "sold": 0,
+          "no_sale": 5,
+          "pulled": 3,
+          "new": 3,
+          "active_end": 32,
+          "sold_value": 0,
+          "active_value": 30921
+        },
+        "Woodworking Painting & Finishing": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 295
+        },
+        "Boom Trucks": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 10,
+          "sold_value": 2402,
+          "active_value": 88492
+        },
+        "Pickup Trucks": {
+          "sold": 13,
+          "no_sale": 21,
+          "pulled": 49,
+          "new": 90,
+          "active_end": 594,
+          "sold_value": 35351,
+          "active_value": 1773649
+        },
+        "Vacuum Trucks": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 4,
+          "new": 4,
+          "active_end": 14,
+          "sold_value": 0,
+          "active_value": 184059
+        },
+        "Tools, Industrial Power & Hand": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 3,
+          "new": 4,
+          "active_end": 42,
+          "sold_value": 0,
+          "active_value": 4508
+        },
+        "Recyclable Materials": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 9,
+          "sold_value": 0,
+          "active_value": 10030
+        },
+        "Tanks, Vessels, Silos": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 30
+        },
+        "Aviation Ground Support Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 9,
+          "active_end": 20,
+          "sold_value": 0,
+          "active_value": 166180
+        },
+        "Computer accessories": {
+          "sold": 2,
+          "no_sale": 20,
+          "pulled": 13,
+          "new": 30,
+          "active_end": 120,
+          "sold_value": 210,
+          "active_value": 32959
+        },
+        "Books, Music, and Video": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 3,
+          "new": 3,
+          "active_end": 17,
+          "sold_value": 0,
+          "active_value": 360
+        },
+        "Meter, Gas": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 180
+        },
+        "Meter, Electricity": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0,
+          "sold_value": 0,
+          "active_value": 0
+        },
+        "Trailer Dollies": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0,
+          "sold_value": 0,
+          "active_value": 0
+        },
+        "MIG Welders": {
+          "sold": 0,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 0,
+          "sold_value": 0,
+          "active_value": 0
+        },
+        "Respiratory Protection": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 1680
+        },
+        "Tanks, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 6,
+          "sold_value": 0,
+          "active_value": 961
+        },
+        "Tables": {
+          "sold": 0,
+          "no_sale": 4,
+          "pulled": 7,
+          "new": 14,
+          "active_end": 118,
+          "sold_value": 0,
+          "active_value": 1474
+        },
+        "Oscilloscopes": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 168
+        },
+        "Kitchen & Bath Fixtures": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 30
+        },
+        "AV Broadcast Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 25
+        },
+        "Vehicle Truck Service Box and Beds": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 4,
+          "sold_value": 0,
+          "active_value": 7500
+        },
+        "Boiler": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 500
+        },
+        "General Workshop Presses": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 550
+        },
+        "Trading & Game Cards": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 10,
+          "sold_value": 0,
+          "active_value": 8913
+        },
+        "AV Production Monitors": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 0,
+          "sold_value": 0,
+          "active_value": 0
+        },
+        "Spectrum Analyzers": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 0,
+          "sold_value": 0,
+          "active_value": 0
+        },
+        "Fire & Police Equipment": {
+          "sold": 3,
+          "no_sale": 10,
+          "pulled": 35,
+          "new": 32,
+          "active_end": 242,
+          "sold_value": 2508,
+          "active_value": 68555
+        },
+        "Metals, Precious": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 448
+        },
+        "Surface Grinders": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 25
+        },
+        "Military Trailers": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 1000
+        },
+        "Cement Production Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 4,
+          "sold_value": 0,
+          "active_value": 490
+        },
+        "Flare, Energy": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 4,
+          "sold_value": 0,
+          "active_value": 20000
+        },
+        "Turbines": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 11,
+          "sold_value": 0,
+          "active_value": 4225
+        },
+        "Public Safety and Control": {
+          "sold": 0,
+          "no_sale": 4,
+          "pulled": 2,
+          "new": 6,
+          "active_end": 45,
+          "sold_value": 0,
+          "active_value": 37345
+        },
+        "Vertical Machining Centers": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 10
+        },
+        "Cookware & Tableware": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 6,
+          "sold_value": 0,
+          "active_value": 4122
+        },
+        "Gambling Machines & Equipment, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 5,
+          "active_end": 17,
+          "sold_value": 0,
+          "active_value": 977
+        },
+        "Tanks & Vessels": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 22,
+          "sold_value": 0,
+          "active_value": 77534
+        },
+        "Pump, Energy": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 3,
+          "active_end": 21,
+          "sold_value": 0,
+          "active_value": 8905
+        },
+        "Marine Parts, Components, and Supplies": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 7,
+          "sold_value": 0,
+          "active_value": 1057
+        },
+        "Pallet, Stretch Wrappers": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 4,
+          "sold_value": 0,
+          "active_value": 1555
+        },
+        "Bags, All Types": {
+          "sold": 0,
+          "no_sale": 4,
+          "pulled": 2,
+          "new": 1,
+          "active_end": 9,
+          "sold_value": 0,
+          "active_value": 325
+        },
+        "Cleaning, SMT": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 65
+        },
+        "Desks": {
+          "sold": 0,
+          "no_sale": 3,
+          "pulled": 7,
+          "new": 7,
+          "active_end": 59,
+          "sold_value": 0,
+          "active_value": 1362
+        },
+        "Photographic Equipment": {
+          "sold": 1,
+          "no_sale": 7,
+          "pulled": 3,
+          "new": 3,
+          "active_end": 26,
+          "sold_value": 160,
+          "active_value": 3468
+        },
+        "Chiller, Energy": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 4650
+        },
+        "Computer Software": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 1025
+        },
+        "Engineering Equipment and Supplies": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 7,
+          "sold_value": 0,
+          "active_value": 3056
+        },
+        "Transit Bus": {
+          "sold": 2,
+          "no_sale": 0,
+          "pulled": 2,
+          "new": 4,
+          "active_end": 31,
+          "sold_value": 8000,
+          "active_value": 64029
+        },
+        "Woodworking, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 14,
+          "sold_value": 0,
+          "active_value": 3297
+        },
+        "Computers: Desktops and All-In-Ones": {
+          "sold": 1,
+          "no_sale": 6,
+          "pulled": 14,
+          "new": 19,
+          "active_end": 169,
+          "sold_value": 37,
+          "active_value": 64419
+        },
+        "Computer Monitors": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 9,
+          "new": 9,
+          "active_end": 69,
+          "sold_value": 0,
+          "active_value": 6310
+        },
+        "Playground & Amusement Park Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 10,
+          "sold_value": 0,
+          "active_value": 2302
+        },
+        "Furniture, Miscellaneous": {
+          "sold": 4,
+          "no_sale": 17,
+          "pulled": 29,
+          "new": 43,
+          "active_end": 301,
+          "sold_value": 490,
+          "active_value": 8428
+        },
+        "Refrigerated Trucks": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 5,
+          "sold_value": 0,
+          "active_value": 33200
+        },
+        "Towers, Water, Fire, Telecoms": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 10
+        },
+        "Flow Recorder": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 35
+        },
+        "Sweeper - Street": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 3,
+          "new": 1,
+          "active_end": 15,
+          "sold_value": 0,
+          "active_value": 43775
+        },
+        "Metal, Scrap": {
+          "sold": 0,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 31,
+          "sold_value": 0,
+          "active_value": 40411
+        },
+        "Metal Detectors, Security": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 11,
+          "sold_value": 0,
+          "active_value": 5650
+        },
+        "Packers, Shrink Wrappers, Bundlers": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 250
+        },
+        "Metalworking Equipment, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 9,
+          "sold_value": 0,
+          "active_value": 4185
+        },
+        "Snow Removal Equipment": {
+          "sold": 1,
+          "no_sale": 4,
+          "pulled": 5,
+          "new": 11,
+          "active_end": 61,
+          "sold_value": 575,
+          "active_value": 204264
+        },
+        "Pipes, Valves & Fittings, Industrial": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 21,
+          "sold_value": 0,
+          "active_value": 8153
+        },
+        "Dump Trailers": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 4,
+          "sold_value": 2777,
+          "active_value": 18200
+        },
+        "Cutters, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 20
+        },
+        "Specialty Trailers": {
+          "sold": 0,
+          "no_sale": 2,
+          "pulled": 0,
+          "new": 4,
+          "active_end": 15,
+          "sold_value": 0,
+          "active_value": 62355
+        },
+        "Medication Dispensing and Measuring": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 4,
+          "sold_value": 0,
+          "active_value": 15111
+        },
+        "Equipment Trailers": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 3,
+          "new": 2,
+          "active_end": 22,
+          "sold_value": 0,
+          "active_value": 47447
+        },
+        "Lost & Abandoned Property": {
+          "sold": 0,
+          "no_sale": 2,
+          "pulled": 2,
+          "new": 3,
+          "active_end": 21,
+          "sold_value": 0,
+          "active_value": 4058
+        },
+        "Loaders": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 7,
+          "active_end": 41,
+          "sold_value": 25000,
+          "active_value": 452707
+        },
+        "Copiers": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 5,
+          "sold_value": 0,
+          "active_value": 188
+        },
+        "Production Lines & Cells": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 1025
+        },
+        "Construction Components and Supplies": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 2,
+          "new": 7,
+          "active_end": 47,
+          "sold_value": 0,
+          "active_value": 28490
+        },
+        "Forestry Machinery": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 4,
+          "sold_value": 0,
+          "active_value": 34925
+        },
+        "Beauty and Personal Care": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 3,
+          "new": 10,
+          "active_end": 48,
+          "sold_value": 5,
+          "active_value": 3541
+        },
+        "Household Phones": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 50
+        },
+        "Coolers & Freezers": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 2,
+          "active_end": 14,
+          "sold_value": 0,
+          "active_value": 25825
+        },
+        "Road/Highway/Bridge Supplies": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 2,
+          "new": 3,
+          "active_end": 19,
+          "sold_value": 0,
+          "active_value": 2050
+        },
+        "Steel": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 20
+        },
+        "Electronic Scrap": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 5,
+          "sold_value": 0,
+          "active_value": 517
+        },
+        "All Terrain Vehicles": {
+          "sold": 0,
+          "no_sale": 2,
+          "pulled": 6,
+          "new": 6,
+          "active_end": 65,
+          "sold_value": 0,
+          "active_value": 72308
+        },
+        "Audio, Visual, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 3,
+          "pulled": 2,
+          "new": 1,
+          "active_end": 20,
+          "sold_value": 0,
+          "active_value": 3447
+        },
+        "Home Appliances": {
+          "sold": 2,
+          "no_sale": 13,
+          "pulled": 11,
+          "new": 13,
+          "active_end": 82,
+          "sold_value": 48,
+          "active_value": 6522
+        },
+        "Pool Supplies & Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 11,
+          "sold_value": 0,
+          "active_value": 4143
+        },
+        "Process Unit, Energy": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 25000
+        },
+        "Computers: Laptops": {
+          "sold": 12,
+          "no_sale": 4,
+          "pulled": 30,
+          "new": 84,
+          "active_end": 378,
+          "sold_value": 9994,
+          "active_value": 249851
+        },
+        "Industrial Robots": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 3,
+          "active_end": 29,
+          "sold_value": 0,
+          "active_value": 438145
+        },
+        "Pump Unit Gearbox": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 450
+        },
+        "PCB Assembly": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 10
+        },
+        "Janitorial Equipment": {
+          "sold": 1,
+          "no_sale": 4,
+          "pulled": 10,
+          "new": 8,
+          "active_end": 83,
+          "sold_value": 150,
+          "active_value": 8836
+        },
+        "Containers - Storage & Shipping": {
+          "sold": 0,
+          "no_sale": 3,
+          "pulled": 0,
+          "new": 7,
+          "active_end": 24,
+          "sold_value": 0,
+          "active_value": 5625
+        },
+        "Tables, Work Benches, Factory Furniture": {
+          "sold": 0,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 20,
+          "sold_value": 0,
+          "active_value": 758
+        },
+        "Tractor - Farm": {
+          "sold": 2,
+          "no_sale": 0,
+          "pulled": 4,
+          "new": 6,
+          "active_end": 58,
+          "sold_value": 10870,
+          "active_value": 228222
+        },
+        "General Packaging Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 500
+        },
+        "Food Storage": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 3,
+          "active_end": 13,
+          "sold_value": 0,
+          "active_value": 1468
+        },
+        "Forklifts": {
+          "sold": 1,
+          "no_sale": 2,
+          "pulled": 10,
+          "new": 21,
+          "active_end": 78,
+          "sold_value": 230,
+          "active_value": 179153
+        },
+        "Band Saws": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 310
+        },
+        "Sports Jerseys": {
+          "sold": 0,
+          "no_sale": 4,
+          "pulled": 4,
+          "new": 6,
+          "active_end": 40,
+          "sold_value": 0,
+          "active_value": 1592
+        },
+        "AV Data Storage": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 100
+        },
+        "Vacant Land - Residential": {
+          "sold": 1,
+          "no_sale": 36,
+          "pulled": 21,
+          "new": 87,
+          "active_end": 349,
+          "sold_value": 4888,
+          "active_value": 2948899
+        },
+        "Skid Steers": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 4,
+          "new": 4,
+          "active_end": 30,
+          "sold_value": 5050,
+          "active_value": 227580
+        },
+        "Library Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 30
+        },
+        "Office Paper Products": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 35
+        },
+        "Air Handling": {
+          "sold": 0,
+          "no_sale": 5,
+          "pulled": 3,
+          "new": 9,
+          "active_end": 23,
+          "sold_value": 0,
+          "active_value": 17475
+        },
+        "Office Equipment and Supplies": {
+          "sold": 0,
+          "no_sale": 19,
+          "pulled": 42,
+          "new": 63,
+          "active_end": 421,
+          "sold_value": 0,
+          "active_value": 10992
+        },
+        "Motor Homes / Travel Trailers": {
+          "sold": 0,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 13,
+          "sold_value": 0,
+          "active_value": 64237
+        },
+        "Complete Lines, Plants, Processes": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 500000
+        },
+        "Welding, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 9,
+          "sold_value": 0,
+          "active_value": 5592
+        },
+        "Nursery/Horticulture/Landscaping": {
+          "sold": 1,
+          "no_sale": 3,
+          "pulled": 6,
+          "new": 1,
+          "active_end": 17,
+          "sold_value": 5100,
+          "active_value": 3445
+        },
+        "Beverage Processing Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 200
+        },
+        "Home Appliances, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 3,
+          "pulled": 3,
+          "new": 1,
+          "active_end": 15,
+          "sold_value": 0,
+          "active_value": 563
+        },
+        "Beverage Packaging Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 300
+        },
+        "Automotive Assembly": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 2,
+          "new": 0,
+          "active_end": 5,
+          "sold_value": 0,
+          "active_value": 10274
+        },
+        "Fume Extractors": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 10
+        },
+        "Engines": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 6,
+          "active_end": 14,
+          "sold_value": 0,
+          "active_value": 18194
+        },
+        "Asphalt Trucks": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 22600
+        },
+        "Sporting Equipment": {
+          "sold": 1,
+          "no_sale": 6,
+          "pulled": 11,
+          "new": 16,
+          "active_end": 107,
+          "sold_value": 490,
+          "active_value": 15849
+        },
+        "Office Equipment & Supplies, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 7,
+          "pulled": 22,
+          "new": 19,
+          "active_end": 174,
+          "sold_value": 0,
+          "active_value": 3477
+        },
+        "Glass": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 3,
+          "active_end": 7,
+          "sold_value": 0,
+          "active_value": 51
+        },
+        "Other Real Estate": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 6,
+          "active_end": 16,
+          "sold_value": 0,
+          "active_value": 162453
+        },
+        "Bakery, Biscuits, Crackers Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 42
+        },
+        "Surface Mount Technology (SMT)": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 10
+        },
+        "Consumer Goods Packaging Equipmment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 35
+        },
+        "Tool Holders": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 1127
+        },
+        "Metal Cutting Machines": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 3500
+        },
+        "Ranges, Broilers, Ovens, Cooktops": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 2,
+          "new": 2,
+          "active_end": 13,
+          "sold_value": 0,
+          "active_value": 929
+        },
+        "Specialized Equipment, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 25,
+          "sold_value": 0,
+          "active_value": 8825
+        },
+        "Fitness and Recreation Equipment": {
+          "sold": 0,
+          "no_sale": 9,
+          "pulled": 5,
+          "new": 28,
+          "active_end": 110,
+          "sold_value": 0,
+          "active_value": 10143
+        },
+        "Metal Manufacturing Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 4,
+          "sold_value": 0,
+          "active_value": 101050
+        },
+        "Dump Trucks": {
+          "sold": 1,
+          "no_sale": 8,
+          "pulled": 6,
+          "new": 25,
+          "active_end": 116,
+          "sold_value": 2525,
+          "active_value": 947808
+        },
+        "Plastics and Rubber Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 51
+        },
+        "Pumps, Food, Beverage": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 33,
+          "sold_value": 0,
+          "active_value": 25450
+        },
+        "Builders Supplies": {
+          "sold": 1,
+          "no_sale": 2,
+          "pulled": 4,
+          "new": 8,
+          "active_end": 42,
+          "sold_value": 310,
+          "active_value": 10558
+        },
+        "Arts, Crafts, and Collectibles": {
+          "sold": 10,
+          "no_sale": 49,
+          "pulled": 39,
+          "new": 114,
+          "active_end": 451,
+          "sold_value": 515,
+          "active_value": 17288
+        },
+        "Hair & Beauty Shop Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 4,
+          "sold_value": 0,
+          "active_value": 140
+        },
+        "Golf Course Equipment": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 10,
+          "sold_value": 0,
+          "active_value": 15126
+        },
+        "Electronics, Personal": {
+          "sold": 0,
+          "no_sale": 4,
+          "pulled": 5,
+          "new": 12,
+          "active_end": 69,
+          "sold_value": 0,
+          "active_value": 4168
+        },
+        "Hospital Equipment and Supplies": {
+          "sold": 0,
+          "no_sale": 2,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 18,
+          "sold_value": 0,
+          "active_value": 1729
+        },
+        "Floor Scrubbers": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 2,
+          "new": 0,
+          "active_end": 11,
+          "sold_value": 0,
+          "active_value": 4845
+        },
+        "Paper & Paper Products, Recyclable": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 103
+        },
+        "Pallets": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 11
+        },
+        "Reel Trailers": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 325
+        },
+        "School Equipment": {
+          "sold": 0,
+          "no_sale": 4,
+          "pulled": 4,
+          "new": 8,
+          "active_end": 47,
+          "sold_value": 0,
+          "active_value": 2893
+        },
+        "Survey Equipment": {
+          "sold": 0,
+          "no_sale": 2,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 11,
+          "sold_value": 0,
+          "active_value": 4406
+        },
+        "Flatbed Trailers": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 19,
+          "sold_value": 0,
+          "active_value": 41115
+        },
+        "Tow Trucks": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 2,
+          "new": 6,
+          "active_end": 18,
+          "sold_value": 0,
+          "active_value": 219271
+        },
+        "Gas Compressors": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 42500
+        },
+        "Facility Support, Miscellaneous": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 4,
+          "active_end": 12,
+          "sold_value": 0,
+          "active_value": 16837
+        },
+        "Flatbed Trucks": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 1,
+          "new": 4,
+          "active_end": 30,
+          "sold_value": 0,
+          "active_value": 105126
+        },
+        "Partitions & Cubicles": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 60
+        },
+        "Switches, Test & Measurement": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 610
+        },
+        "Pumping Unit Parts": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 20
+        },
+        "Electric Motors": {
+          "sold": 0,
+          "no_sale": 5,
+          "pulled": 1,
+          "new": 13,
+          "active_end": 31,
+          "sold_value": 0,
+          "active_value": 18703
+        },
+        "Classic/Custom Cars": {
+          "sold": 1,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 5,
+          "active_end": 17,
+          "sold_value": 8750,
+          "active_value": 129215
+        },
+        "Glass and Ceramics Manufacturing Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 400
+        },
+        "Ceramics Production": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 500
+        },
+        "Aircraft Engines": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 8100
+        },
+        "Audio/Visual Equipment": {
+          "sold": 3,
+          "no_sale": 34,
+          "pulled": 30,
+          "new": 58,
+          "active_end": 308,
+          "sold_value": 307,
+          "active_value": 62341
+        },
+        "Dryers": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 0,
+          "active_end": 0,
+          "sold_value": 0,
+          "active_value": 0
+        },
+        "Cutting, Dicers, Grinders, Slicers": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 5,
+          "sold_value": 0,
+          "active_value": 3570
+        },
+        "Aviation": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 10,
+          "sold_value": 0,
+          "active_value": 80259
+        },
+        "Pallet Racking & Shelving": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 13,
+          "sold_value": 0,
+          "active_value": 17212
+        },
+        "Video Game Consoles": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 2,
+          "sold_value": 120,
+          "active_value": 280
+        },
+        "Garbage Trucks": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 3,
+          "new": 6,
+          "active_end": 42,
+          "sold_value": 0,
+          "active_value": 364297
+        },
+        "Farm Machinery": {
+          "sold": 0,
+          "no_sale": 3,
+          "pulled": 2,
+          "new": 3,
+          "active_end": 12,
+          "sold_value": 0,
+          "active_value": 10700
+        },
+        "Line Pipe": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 4,
+          "sold_value": 0,
+          "active_value": 8066
+        },
+        "Lumber": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 1,
+          "new": 2,
+          "active_end": 7,
+          "sold_value": 0,
+          "active_value": 1293
+        },
+        "Shoes": {
+          "sold": 0,
+          "no_sale": 13,
+          "pulled": 9,
+          "new": 21,
+          "active_end": 96,
+          "sold_value": 0,
+          "active_value": 18563
+        },
+        "Cutting": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 100
+        },
+        "Vehicle Exterior & Structural Components": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 3,
+          "new": 1,
+          "active_end": 7,
+          "sold_value": 0,
+          "active_value": 2587
+        },
+        "IC Assembly & Test": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 20
+        },
+        "Switchgear": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 4,
+          "sold_value": 0,
+          "active_value": 40064
+        },
+        "Refrigerators & Freezers": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 4,
+          "active_end": 18,
+          "sold_value": 0,
+          "active_value": 2501
+        },
+        "Food Service Vehicles": {
+          "sold": 0,
+          "no_sale": 1,
+          "pulled": 0,
+          "new": 1,
+          "active_end": 3,
+          "sold_value": 0,
+          "active_value": 44100
+        },
+        "Conveyors": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 2,
+          "active_end": 13,
+          "sold_value": 0,
+          "active_value": 3475
+        },
+        "Permanent Buildings": {
+          "sold": 0,
+          "no_sale": 3,
+          "pulled": 1,
+          "new": 1,
+          "active_end": 2,
+          "sold_value": 0,
+          "active_value": 1000
+        },
+        "Sewer Equipment": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 5,
+          "sold_value": 0,
+          "active_value": 98315
+        },
+        "Trailers": {
+          "sold": 0,
+          "no_sale": 4,
+          "pulled": 9,
+          "new": 13,
+          "active_end": 116,
+          "sold_value": 0,
+          "active_value": 224481
+        },
+        "Cranes": {
+          "sold": 1,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 6,
+          "sold_value": 3525,
+          "active_value": 138300
+        },
+        "Plumbing Equipment and Supplies": {
+          "sold": 0,
+          "no_sale": 3,
+          "pulled": 3,
+          "new": 8,
+          "active_end": 28,
+          "sold_value": 0,
+          "active_value": 6397
+        },
+        "Sports Cards & Collectibles": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 2,
+          "new": 3,
+          "active_end": 23,
+          "sold_value": 0,
+          "active_value": 16150
+        },
+        "AV Production Displays": {
+          "sold": 0,
+          "no_sale": 0,
+          "pulled": 0,
+          "new": 0,
+          "active_end": 1,
+          "sold_value": 0,
+          "active_value": 25
+        }
+      },
+      "totals": {
+        "sold": 181,
+        "no_sale": 1623,
+        "pulled": 1967,
+        "new": 4100,
+        "active_end": 22007,
+        "sold_value": 459693,
+        "active_value": 38557655
+      }
     }
   ],
-  "last_updated": "2026-06-20T16:20:39.780988+00:00",
+  "last_updated": "2026-06-20T18:00:20.225220+00:00",
   "window_minutes": 15
 }
